@@ -1,4 +1,8 @@
+html {
+    background-color: #111318;
+}
+
 body {
-    margin: 0;
-    font-family: sans-serif;
+    color: white;
+    font-family: 'Roboto';
 }
