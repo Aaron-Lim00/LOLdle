@@ -7,7 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- Linking css -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+    <!-- Linking Javascript -->
+    <script src="{{ url_for('static', filename='scripts/scripts.js') }}"></script>
+
+    <!-- Linking jQuery CDN-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <!-- Set title of page -->
     <title>{% block title %}{% endblock %}</title>
@@ -21,7 +28,7 @@
             <button type="button">info</button>
         </div>
         <div class="navmiddle">
-            <h1>Summoner Showdown</h1>
+            <h1>LoLdle</h1>
         </div>
         <div class="navright">
             <button type="button">stats</button>
@@ -30,6 +37,8 @@
     </div>
 
     {% block content %}{% endblock %}
+
+    {% block footer %}{% endblock %}
 </body>
 
 </html>

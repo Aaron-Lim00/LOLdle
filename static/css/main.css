@@ -1,7 +1,6 @@
-html {
+body {
     background-color: #111318; 
-    color: white;
-    font-family: 'Roboto';
+    font-family: sans-serif;
 }
 
 .navbar {
@@ -10,4 +9,39 @@ html {
     align-items: center;
     justify-content: space-between;
     color: gold;
+}
+
+.game {
+    width: 70%;
+    margin: auto;
+}
+
+.inputbox {
+    background-color: grey;
+    border-radius: 5px;
+    text-align: center;
+    padding: 1px 0px 10px 0px;
+    margin-bottom: 50px;
+}
+
+.results {
+    max-width: 300px;
+    background-color: white;
+    text-align: center;
+}
+
+.card {
+    margin-bottom: 25px;
+}
+
+.champ-header {
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.feedback {
+    color: white;
+    display: flex;
+    justify-content: space-between;
 }
