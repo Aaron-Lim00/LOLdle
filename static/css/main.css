@@ -1,10 +1,4 @@
 html {
-    background-color: #111318; 
-    color: white;
-    font-family: 'Roboto';
-}
-
-body {
     background-color: #021519; 
     color: #F4F4F3;
     font-family: Didot, Roboto;
@@ -15,7 +9,6 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    color: gold;
     color: #F4F4F3;
     border-bottom: 2px solid #BB8E42;
 }
@@ -39,10 +32,6 @@ body {
 .game {
     padding-top: 30px;
     width: 80%;
-}
-
-.game {
-    width: 70%;
     margin: auto;
 }
 
@@ -50,8 +39,8 @@ body {
     background-color: #052329;
     border-radius: 10px;
     text-align: center;
-    padding: 1px 0px 25px 0px;
-    margin-bottom: 50px;
+    padding: 1px 0px 10px 0px;
+    margin-bottom: 30px;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -75,11 +64,8 @@ input:focus{
     border: 2px solid #F4F4F3;
     border-radius: 10px;
     color: #021519;
-    background-color: grey;
-    border-radius: 5px;
     text-align: center;
-    padding: 1px 0px 10px 0px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 .results {
