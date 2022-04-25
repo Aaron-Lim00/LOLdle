@@ -3,17 +3,6 @@
 {% block title %}Summoner Showdown{% endblock %}
 
 {% block content %}
-<<<<<<< Updated upstream
-<p>Test</p>
-<p>Test</p>
-<p>Test</p>
-<p>Test</p>
-<p>Test</p>
-<p>Test</p>
-<p>Test</p>
-<p>Test</p>
-<p>Test</p>
-=======
 
 <div class="game container">
     <!-- Main area for players to make their guess -->
@@ -22,6 +11,14 @@
         <div class="guess">
             <input type="text" id="userinput" placeholder="GUESS 1 OF 8">
             <button type="button" id="submit" onclick="guess()">SUBMIT</button>
+
+<div class="game">
+    <!-- Main area for players to make their guess -->
+    <div class="inputbox">
+        <h3>Declare Your Champion!</h3>
+        <div class="guess">
+            <input type="text" id="userinput">
+            <button type="button" onclick="guess()">Submit</button>
         </div>
     </div>
 
@@ -30,5 +27,5 @@
 
 </div>
 
->>>>>>> Stashed changes
+
 {% endblock %}

@@ -7,10 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- Linking css -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 
-<<<<<<< Updated upstream
-=======
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -20,7 +19,6 @@
     <!-- Linking jQuery CDN-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
->>>>>>> Stashed changes
     <!-- Set title of page -->
     <title>{% block title %}{% endblock %}</title>
 </head>
@@ -34,7 +32,7 @@
             <i class="fa fa-info-circle"></i>
         </div>
         <div class="navmiddle">
-            <h1>Summoner Showdown</h1>
+            <h1>LoLdle</h1>
         </div>
         <div class="navright">
             <i class="fa fa-bar-chart"></i>
@@ -43,6 +41,8 @@
     </div>
 
     {% block content %}{% endblock %}
+
+    {% block footer %}{% endblock %}
 </body>
 
 </html>

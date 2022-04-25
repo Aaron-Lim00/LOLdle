@@ -1,24 +1,21 @@
-<<<<<<< Updated upstream
 html {
     background-color: #111318; 
     color: white;
     font-family: 'Roboto';
-=======
+}
+
 body {
     background-color: #021519; 
     color: #F4F4F3;
     font-family: Didot, Roboto;
->>>>>>> Stashed changes
-}
+ }
 
 .navbar {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-<<<<<<< Updated upstream
     color: gold;
-=======
     color: #F4F4F3;
     border-bottom: 2px solid #BB8E42;
 }
@@ -42,6 +39,10 @@ body {
 .game {
     padding-top: 30px;
     width: 80%;
+}
+
+.game {
+    width: 70%;
     margin: auto;
 }
 
@@ -74,6 +75,11 @@ input:focus{
     border: 2px solid #F4F4F3;
     border-radius: 10px;
     color: #021519;
+    background-color: grey;
+    border-radius: 5px;
+    text-align: center;
+    padding: 1px 0px 10px 0px;
+    margin-bottom: 50px;
 }
 
 .results {
@@ -96,5 +102,4 @@ input:focus{
     color: white;
     display: flex;
     justify-content: space-between;
->>>>>>> Stashed changes
 }
