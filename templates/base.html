@@ -9,6 +9,18 @@
     
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 
+<<<<<<< Updated upstream
+=======
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Linking Javascript -->
+    <script src="{{ url_for('static', filename='scripts/scripts.js') }}"></script>
+
+    <!-- Linking jQuery CDN-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+>>>>>>> Stashed changes
     <!-- Set title of page -->
     <title>{% block title %}{% endblock %}</title>
 </head>
@@ -18,14 +30,15 @@
     <!-- Template Navbar goes here -->
     <div class="navbar">
         <div class="navleft">
-            <button type="button">info</button>
+            <i class="fa fa-navicon"></i>
+            <i class="fa fa-info-circle"></i>
         </div>
         <div class="navmiddle">
             <h1>Summoner Showdown</h1>
         </div>
         <div class="navright">
-            <button type="button">stats</button>
-            <button type="button">settings</button>
+            <i class="fa fa-bar-chart"></i>
+            <i class="fa fa-cog"></i>
         </div>
     </div>
 

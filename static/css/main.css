@@ -1,7 +1,14 @@
+<<<<<<< Updated upstream
 html {
     background-color: #111318; 
     color: white;
     font-family: 'Roboto';
+=======
+body {
+    background-color: #021519; 
+    color: #F4F4F3;
+    font-family: Didot, Roboto;
+>>>>>>> Stashed changes
 }
 
 .navbar {
@@ -9,5 +16,85 @@ html {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+<<<<<<< Updated upstream
     color: gold;
+=======
+    color: #F4F4F3;
+    border-bottom: 2px solid #BB8E42;
+}
+
+.navbar i {
+    width: 20%;
+    text-align: center;
+    padding: 9px;
+    transition: all 0.3s ease;
+    font-size:28px;
+}
+
+.navmiddle {
+    font: "Rockwell Extra Bold";
+}
+
+.navbar i:hover {
+    transform: scale(1.2);
+}
+
+.game {
+    padding-top: 30px;
+    width: 80%;
+    margin: auto;
+}
+
+.inputbox {
+    background-color: #052329;
+    border-radius: 10px;
+    text-align: center;
+    padding: 1px 0px 25px 0px;
+    margin-bottom: 50px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+input {
+    padding: 7px;
+    padding-right: 100px;
+    background-color: #052329;
+    border: 2px solid #F4F4F3;
+    border-radius: 10px;
+    color: white;
+}
+
+input:focus{
+    outline:none;
+    border: 2px solid #BB8E42;
+}
+
+#submit {
+    padding: 7px;
+    background-color: #F4F4F3;
+    border: 2px solid #F4F4F3;
+    border-radius: 10px;
+    color: #021519;
+}
+
+.results {
+    max-width: 300px;
+    background-color: white;
+    text-align: center;
+}
+
+.card {
+    margin-bottom: 25px;
+}
+
+.champ-header {
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.feedback {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+>>>>>>> Stashed changes
 }
