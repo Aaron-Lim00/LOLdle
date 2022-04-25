@@ -3,13 +3,20 @@
 {% block title %}Summoner Showdown{% endblock %}
 
 {% block content %}
-<p>Test</p>
-<p>Test</p>
-<p>Test</p>
-<p>Test</p>
-<p>Test</p>
-<p>Test</p>
-<p>Test</p>
-<p>Test</p>
-<p>Test</p>
+
+<div class="game">
+    <!-- Main area for players to make their guess -->
+    <div class="inputbox">
+        <h3>Declare Your Champion!</h3>
+        <div class="guess">
+            <input type="text" id="userinput">
+            <button type="button" onclick="guess()">Submit</button>
+        </div>
+    </div>
+
+    <!-- Results of player guesses will be appended here -->
+    <div id="results"></div>
+
+</div>
+
 {% endblock %}
