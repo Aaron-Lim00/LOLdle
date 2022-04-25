@@ -1,8 +1,13 @@
 html {
-    background-color: #111318;
-}
-
-body {
+    background-color: #111318; 
     color: white;
     font-family: 'Roboto';
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: gold;
 }
