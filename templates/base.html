@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<!-- All other pages will inherit this header with -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,9 +9,27 @@
     
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 
-    {% block head %}{% endblock %}
+    <!-- Set title of page -->
+    <title>{% block title %}{% endblock %}</title>
 </head>
+
+<!-- All other pages will inherit this body template -->
 <body>
-    {% block body %}{% endblock %}
+    <!-- Template Navbar goes here -->
+    <div class="navbar">
+        <div class="navleft">
+            <button type="button">info</button>
+        </div>
+        <div class="navmiddle">
+            <h1>Summoner Showdown</h1>
+        </div>
+        <div class="navright">
+            <button type="button">stats</button>
+            <button type="button">login</button>
+        </div>
+    </div>
+
+    {% block content %}{% endblock %}
 </body>
+
 </html>
