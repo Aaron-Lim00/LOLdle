@@ -10,6 +10,9 @@
     <!-- Linking css -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <!-- Linking Javascript -->
     <script src="{{ url_for('static', filename='scripts/scripts.js') }}"></script>
 
@@ -25,14 +28,15 @@
     <!-- Template Navbar goes here -->
     <div class="navbar">
         <div class="navleft">
-            <button type="button">info</button>
+            <i class="fa fa-navicon"></i>
+            <i class="fa fa-info-circle"></i>
         </div>
         <div class="navmiddle">
             <h1>LoLdle</h1>
         </div>
         <div class="navright">
-            <button type="button">stats</button>
-            <button type="button">settings</button>
+            <i class="fa fa-bar-chart"></i>
+            <i class="fa fa-cog"></i>
         </div>
     </div>
 
