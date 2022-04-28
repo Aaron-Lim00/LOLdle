@@ -10,9 +10,13 @@ class Guess {
 
 // Called when user clicks submit button
 function guess() {
-    let name = $('#userinput').val();
-    let newGuess = new Guess(name);
-    displayGuess(newGuess)
+    if ($('#userinput').val() === '') {
+        // skip
+    } else {
+        let name = $('#userinput').val();
+        let newGuess = new Guess(name);
+        displayGuess(newGuess)
+    }
 }
 
 // This function makes a card with feedback
@@ -27,6 +31,8 @@ function displayGuess(guess) {
     let championName = document.createTextNode(guess.name);
     champ.appendChild(championName);
     card.appendChild(champ);
+
+    // Add a div containing visual feedback
 
     // Add div containing feedback about class, year, skins
     let feedback = document.createElement('div');
