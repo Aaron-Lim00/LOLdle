@@ -17,7 +17,6 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    /* color: #F4F4F3; */
     border-bottom: 2px solid #BB8E42;
 }
 
@@ -29,8 +28,10 @@ body {
     font-size:28px;
 }
 
-.navbar i:hover {
+i:hover,
+i:focus {
     transform: scale(1.2);
+    cursor: pointer;
 }
 
 .game {
@@ -132,15 +133,9 @@ input:focus{
   .close {
     color: #aaaaaa;
     float: right;
-    font-size: 28px;
+    font-size: 25px;
     font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
+    padding-top: 7px;
   }
 
   .switch {

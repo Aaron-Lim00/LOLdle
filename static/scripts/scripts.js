@@ -53,20 +53,20 @@ function displayGuess(guess) {
     $('#results').append(card);
 }
 
-function openSettings() {
+function openModal(type,id) {
     // Get the modal
-    var modal = document.getElementById("settingsModal");
+    var modal = document.getElementById(type);
 
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
+    // Get element to close modal
+    var span = document.getElementById(id);
     modal.style.display = "block";
 
-    // When the user clicks on <span> (x), close the modal
+    // Clicking on cross icon closes modal
     span.onclick = function() {
         modal.style.display = "none";
     }
 
-    // When the user clicks anywhere outside of the modal, close it
+    // Clicking outside of modal closes modal
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";

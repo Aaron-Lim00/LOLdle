@@ -29,7 +29,7 @@
     <div class="navbar">
         <div class="navleft">
                 <i class="fa fa-navicon" id="menu"></i>
-            <span onclick="openInfo()">
+            <span onclick="openModal('info-modal', 'info-close')">
                 <i class="fa fa-info-circle" id="info"></i>
             </span>
         </div>
@@ -37,38 +37,44 @@
             <h1>LoLdle</h1>
         </div>
         <div class="navright">
-            <span onclick="openAnalytics()">
+            <span onclick="openModal('analytics-modal', 'analytics-close')">
                 <i class="fa fa-bar-chart" id="analytics"></i>
             </span>
-            <span onclick="openSettings()">
+            <span onclick="openModal('settings-modal', 'settings-close')">
                 <i class="fa fa-cog" id="settings"></i>
             </span>
         </div>
     </div>
 
     <!-- The Info Modal -->
-    <div id="infoModal" class="modal">
+    <div id="info-modal" class="modal">
         <!-- Info Content -->
-        <div class="info-content">
-        <span class="close">&times;</span>
+        <div class="modal-content info-content">
+            <span class="close" id='info-close'>
+                <i class="fa fa-times-circle"></i>
+            </span>
         <p>Insert info content here</p>
         </div>
     </div>
 
     <!-- The Analytics Modal -->
-    <div id="analyticsModal" class="modal">
+    <div id="analytics-modal" class="modal">
         <!-- Analytics Content -->
-        <div class="analytics-content">
-        <span class="close">&times;</span>
+        <div class="modal-content analytics-content">
+            <span class="close" id='analytics-close'>
+                <i class="fa fa-times-circle"></i>
+            </span>
         <p>Insert analytics info here</p>
         </div>
     </div>
 
     <!-- The Settings Modal -->
-    <div id="settingsModal" class="modal">
+    <div id="settings-modal" class="modal">
         <!-- Settings Content -->
         <div class="modal-content settings-content">
-        <span class="close">&times;</span>
+        <span class="close" id='settings-close'>
+            <i class="fa fa-times-circle"></i>
+        </span>
             <h2> Settings </h2>
             <div class="flex-container">
                 <h4>Light Mode</h4>
