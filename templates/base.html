@@ -43,6 +43,9 @@
             <span onclick="openSettings()">
                 <i class="fa fa-cog" id="settings"></i>
             </span>
+            <span onclick="openLogin()">
+                <i class="fa fa-sign-in" id="login"></i>
+            </span>
         </div>
     </div>
 
@@ -89,6 +92,35 @@
                     <span class="slider round"></span>
                 </label>
             </div>
+        </div>
+    </div>
+
+    <!--The Login Modal-->
+    <div id="loginModal" class="modal">
+        <!--Login content-->
+        <div class="modal-content login-content">
+            <span class="close">&times;</span>
+            <!--Content here-->
+                <div class="login-field">
+                    <div>
+                        <label for="uname">Summoner Name</label>
+                        <input type="text" placeholder="Enter your name summoner" name="uname" required> <!--Can potentially change input type to email-->
+                    </div>
+                    <div>
+                        <label for="psw">Password</label>
+                        <input type="password" placeholder="Enter Password" name="psw" required>
+                    </div>
+                    
+                    
+                    <button type="submit">Login</button>
+                    <label>
+                        <input type="checkbox" checked="checked" name="remember">Remember me
+                    </label>
+                </div>
+                <div class="container"><!-- restyle and add JS for close functionality-->
+                    <button type="button">Cancel</button>
+                </div>
+            </form>
         </div>
     </div>
 
