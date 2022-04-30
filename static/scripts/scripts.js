@@ -77,11 +77,11 @@ function openModal(type,id) {
 function lightMode() {
     var element = document.body;
     var lightSwitch = document.getElementById("light-switch");
+
     var inputBox = document.getElementsByClassName("inputbox")[0];
     var userInput = document.getElementById("userinput");
     var submitButton = document.getElementById("submit");
 
-    
     element.classList.toggle("light-mode");
 
     if(lightSwitch.checked) {
@@ -100,6 +100,12 @@ function lightMode() {
         submitButton.style.backgroundColor="#214249";
 
         // Settings
+        var modalContent = document.querySelectorAll(".modal-content");
+        var modal = document.querySelectorAll(".modal");
+        for (var i = 0; i < modalContent.length; i++){
+            modalContent[i].style.backgroundColor="#F4F4F3";
+            modal[i].style.color="#214249";
+        }
 
     }
 
@@ -117,5 +123,13 @@ function lightMode() {
         submitButton.style.color="#052329";
         submitButton.style.borderColor="#F4F4F3";
         submitButton.style.backgroundColor="#F4F4F3";
+
+        // Settings
+        var modalContent = document.querySelectorAll(".modal-content");
+        var modal = document.querySelectorAll(".modal");
+        for (var i = 0; i < modalContent.length; i++){
+            modalContent[i].style.backgroundColor="#021119";
+            modal[i].style.color="#F4F4F3";
+        }
     }
 }

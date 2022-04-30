@@ -97,6 +97,7 @@ input:focus{
 
 /* The Modal (background) */
 .modal {
+    color: #F4F4F3;
     display: none;
     position: fixed;
     z-index: 1;
