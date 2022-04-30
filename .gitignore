@@ -2,3 +2,7 @@
 .venv
 env/
 venv/
+
+# to ignore byte-compiled / optimized / DLL files
+__pycache__/
+.DS_Store
