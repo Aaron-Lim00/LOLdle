@@ -6,7 +6,7 @@
 
 <div class="game container">
     <!-- Main area for players to make their guess -->
-    <form class="input-form" id="input-form">
+    <form action="/index" class="input-form" id="input-form" method="POST">
         <div class="inputbox">
             <h3>DECLARE YOUR CHAMPION!</h3>
             <div class="guess">
@@ -17,9 +17,8 @@
         </div>
     </form>
     <!-- Results of player guesses will be appended here -->
-        <div id="helper"></div>
-        <div id="results"></div>
-
+    <div id="helper"></div>
+    <div id="results"></div>
 </div>
 
 
