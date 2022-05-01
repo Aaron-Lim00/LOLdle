@@ -1,3 +1,4 @@
+
 from app import app, db
 from app.models import Champion
 from flask import render_template, url_for, request, jsonify

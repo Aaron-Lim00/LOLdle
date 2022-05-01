@@ -12,7 +12,7 @@ $(document).ready(function() {
             url : '/process'
         })
         .done(function(data) {
-            console.log('hello?')
+            console.log('hello?');
             $('#helper').text(data.champion);
             console.log(data.champion);
         })
