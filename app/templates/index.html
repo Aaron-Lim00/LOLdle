@@ -6,15 +6,19 @@
 
 <div class="game container">
     <!-- Main area for players to make their guess -->
-    <div class="inputbox">
-        <h3>DECLARE YOUR CHAMPION!</h3>
-        <div class="guess">
-            <input type="text" id="userinput" placeholder="GUESS 1 OF 8">
-            <button type="button" id="submit" onclick="guess()">LOCK IN</button>
+    <form class="input-form" id="input-form">
+        <div class="inputbox">
+            <h3>DECLARE YOUR CHAMPION!</h3>
+            <div class="guess">
+                <!-- Note that this input does not have a label !!! FIX -->
+                <input type="text" placeholder="GUESS 1 OF 8" id="input" name="input"/>
+                <button type="submit" id="submit">LOCK IN</button>
+            </div>
         </div>
-    </div>
+    </form>
     <!-- Results of player guesses will be appended here -->
-    <div id="results"></div>
+        <div id="helper"></div>
+        <div id="results"></div>
 
 </div>
 
