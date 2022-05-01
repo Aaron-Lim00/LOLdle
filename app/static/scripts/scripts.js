@@ -13,7 +13,7 @@ $(document).ready(function() {
         })
         .done(function(data) {
             console.log('hello?');
-            $('#helper').text(data.champion);
+            $('#helper').text(data.role);
             console.log(data.champion);
         })
         // Prevent form submitting data twice
