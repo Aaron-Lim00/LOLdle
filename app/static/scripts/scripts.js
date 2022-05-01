@@ -6,7 +6,7 @@ $(document).ready(function() {
     $('#input-form').on('submit', function(event) {
         $.ajax({
             data : {
-                champion : $('#input').val()            
+                champion : $('#input').val() 
             },
             type : 'POST',
             url : '/process'
@@ -105,7 +105,7 @@ function lightMode() {
     var lightSwitch = document.getElementById("light-switch");
 
     var inputBox = document.getElementsByClassName("inputbox")[0];
-    var userInput = document.getElementById("userinput");
+    var userInput = document.getElementById("input");
     var submitButton = document.getElementById("submit");
 
     element.classList.toggle("light-mode");
