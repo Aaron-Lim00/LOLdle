@@ -11,3 +11,4 @@ class Champion(db.Model):
     # for debugging
     def __repr__(self):
         return '<Champion {}>'.format(self.name)
+
