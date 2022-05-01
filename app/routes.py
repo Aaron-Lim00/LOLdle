@@ -11,9 +11,9 @@ def index():
 @app.route('/process', methods=['POST'])
 def process():
     # Get data from request object
-    champion = request.form['input']
+    champion = request.form.get('input', False)
 
     # Do something
-    newChamp = champion
+    newChamp = "hello please work"
 
     return jsonify({'champion' : newChamp})
