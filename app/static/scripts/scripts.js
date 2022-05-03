@@ -12,9 +12,10 @@ $(document).ready(function() {
             url : '/process'
         })
         .done(function(data) {
-            console.log('hello?');
-            $('#helper').text(data.role);
-            console.log(data.champion);
+            $('#helper1').text(data.champion);
+            $('#helper2').text(data.role);
+            $('#helper3').text(data.year);
+            $('#helper4').text(data.skins);
         })
         // Prevent form submitting data twice
         event.preventDefault();

@@ -35,17 +35,17 @@ def process():
         role_feedback = "incorrect"
 
     # Compare champ year guess with answer
-    if (int(champ.year) >= int(answer_champ.year)):
+    if (int(champ.year) > int(answer_champ.year)):
         year_feedback = "lower"
-    elif (int(champ.year) <= int(answer_champ.year)):
+    elif (int(champ.year) < int(answer_champ.year)):
         year_feedback = "higher"
     else:
         year_feedback = "correct"
 
     # Compare champ skins guess with answer
-    if (int(champ.skins) >= int(answer_champ.skins)):
+    if (int(champ.skins) > int(answer_champ.skins)):
         skins_feedback = "lower"
-    elif (int(champ.skins) <= int(answer_champ.skins)):
+    elif (int(champ.skins) < int(answer_champ.skins)):
         skins_feedback = "higher"
     else:
         skins_feedback = "correct"
