@@ -21,14 +21,12 @@ def process():
 
     # Find champion data in champion database
     champ = Champion.query.filter_by(name=champ2).first()
-    champ_name = champ.name
 
     # Retrieve a seeded answer based on days since epoch in db
     seed = (datetime.datetime.utcnow() - datetime.datetime(1970,1,1)).days
     random.seed(seed)
     answer_index = random.randint(1,159)
     answer_champ = Champion.query.get(answer_index)
-    ans_name = answer_champ.name
     
     # Compare champ year with answer
     if (champ.role == answer_champ.role):
@@ -51,7 +49,13 @@ def process():
         skins_feedback = "higher"
     else:
         skins_feedback = "correct"
+
+    # Check whether guess is correct
+    if (champ.name == answer_champ.name):
+        champ_feedback = "correct"
+    else:
+        champ_feedback = "incorrect"
         
     # Currently returns a JSON object with champion data
-    return jsonify({'champion' : ans_name, 'role' : role_feedback, 
+    return jsonify({'champion' : champ_feedback, 'role' : role_feedback, 
     'year' : year_feedback, 'skins' : skins_feedback}) 
