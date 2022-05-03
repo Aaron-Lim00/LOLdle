@@ -55,5 +55,13 @@ def process():
         champ_feedback = "incorrect"
         
     # Currently returns a JSON object with champion data
-    return jsonify({'champion' : champ_feedback, 'role' : role_feedback, 
-    'year' : year_feedback, 'skins' : skins_feedback}) 
+    return jsonify({
+        'champion' : champ_feedback, 
+        'name' : champ.name,
+        'role' : role_feedback, 
+        'rolevalue' : champ.role,
+        'year' : year_feedback, 
+        'yearvalue' : champ.year,
+        'skins' : skins_feedback,
+        'skinvalue' : champ.skins
+        }) 
