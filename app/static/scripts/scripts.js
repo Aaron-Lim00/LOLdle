@@ -12,7 +12,7 @@ $(document).ready(function() {
             url : '/process'
         })
         .done(function(data) {
-            $('#helper1').text(data.champion);
+            $('#helper1').text(data.name);
             $('#helper2').text(data.role);
             $('#helper3').text(data.year);
             $('#helper4').text(data.skins);
@@ -159,4 +159,8 @@ function lightMode() {
             modal[i].style.color="#F4F4F3";
         }
     }
+}
+
+function displayFeedback() {
+    document.getElementsByClassName('grid-container')[0].style.display = "grid";
 }
