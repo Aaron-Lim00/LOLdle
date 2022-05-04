@@ -1,6 +1,27 @@
 // Constant variables
 const results = document.getElementById('results');
 
+// Submits AJAX form with jquery
+$(document).ready(function() {
+    $('#input-form').on('submit', function(event) {
+        $.ajax({
+            data : {
+                champion : $('#input').val() 
+            },
+            type : 'POST',
+            url : '/process'
+        })
+        .done(function(data) {
+            $('#helper1').text(data.champion);
+            $('#helper2').text(data.role);
+            $('#helper3').text(data.year);
+            $('#helper4').text(data.skins);
+        })
+        // Prevent form submitting data twice
+        event.preventDefault();
+    })
+})
+
 // Class is used for player guesses
 class Guess {
     constructor(name) {
@@ -85,7 +106,7 @@ function lightMode() {
     var lightSwitch = document.getElementById("light-switch");
 
     var inputBox = document.getElementsByClassName("inputbox")[0];
-    var userInput = document.getElementById("userinput");
+    var userInput = document.getElementById("input");
     var submitButton = document.getElementById("submit");
 
     element.classList.toggle("light-mode");
