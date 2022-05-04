@@ -28,7 +28,9 @@
     <!-- Template Navbar goes here -->
     <div class="navbar">
         <div class="navleft">
-                <i class="fa fa-navicon" id="menu"></i>
+            <span onclick="openModal('login-modal', 'login-close')">
+                <i class="fa fa-sign-in" aria-hidden="true"></i>
+            </span>
             <span onclick="openModal('info-modal', 'info-close')">
                 <i class="fa fa-info-circle" id="info"></i>
             </span>
@@ -82,6 +84,32 @@
                     <input type="checkbox" id="light-switch" onclick="lightMode()">
                     <span class="slider round"></span>
                 </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Login Modal-->
+    <div id="login-modal" class="modal">
+        <!-- Login Content -->
+        <div class="modal-content login-content">
+            <span class="close" id='login-close'>
+                <i class="fa fa-sign-in"></i>
+            </span>
+            <div>
+                <label for="uname"><b>Summoner Name</b></label>
+                 <input type="text" placeholder="Enter name" name="uname" required>
+            </div>
+            <div>
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+            </div>
+            <div>
+                <button type="submit">Login</button>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                  </label>
             </div>
         </div>
     </div>

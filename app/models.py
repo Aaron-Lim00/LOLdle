@@ -1,5 +1,6 @@
 from app import db
 
+
 # define a champion class that inherits from db.Model
 class Champion(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -11,4 +12,5 @@ class Champion(db.Model):
     # for debugging
     def __repr__(self):
         return '<Champion {}>'.format(self.name)
+
 
