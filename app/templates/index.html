@@ -12,6 +12,18 @@
             <div class="guess">
                 <!-- Note that this input does not have a label !!! FIX -->
                 <input type="text" placeholder="GUESS 1 OF 8" id="input" name="input"/>
+                <script>
+                $( function() {
+                  var availableInput = [
+                      {% for champion in champions %}
+                          "{{champion|safe}}",
+                      {% endfor %}
+                  ];
+                  $( "#input" ).autocomplete({
+                    source: availableInput
+                  });
+                } );
+                </script>
                 <button type="submit" id="submit">LOCK IN</button>
             </div>
         </div>

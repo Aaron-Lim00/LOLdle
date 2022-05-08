@@ -6,8 +6,19 @@ from flask import render_template, url_for, request, jsonify
 import datetime
 import random
 
+# Retrieves champion list from database for autocomplete form
+@app.route("/", methods=["POST", "GET"])
+def home():
+    if request.method == "GET":
+        # Query data from database to allow updating of champion list
+        res = Champion.query.with_entities(Champion.name)
+
+        # Structuring of queries data into a usable list
+        champions = [str(r)[2:-3] for r in res]
+    
+    return render_template("index.html", champions=champions)
+
 # Route for the home page. The majority of the page will be displayed here. 
-@app.route('/')
 @app.route('/index')
 def index():
     return render_template('index.html')
