@@ -10,6 +10,7 @@ body {
 
  h4 {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
  }
 
 .navbar {
@@ -203,4 +204,19 @@ input:focus{
 
   .light-mode {
       background-color: #214249;
+  }
+
+  .grid-container {
+    display: grid;
+    justify-content: space-evenly;
+    grid-template-columns: repeat( auto-fit, minmax(50px, 1fr) );
+    gap: 10px;
+  }
+  
+  .grid-container > div {
+    background-color: #052329;
+    text-align: center;
+    padding: 10px 0;
+    /* font-size: 30px; */
+    border-radius: 10px;
   }
