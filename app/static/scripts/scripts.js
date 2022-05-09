@@ -12,15 +12,49 @@ $(document).ready(function() {
             url : '/process'
         })
         .done(function(data) {
-            $('#helper1').text(data.name);
-            $('#helper2').text(data.role);
-            $('#helper3').text(data.year);
-            $('#helper4').text(data.skins);
+            var $container = $("<div>", {"class": "grid-container"});
+            
+            var name = $("<h4></h4>").text(data.name);
+
+            var rolediv = $("<div></div>")
+            var yeardiv = $("<div></div>")
+            var skindiv = $("<div></div>")
+
+            // Assigning role, year and skin values to a var
+            var rolevalue = $("<span></span>").text(data.rolevalue);
+            var yearvalue = $("<span></span>").text(data.yearvalue);
+            var skinvalue = $("<span></span>").text(data.skinvalue);
+            
+            rolediv.append(iconFeedback(data.role), rolevalue);
+            yeardiv.append(iconFeedback(data.year), yearvalue);
+            skindiv.append(iconFeedback(data.skins), skinvalue);
+
+            $("#feedback-table").append(name);
+            $container.append(rolediv, yeardiv, skindiv);
+            $("#feedback-table").append($container);
         })
         // Prevent form submitting data twice
         event.preventDefault();
     })
 })
+
+function iconFeedback(feedback) {
+    var $icon
+    if(feedback === "higher") {
+        $icon = $("<i>", {"class": "fa fa-arrow-up"});
+    }
+    else if(feedback === "lower") {
+        $icon = $("<i>", {"class": "fa fa-arrow-down"});
+    }
+    else if(feedback == "correct") {
+        $icon = $("<i>", {"class": "fa fa-check"});
+    }
+    else if(feedback == "incorrect") {
+        $icon = $("<i>", {"class": "fa fa-close"});
+    }
+    return $icon
+}
+
 
 // Class is used for player guesses
 class Guess {
@@ -161,6 +195,10 @@ function lightMode() {
     }
 }
 
-function displayFeedback() {
-    document.getElementsByClassName('grid-container')[0].style.display = "grid";
-}
+// $(document).ready(function(){
+//     $("#submit").click(function(){
+//       $(".grid-container").css("display", "grid");
+//     //   $("#helper2").fadeIn("slow");
+//     //   $("#helper3").fadeIn(3000);
+//     });
+//   });
