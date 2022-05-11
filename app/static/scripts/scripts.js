@@ -13,26 +13,8 @@ $(document).ready(function() {
             url : '/process'
         })
         .done(function(data) {
-            var $container = $("<div>", {"class": "grid-container"});
-            
-            var name = $("<h4></h4>").text(data.name);
-
-            var rolediv = $("<div></div>")
-            var yeardiv = $("<div></div>")
-            var skindiv = $("<div></div>")
-
-            // Assigning role, year and skin values to a var
-            var rolevalue = $("<span></span>").text(data.rolevalue);
-            var yearvalue = $("<span></span>").text(data.yearvalue);
-            var skinvalue = $("<span></span>").text(data.skinvalue);
-            
-            rolediv.append(iconFeedback(data.role), rolevalue);
-            yeardiv.append(iconFeedback(data.year), yearvalue);
-            skindiv.append(iconFeedback(data.skins), skinvalue);
-
-            $("#feedback-table").append(name);
-            $container.append(rolediv, yeardiv, skindiv);
-            $("#feedback-table").append($container);
+            createFeedbackCards(data)
+            if(count === 1){createFeedbackHeaders();}
             incrementGuess()
         })
         // Prevent form submitting data twice
@@ -40,6 +22,38 @@ $(document).ready(function() {
         $("#input-form")[0].reset();
     })
 })
+
+function createFeedbackCards(data) {
+    var $container = $("<div>", {"class": "grid-container"});
+
+    var name = $("<h4></h4>").text(data.name);
+
+    var rolediv = $("<div></div>")
+    var yeardiv = $("<div></div>")
+    var skindiv = $("<div></div>")
+
+    // Assigning role, year and skin values to a var
+    var rolevalue = $("<span></span>").text(data.rolevalue);
+    var yearvalue = $("<span></span>").text(data.yearvalue);
+    var skinvalue = $("<span></span>").text(data.skinvalue);
+    
+    rolediv.append(iconFeedback(data.role), rolevalue);
+    yeardiv.append(iconFeedback(data.year), yearvalue);
+    skindiv.append(iconFeedback(data.skins), skinvalue);
+
+    $("#feedback-table").append(name);
+    $container.append(rolediv, yeardiv, skindiv);
+    $("#feedback-table").append($container);
+}
+
+function createFeedbackHeaders() {
+    var $headercontainer = $("<div>", {"class": "grid-container"});
+    var roleheader = $("<p></p>").text("Role");
+    var yearheader = $("<p></p>").text("Year");
+    var skinheader = $("<p></p>").text("Skin");
+    $headercontainer.append(roleheader, yearheader, skinheader)
+    $("#feedback-header").append($headercontainer);
+}
 
 function iconFeedback(feedback) {
     var $icon

@@ -220,3 +220,7 @@ input:focus{
     /* font-size: 30px; */
     border-radius: 10px;
   }
+
+  .grid-container > p {
+    text-align: center;
+  }
