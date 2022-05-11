@@ -1,5 +1,6 @@
 // Constant variables
 const results = document.getElementById('results');
+var count = 1;
 
 // Submits AJAX form with jquery
 $(document).ready(function() {
@@ -35,6 +36,7 @@ $(document).ready(function() {
         })
         // Prevent form submitting data twice
         event.preventDefault();
+        $("#input-form")[0].reset();
     })
 })
 
@@ -195,10 +197,12 @@ function lightMode() {
     }
 }
 
-// $(document).ready(function(){
-//     $("#submit").click(function(){
-//       $(".grid-container").css("display", "grid");
-//     //   $("#helper2").fadeIn("slow");
-//     //   $("#helper3").fadeIn(3000);
-//     });
-//   });
+function newGuess() {
+    count += 1;
+    if(count < 9) {
+        document.getElementById("input").placeholder = "GUESS " + count + " OUT OF 8";
+    }
+    else {
+        // ...
+    }
+}
