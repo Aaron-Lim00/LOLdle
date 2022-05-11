@@ -33,6 +33,7 @@ $(document).ready(function() {
             $("#feedback-table").append(name);
             $container.append(rolediv, yeardiv, skindiv);
             $("#feedback-table").append($container);
+            incrementGuess()
         })
         // Prevent form submitting data twice
         event.preventDefault();
@@ -197,7 +198,7 @@ function lightMode() {
     }
 }
 
-function newGuess() {
+function incrementGuess() {
     count += 1;
     if(count < 9) {
         document.getElementById("input").placeholder = "GUESS " + count + " OUT OF 8";
