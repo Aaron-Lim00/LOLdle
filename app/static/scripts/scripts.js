@@ -1,5 +1,6 @@
 // Constant variables
 const results = document.getElementById('results');
+
 var count = 1;
 
 // Submits AJAX form with jquery
@@ -15,7 +16,9 @@ $(document).ready(function() {
         .done(function(data) {
             if(count === 1){createFeedbackHeaders();}
             createFeedbackCards(data)
-            incrementGuess()
+            if(data.champion === "correct") {gameVictory();}
+            else if(data.champion === "incorrect" && count === 8) {gameDefeat();}
+            else {incrementGuess();}
         })
         // Prevent form submitting data twice
         event.preventDefault();
@@ -63,10 +66,10 @@ function iconFeedback(feedback) {
     else if(feedback === "lower") {
         $icon = $("<i>", {"class": "fa fa-arrow-down"});
     }
-    else if(feedback == "correct") {
+    else if(feedback === "correct") {
         $icon = $("<i>", {"class": "fa fa-check"});
     }
-    else if(feedback == "incorrect") {
+    else if(feedback === "incorrect") {
         $icon = $("<i>", {"class": "fa fa-close"});
     }
     return $icon
@@ -214,10 +217,13 @@ function lightMode() {
 
 function incrementGuess() {
     count += 1;
-    if(count < 9) {
-        document.getElementById("input").placeholder = "GUESS " + count + " OUT OF 8";
-    }
-    else {
-        // ...
-    }
+    document.getElementById("input").placeholder = "GUESS " + count + " OUT OF 8";
+}
+
+function gameVictory() {
+    alert("congratulations");
+}
+
+function gameDefeat() {
+    alert("you lost");
 }
