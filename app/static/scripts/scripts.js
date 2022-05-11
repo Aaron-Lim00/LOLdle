@@ -13,8 +13,8 @@ $(document).ready(function() {
             url : '/process'
         })
         .done(function(data) {
-            createFeedbackCards(data)
             if(count === 1){createFeedbackHeaders();}
+            createFeedbackCards(data)
             incrementGuess()
         })
         // Prevent form submitting data twice
@@ -26,7 +26,7 @@ $(document).ready(function() {
 function createFeedbackCards(data) {
     var $container = $("<div>", {"class": "grid-container"});
 
-    var name = $("<h4></h4>").text(data.name);
+    var name = $("<h4></h4>").text(data.name).hide().fadeIn("slow");
 
     var rolediv = $("<div></div>")
     var yeardiv = $("<div></div>")
@@ -42,7 +42,7 @@ function createFeedbackCards(data) {
     skindiv.append(iconFeedback(data.skins), skinvalue);
 
     $("#feedback-table").append(name);
-    $container.append(rolediv, yeardiv, skindiv);
+    $container.append(rolediv, yeardiv, skindiv).fadeIn("slow");
     $("#feedback-table").append($container);
 }
 
@@ -50,9 +50,9 @@ function createFeedbackHeaders() {
     var $headercontainer = $("<div>", {"class": "grid-container"});
     var roleheader = $("<p></p>").text("Role");
     var yearheader = $("<p></p>").text("Year");
-    var skinheader = $("<p></p>").text("Skin");
+    var skinheader = $("<p></p>").text("Skins");
     $headercontainer.append(roleheader, yearheader, skinheader)
-    $("#feedback-header").append($headercontainer);
+    $("#feedback-header").append($headercontainer).hide().fadeIn("slow");
 }
 
 function iconFeedback(feedback) {
