@@ -19,11 +19,6 @@
     <!-- Linking Javascript -->
     <script src="{{ url_for('static', filename='scripts/scripts.js') }}"></script>
 
-    <!-- Autocomplete function -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>  
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
-    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css" />>  
-
     <!-- Set title of page -->
     <title>{% block title %}{% endblock %}</title>
 </head>
@@ -33,7 +28,9 @@
     <!-- Template Navbar goes here -->
     <div class="navbar">
         <div class="navleft">
-                <i class="fa fa-navicon" id="menu"></i>
+            <span onclick="openModal('login-modal', 'login-close')">
+                <i class="fa fa-sign-in" id="login"></i>
+            </span>
             <span onclick="openModal('info-modal', 'info-close')">
                 <i class="fa fa-info-circle" id="info"></i>
             </span>
@@ -48,6 +45,32 @@
             <span onclick="openModal('settings-modal', 'settings-close')">
                 <i class="fa fa-cog" id="settings"></i>
             </span>
+        </div>
+    </div>
+
+    <!-- The Login Modal-->
+    <div id="login-modal" class="modal">
+        <!-- Login Content -->
+        <div class="modal-content login-content">
+            <span class="close" id='login-close'>
+                <i class="fa fa-sign-in"></i>
+            </span>
+            <div>
+                <label for="uname"><b>Summoner Name</b></label>
+                 <input type="text" placeholder="Enter name" name="uname" required>
+            </div>
+            <div>
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+            </div>
+            <div>
+                <button type="submit">Login</button>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                  </label>
+            </div>
         </div>
     </div>
 
