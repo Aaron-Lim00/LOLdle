@@ -1,6 +1,8 @@
 // Constant variables
 const results = document.getElementById('results');
 
+var count = 1;
+
 // Submits AJAX form with jquery
 $(document).ready(function() {
     $('#input-form').on('submit', function(event) {
@@ -12,31 +14,49 @@ $(document).ready(function() {
             url : '/process'
         })
         .done(function(data) {
-            var $container = $("<div>", {"class": "grid-container"});
-            
-            var name = $("<h4></h4>").text(data.name);
-
-            var rolediv = $("<div></div>")
-            var yeardiv = $("<div></div>")
-            var skindiv = $("<div></div>")
-
-            // Assigning role, year and skin values to a var
-            var rolevalue = $("<span></span>").text(data.rolevalue);
-            var yearvalue = $("<span></span>").text(data.yearvalue);
-            var skinvalue = $("<span></span>").text(data.skinvalue);
-            
-            rolediv.append(iconFeedback(data.role), rolevalue);
-            yeardiv.append(iconFeedback(data.year), yearvalue);
-            skindiv.append(iconFeedback(data.skins), skinvalue);
-
-            $("#feedback-table").append(name);
-            $container.append(rolediv, yeardiv, skindiv);
-            $("#feedback-table").append($container);
+            if(count === 1){createFeedbackHeaders();}
+            createFeedbackCards(data)
+            if(data.champion === "correct") {gameVictory();}
+            else if(data.champion === "incorrect" && count === 8) {gameDefeat();}
+            else {incrementGuess();}
         })
         // Prevent form submitting data twice
         event.preventDefault();
+        $("#input-form")[0].reset();
     })
 })
+
+function createFeedbackCards(data) {
+    var $container = $("<div>", {"class": "grid-container"});
+
+    var name = $("<h4></h4>").text(data.name).hide().fadeIn("slow");
+
+    var rolediv = $("<div></div>")
+    var yeardiv = $("<div></div>")
+    var skindiv = $("<div></div>")
+
+    // Assigning role, year and skin values to a var
+    var rolevalue = $("<span></span>").text(data.rolevalue);
+    var yearvalue = $("<span></span>").text(data.yearvalue);
+    var skinvalue = $("<span></span>").text(data.skinvalue);
+    
+    rolediv.append(iconFeedback(data.role), rolevalue);
+    yeardiv.append(iconFeedback(data.year), yearvalue);
+    skindiv.append(iconFeedback(data.skins), skinvalue);
+
+    $("#feedback-table").append(name);
+    $container.append(rolediv, yeardiv, skindiv).fadeIn("slow");
+    $("#feedback-table").append($container);
+}
+
+function createFeedbackHeaders() {
+    var $headercontainer = $("<div>", {"class": "grid-container"});
+    var roleheader = $("<p></p>").text("Role");
+    var yearheader = $("<p></p>").text("Year");
+    var skinheader = $("<p></p>").text("Skins");
+    $headercontainer.append(roleheader, yearheader, skinheader)
+    $("#feedback-header").append($headercontainer).hide().fadeIn("slow");
+}
 
 function iconFeedback(feedback) {
     var $icon
@@ -46,10 +66,10 @@ function iconFeedback(feedback) {
     else if(feedback === "lower") {
         $icon = $("<i>", {"class": "fa fa-arrow-down"});
     }
-    else if(feedback == "correct") {
+    else if(feedback === "correct") {
         $icon = $("<i>", {"class": "fa fa-check"});
     }
-    else if(feedback == "incorrect") {
+    else if(feedback === "incorrect") {
         $icon = $("<i>", {"class": "fa fa-close"});
     }
     return $icon
@@ -195,10 +215,15 @@ function lightMode() {
     }
 }
 
-// $(document).ready(function(){
-//     $("#submit").click(function(){
-//       $(".grid-container").css("display", "grid");
-//     //   $("#helper2").fadeIn("slow");
-//     //   $("#helper3").fadeIn(3000);
-//     });
-//   });
+function incrementGuess() {
+    count += 1;
+    document.getElementById("input").placeholder = "GUESS " + count + " OUT OF 8";
+}
+
+function gameVictory() {
+    alert("congratulations");
+}
+
+function gameDefeat() {
+    alert("you lost");
+}
