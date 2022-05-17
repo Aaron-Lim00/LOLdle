@@ -124,6 +124,7 @@ input:focus{
     top: 50%;
     left:50%;
     transform: translate(-50%, -50%);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
 
   .flex-container {
@@ -222,6 +223,7 @@ input:focus{
     border-radius: 10px;
   }
 
+
   .grid-container > p {
     text-align: center;
   }
@@ -230,4 +232,9 @@ input:focus{
   #submit:hover {
     background-color: #BB8E42;
     border-color: #BB8E42;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
   }
