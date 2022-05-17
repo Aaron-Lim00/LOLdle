@@ -245,22 +245,22 @@ function gameDefeat() {
     var gamesWonDiv = $("<div></div>");
     var gamesWon = $("<span></span>").text('Total games won: ' + localStorage.gamesWon);
     gamesWonDiv.append(gamesWon);
-    $("#victoryScreen").append(gamesWonDiv);
+    $("#defeatScreen").append(gamesWonDiv);
 
     var gamesPlayedDiv = $("<div></div>");
     var gamesPlayed = $("<span></span>").text('Total games played: ' + localStorage.gamesPlayed);
     gamesPlayedDiv.append(gamesPlayed);
-    $("#victoryScreen").append(gamesPlayedDiv);
+    $("#defeatScreen").append(gamesPlayedDiv);
 
     var gamesWRDiv = $("<div></div>");
     var gamesWR = $("<span></span>").text('Win rate: ' + (localStorage.gamesWon/localStorage.gamesPlayed).toFixed(2));
     gamesWRDiv.append(gamesWR);
-    $("#victoryScreen").append(gamesWRDiv);
+    $("#defeatScreen").append(gamesWRDiv);
 
     var averageGuessesDiv = $("<div></div>");
     var averageGuesses = $("<span></span>").text('Average guesses: ' + (localStorage.totalGuesses/localStorage.gamesPlayed).toFixed(2));
     averageGuessesDiv.append(averageGuesses);
-    $("#victoryScreen").append(averageGuessesDiv);
+    $("#defeatScreen").append(averageGuessesDiv);
 
     openModal('defeat-modal', 'defeat-close');
 }
