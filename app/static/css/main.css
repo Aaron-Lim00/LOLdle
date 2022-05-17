@@ -123,6 +123,7 @@ input:focus{
     top: 50%;
     left:50%;
     transform: translate(-50%, -50%);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
 
   .flex-container {
@@ -219,4 +220,10 @@ input:focus{
     padding: 10px 0;
     /* font-size: 30px; */
     border-radius: 10px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    
   }
