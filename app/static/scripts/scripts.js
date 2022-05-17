@@ -16,8 +16,54 @@ $(document).ready(function() {
         .done(function(data) {
             if(count === 1){createFeedbackHeaders();}
             createFeedbackCards(data)
-            if(data.champion === "correct") {gameVictory();}
-            else if(data.champion === "incorrect" && count === 8) {gameDefeat();}
+            if(data.champion === "correct") {
+                document.getElementById('submit').disabled = true;
+                document.getElementById('submit').style.backgroundColor = 'red';
+
+                if(localStorage.gamesWon) {
+                    localStorage.gamesWon = Number(localStorage.gamesWon) + 1;
+                } else {
+                    localStorage.gamesWon = 1;
+                }
+
+                if(localStorage.gamesPlayed) {
+                    localStorage.gamesPlayed = Number(localStorage.gamesPlayed) + 1;
+                } else {
+                    localStorage.gamesPlayed = 1;
+                }
+
+                if(localStorage.totalGuesses) {
+                    localStorage.totalGuesses = Number(localStorage.totalGuesses) + count - 1;
+                } else {
+                    localStorage.totalGuesses = count - 1;
+                }
+
+                gameVictory(count-1);
+            }
+            else if(data.champion === "incorrect" && count === 8) {
+                document.getElementById('submit').disabled = true;
+                document.getElementById('submit').style.backgroundColor = 'red';
+
+                if(localStorage.gamesPlayed) {
+                    localStorage.gamesPlayed = Number(localStorage.gamesPlayed) + 1;
+                } else {
+                    localStorage.gamesPlayed = 1;
+                }
+
+                if(localStorage.gamesWon) {
+                    // 
+                } else {
+                    localStorage.gamesWon = 0;
+                }
+
+                if(localStorage.totalGuesses) {
+                    localStorage.totalGuesses = Number(localStorage.totalGuesses) + count - 1;
+                } else {
+                    localStorage.totalGuesses = count - 1;
+                }
+
+                gameDefeat();
+            }
             else {incrementGuess();}
         })
         // Prevent form submitting data twice
@@ -73,65 +119,6 @@ function iconFeedback(feedback) {
         $icon = $("<i>", {"class": "fa fa-close"});
     }
     return $icon
-}
-
-
-// Class is used for player guesses
-class Guess {
-    constructor(name) {
-        this.name = name;
-    }
-}
-
-// Called when user clicks submit button
-function guess() {
-    if ($('#userinput').val() === '') {
-        // skip
-    } else {
-        let name = $('#userinput').val();
-        let newGuess = new Guess(name);
-        displayGuess(newGuess)
-    }
-}
-
-// This function makes a card with feedback
-function displayGuess(guess) {
-    // The results card
-    let card = document.createElement('div');
-    card.classList.add("card");
-
-    // Add div with champ name
-    let champ = document.createElement('div');
-    champ.classList.add("champ-header")
-    let championName = document.createTextNode(guess.name);
-    champ.appendChild(championName);
-    card.appendChild(champ);
-
-    // Add a div containing visual feedback
-
-    // Add div containing feedback about class, year, skins
-    let feedback = document.createElement('div');
-    feedback.classList.add('feedback');
-
-    let role = document.createElement('div');
-    let roleText = document.createTextNode('Role');
-    role.appendChild(roleText);
-    feedback.appendChild(role);
-
-    let year = document.createElement('div');
-    let yearText = document.createTextNode('Year');
-    year.appendChild(yearText);
-    feedback.appendChild(year);
-
-    let skins = document.createElement('div');
-    let skinsText = document.createTextNode('Skins');
-    skins.appendChild(skinsText);
-    feedback.appendChild(skins);
-    
-    card.appendChild(feedback);
-
-    // Add the card to results list
-    $('#results').append(card);
 }
 
 function openModal(type,id) {
@@ -220,10 +207,60 @@ function incrementGuess() {
     document.getElementById("input").placeholder = "GUESS " + count + " OUT OF 8";
 }
 
-function gameVictory() {
-    alert("congratulations");
+function gameVictory(guesses) {
+    var guessesMadeDiv = $("<div></div>");
+    var guessesMade = $("<span></span>").text('You won in ' + guesses + ' guesses.');
+    guessesMadeDiv.append(guessesMade);
+    $("#victoryScreen").append(guessesMadeDiv);
+
+    var gamesWonDiv = $("<div></div>");
+    var gamesWon = $("<span></span>").text('Total games won: ' + localStorage.gamesWon);
+    gamesWonDiv.append(gamesWon);
+    $("#victoryScreen").append(gamesWonDiv);
+
+    var gamesPlayedDiv = $("<div></div>");
+    var gamesPlayed = $("<span></span>").text('Total games played: ' + localStorage.gamesPlayed);
+    gamesPlayedDiv.append(gamesPlayed);
+    $("#victoryScreen").append(gamesPlayedDiv);
+
+    var gamesWRDiv = $("<div></div>");
+    var gamesWR = $("<span></span>").text('Win rate: ' + (localStorage.gamesWon/localStorage.gamesPlayed).toFixed(2));
+    gamesWRDiv.append(gamesWR);
+    $("#victoryScreen").append(gamesWRDiv);
+
+    var averageGuessesDiv = $("<div></div>");
+    var averageGuesses = $("<span></span>").text('Average guesses: ' + (localStorage.totalGuesses/localStorage.gamesPlayed).toFixed(2));
+    averageGuessesDiv.append(averageGuesses);
+    $("#victoryScreen").append(averageGuessesDiv);
+
+    openModal('victory-modal', 'victory-close');
 }
 
 function gameDefeat() {
-    alert("you lost");
+    var guessesMadeDiv = $("<div></div>");
+    var guessesMade = $("<span></span>").text('You failed to guess the champion.');
+    guessesMadeDiv.append(guessesMade);
+    $("#defeatScreen").append(guessesMadeDiv);
+
+    var gamesWonDiv = $("<div></div>");
+    var gamesWon = $("<span></span>").text('Total games won: ' + localStorage.gamesWon);
+    gamesWonDiv.append(gamesWon);
+    $("#victoryScreen").append(gamesWonDiv);
+
+    var gamesPlayedDiv = $("<div></div>");
+    var gamesPlayed = $("<span></span>").text('Total games played: ' + localStorage.gamesPlayed);
+    gamesPlayedDiv.append(gamesPlayed);
+    $("#victoryScreen").append(gamesPlayedDiv);
+
+    var gamesWRDiv = $("<div></div>");
+    var gamesWR = $("<span></span>").text('Win rate: ' + (localStorage.gamesWon/localStorage.gamesPlayed).toFixed(2));
+    gamesWRDiv.append(gamesWR);
+    $("#victoryScreen").append(gamesWRDiv);
+
+    var averageGuessesDiv = $("<div></div>");
+    var averageGuesses = $("<span></span>").text('Average guesses: ' + (localStorage.totalGuesses/localStorage.gamesPlayed).toFixed(2));
+    averageGuessesDiv.append(averageGuesses);
+    $("#victoryScreen").append(averageGuessesDiv);
+
+    openModal('defeat-modal', 'defeat-close');
 }
