@@ -227,3 +227,8 @@ function gameVictory() {
 function gameDefeat() {
     alert("you lost");
 }
+
+function clearStorage() {
+    // Clear localStorage items 
+    localStorage.clear();
+  }

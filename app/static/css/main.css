@@ -131,7 +131,9 @@ input:focus{
       display: flex;
       justify-content: space-between;
       border-bottom: #BB8E42 1px solid;
+      line-height:0px;
   }
+  
   
   /* The Close Button */
   .close {
@@ -145,6 +147,7 @@ input:focus{
   .switch {
     position: relative;
     display: inline-block;
+    vertical-align: middle;
     width: 60px;
     height: 34px;
   }
@@ -238,3 +241,23 @@ input:focus{
     max-width: 100%;
     height: auto;
   }
+
+  
+.clearBtn {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  background: #BB8E42;
+  border-radius: 34px;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  opacity: 1;
+  outline: 0 solid transparent;
+  width: 60px;
+  height: 34px;
+  border: 0;
+  margin-top: 3px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
