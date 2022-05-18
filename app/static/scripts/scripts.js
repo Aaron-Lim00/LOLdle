@@ -209,7 +209,8 @@ function incrementGuess() {
 
 function gameVictory(guesses) {
     var guessesMadeDiv = $("<div></div>");
-    var guessesMade = $("<span></span>").text('You won in ' + guesses + ' guesses.');
+    let totalguesses = guesses + 1;
+    var guessesMade = $("<span></span>").text('You won in ' + totalguesses + ' guesses.');
     guessesMadeDiv.append(guessesMade);
     $("#victoryScreen").append(guessesMadeDiv);
 
@@ -272,4 +273,13 @@ function clearStorage() {
       } else {
         //
       }
+  }
+
+  function populate_analytics() {
+    let winpercentage = (localStorage.gamesWon / localStorage.gamesPlayed).toFixed(2);
+    let averageguesses = (localStorage.totalGuesses/localStorage.gamesPlayed).toFixed(2);
+    $('#gamesplayed').text('Games Played: ' + localStorage.gamesPlayed);
+    $('#gameswon').text('Games Won: ' + (localStorage.gamesWon));
+    $('#winpercentage').text('Win Percentage: ' + winpercentage);
+    $('#averageguesses').text('Average Guesses: ' + averageguesses);
   }
