@@ -35,7 +35,7 @@ $(document).ready(function() {
                 if(localStorage.totalGuesses) {
                     localStorage.totalGuesses = Number(localStorage.totalGuesses) + count - 1;
                 } else {
-                    localStorage.totalGuesses = count - 1;
+                    localStorage.totalGuesses = count;
                 }
 
                 gameVictory(count-1);
@@ -59,7 +59,7 @@ $(document).ready(function() {
                 if(localStorage.totalGuesses) {
                     localStorage.totalGuesses = Number(localStorage.totalGuesses) + count - 1;
                 } else {
-                    localStorage.totalGuesses = count - 1;
+                    localStorage.totalGuesses = count;
                 }
 
                 gameDefeat();
@@ -267,5 +267,9 @@ function gameDefeat() {
 
 function clearStorage() {
     // Clear localStorage items 
-    localStorage.clear();
+    if (confirm("WARNING: confirm statistics reset")) {
+        localStorage.clear();
+      } else {
+        //
+      }
   }
