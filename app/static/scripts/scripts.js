@@ -283,3 +283,15 @@ function clearStorage() {
     $('#winpercentage').text('Win Percentage: ' + winpercentage);
     $('#averageguesses').text('Average Guesses: ' + averageguesses);
   }
+
+  function share() {
+    let winpercentage = (localStorage.gamesWon / localStorage.gamesPlayed).toFixed(2);
+    let averageguesses = (localStorage.totalGuesses/localStorage.gamesPlayed).toFixed(2);
+    let gamesplayed = localStorage.gamesPlayed;
+    let gameswon = localStorage.gamesWon;
+    let guesses = count + 1;
+    let message = "Won in: " + guesses + "/n" + "Average guesses: " + averageguesses;
+    
+
+    navigator.clipboard.writeText(message);
+  }
