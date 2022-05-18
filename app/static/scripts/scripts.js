@@ -264,3 +264,8 @@ function gameDefeat() {
 
     openModal('defeat-modal', 'defeat-close');
 }
+
+function clearStorage() {
+    // Clear localStorage items 
+    localStorage.clear();
+  }
