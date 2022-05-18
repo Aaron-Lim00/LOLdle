@@ -267,5 +267,9 @@ function gameDefeat() {
 
 function clearStorage() {
     // Clear localStorage items 
-    localStorage.clear();
+    if (confirm("WARNING: confirm statistics reset")) {
+        localStorage.clear();
+      } else {
+        //
+      }
   }
