@@ -28,9 +28,22 @@
     <!-- Template Navbar goes here -->
     <div class="navbar">
         <div class="navleft">
-            <span onclick="openModal('login-modal', 'login-close')">
+            <!-- login/logout button -->
+            {% if current_user.is_anonymous %}
+            <a href="/login">
+                <i class='fa fa-lock'></i>
+            </a>
+            {% else %}
+            <a href="/logout">
+                <i class='fa fa-unlock'></i>
+                <!-- <i class='fas fa-lock-open'></i> -->
+            </a>
+            {% endif %}
+            <!-- If user is logged in, display a login button, else display a logout button -->
+            <!-- <span onclick="openModal('login-modal', 'login-close')">
                 <i class="fa fa-sign-in" id="login"></i>
-            </span>
+            </span> -->
+            <!-- login/logout button above -->
             <span onclick="openModal('info-modal', 'info-close')">
                 <i class="fa fa-info-circle" id="info"></i>
             </span>
