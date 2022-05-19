@@ -38,7 +38,12 @@ $(document).ready(function() {
                     localStorage.totalGuesses = count;
                 }
 
-                gameVictory(count-1);
+                $('#victory-image').fadeIn(1000)
+                setTimeout(function(){
+                    $('#victory-image').fadeOut(1000)
+                    gameVictory(count-1);
+                }, 2500);
+                
             }
             else if(data.champion === "incorrect" && count === 8) {
                 document.getElementById('submit').disabled = true;
@@ -62,7 +67,11 @@ $(document).ready(function() {
                     localStorage.totalGuesses = count;
                 }
 
-                gameDefeat();
+                $('#defeat-image').fadeIn(1000)
+                setTimeout(function(){
+                    $('#defeat-image').fadeOut(1000)
+                    gameDefeat();
+                }, 2500);
             }
             else {incrementGuess();}
         })
@@ -76,7 +85,9 @@ function createFeedbackCards(data) {
     var $container = $("<div>", {"class": "grid-container"});
 
     var name = $("<h4></h4>").text(data.name).hide().fadeIn("slow");
-
+    name.css("font-size", "18px");
+    name.css("text-transform", "uppercase")
+    
     var rolediv = $("<div></div>")
     var yeardiv = $("<div></div>")
     var skindiv = $("<div></div>")
@@ -89,6 +100,10 @@ function createFeedbackCards(data) {
     rolediv.append(iconFeedback(data.role), rolevalue);
     yeardiv.append(iconFeedback(data.year), yearvalue);
     skindiv.append(iconFeedback(data.skins), skinvalue);
+
+    if(data.role == "correct") {rolediv.css("background-color", "#BB8E42");}
+    if(data.year == "correct") {yeardiv.css("background-color", "#BB8E42");}
+    if(data.skins == "correct") {skindiv.css("background-color", "#BB8E42");}
 
     $("#feedback-table").prepend($container);
     $("#feedback-table").prepend(name);
@@ -233,7 +248,6 @@ function gameVictory(guesses) {
     var averageGuesses = $("<span></span>").text('Average guesses: ' + (localStorage.totalGuesses/localStorage.gamesPlayed).toFixed(2));
     averageGuessesDiv.append(averageGuesses);
     $("#victoryScreen").append(averageGuessesDiv);
-
     openModal('victory-modal', 'victory-close');
 }
 
