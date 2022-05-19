@@ -19,6 +19,7 @@
     <!-- Linking Javascript -->
     <script src="{{ url_for('static', filename='scripts/scripts.js') }}"></script>
 
+
     <!-- Set title of page -->
     <title>{% block title %}{% endblock %}</title>
 </head>
@@ -52,7 +53,7 @@
             <h1>LoLdle</h1>
         </div>
         <div class="navright">
-            <span onclick="openModal('analytics-modal', 'analytics-close')">
+            <span onclick="openModal('analytics-modal', 'analytics-close'); populate_analytics()">
                 <i class="fa fa-bar-chart" id="analytics"></i>
             </span>
             <span onclick="openModal('settings-modal', 'settings-close')">
@@ -94,7 +95,26 @@
             <span class="close" id='info-close'>
                 <i class="fa fa-times-circle"></i>
             </span>
-        <p>Insert info content here</p>
+        <div style="text-align:center;">
+        <h2> HOW TO PLAY</h2>
+        </div>
+        <p> Attempt to guess the mystery League of Legends champion in 8 guesses. <br> <br>
+            After each guess, you will receive clues regarding the champion of the day, in comparison to your guess. <br><br>
+            Flex your League of Legends knowledge to your friends, by guessing the champion in as few turns as possible.
+        </p>
+        <p style = "font-weight: bold;"> <br>Example</p>
+        
+        <div style = "text-align: center;"><a><img src="./static/png/example.png" alt=""></a>
+            <p>This tells us that todays champion is not a mage, was released after 2009, and has less than 14 skins.</p>
+        </div>
+        
+        <p style = "font-weight: bold;"><br><br>A new LOLdle will be available to guess each day!</p>
+        <p> Made by: 
+            <a href="https://github.com/cathy-ngo">@Cathy N</a>,
+            <a href="https://github.com/GlendleNguyen">@Glen N</a>,
+            <a href="https://github.com/Aaron-Lim00">@Aaron L</a>,
+            <a href="https://github.com/sean-alucaro">@Sean L</a>
+        </p>
         </div>
     </div>
 
@@ -105,7 +125,11 @@
             <span class="close" id='analytics-close'>
                 <i class="fa fa-times-circle"></i>
             </span>
-        <p>Insert analytics info here</p>
+            <h2 style = "text-align: center;">Personal Statistics</h2>
+            <div id="gamesplayed"></div>
+            <div id="gameswon"></div>
+            <div id="winpercentage"></div>
+            <div id="averageguesses"></div>
         </div>
     </div>
 
@@ -117,6 +141,7 @@
             <i class="fa fa-times-circle"></i>
         </span>
             <h2> Settings </h2>
+
             <div class="flex-container">
                 <h4>Light Mode</h4>
                 <label class="switch">
@@ -124,6 +149,55 @@
                     <span class="slider round"></span>
                 </label>
             </div>
+
+            <div class="flex-container">
+                <h4>Clear Local Storage</h4>
+                <label class="switch">
+                    <button class="clearBtn" id="clearBtn" onclick="clearStorage()">Clear</button>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Victory Modal -->
+    <div id="victory-modal" class="modal">
+        <!-- Analytics Content -->
+        <div class="modal-content victory-content">
+            <span class="close" id='victory-close'>
+                <i class="fa fa-times-circle"></i>
+            </span>
+            <h2 style = "text-align: center;">Victory!</h2>
+            <div id="victoryScreen"></div>
+            <button class="share" id="share" onclick="share()">Copy Your Results!</button>
+        </div>
+    </div>
+
+    <!-- The Victory Image -->
+    <div id="victory-image" class="modal">
+        <!-- Analytics Content -->
+        <div class="finish-screen">
+            <img src="./static/png/victory.png" alt="Victory Screen">
+        </div>
+    </div>
+
+    <!-- The Defeat Image -->
+    <div id="defeat-image" class="modal">
+        <!-- Analytics Content -->
+        <div class="finish-screen">
+            <img src="./static/png/defeat.png" alt="Defeat Screen" class="finish-screen">
+        </div>
+    </div>
+
+    <!-- The Analytics Modal -->
+    <div id="defeat-modal" class="modal">
+        <!-- Analytics Content -->
+        <div class="modal-content defeat-content">
+            <span class="close" id='defeat-close'>
+                <i class="fa fa-times-circle"></i>
+            </span>
+            <h2 style = "text-align: center;">Defeat!</h2>
+            <div id="defeatScreen"></div>
+            <button class="share" id="share" onclick="share()">Copy Your Results!</button>
         </div>
     </div>
 

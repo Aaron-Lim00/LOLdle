@@ -1,6 +1,9 @@
 // Constant variables
 const results = document.getElementById('results');
 
+var count = 1;
+let victory = false;
+
 // Submits AJAX form with jquery
 $(document).ready(function() {
     $('#input-form').on('submit', function(event) {
@@ -12,31 +15,112 @@ $(document).ready(function() {
             url : '/process'
         })
         .done(function(data) {
-            var $container = $("<div>", {"class": "grid-container"});
-            
-            var name = $("<h4></h4>").text(data.name);
+            if(count === 1){createFeedbackHeaders();}
+            createFeedbackCards(data)
+            if(data.champion === "correct") {
+                victory = true;
+                document.getElementById('submit').disabled = true;
+                document.getElementById('submit').style.backgroundColor = 'red';
 
-            var rolediv = $("<div></div>")
-            var yeardiv = $("<div></div>")
-            var skindiv = $("<div></div>")
+                if(localStorage.gamesWon) {
+                    localStorage.gamesWon = Number(localStorage.gamesWon) + 1;
+                } else {
+                    localStorage.gamesWon = 1;
+                }
 
-            // Assigning role, year and skin values to a var
-            var rolevalue = $("<span></span>").text(data.rolevalue);
-            var yearvalue = $("<span></span>").text(data.yearvalue);
-            var skinvalue = $("<span></span>").text(data.skinvalue);
-            
-            rolediv.append(iconFeedback(data.role), rolevalue);
-            yeardiv.append(iconFeedback(data.year), yearvalue);
-            skindiv.append(iconFeedback(data.skins), skinvalue);
+                if(localStorage.gamesPlayed) {
+                    localStorage.gamesPlayed = Number(localStorage.gamesPlayed) + 1;
+                } else {
+                    localStorage.gamesPlayed = 1;
+                }
 
-            $("#feedback-table").append(name);
-            $container.append(rolediv, yeardiv, skindiv);
-            $("#feedback-table").append($container);
+                if(localStorage.totalGuesses) {
+                    localStorage.totalGuesses = Number(localStorage.totalGuesses) + count - 1;
+                } else {
+                    localStorage.totalGuesses = count;
+                }
+
+                $('#victory-image').fadeIn(1000)
+                setTimeout(function(){
+                    $('#victory-image').fadeOut(1000)
+                    gameVictory(count-1);
+                }, 2500);
+                
+            }
+            else if(data.champion === "incorrect" && count === 8) {
+                document.getElementById('submit').disabled = true;
+                document.getElementById('submit').style.backgroundColor = 'red';
+
+                if(localStorage.gamesPlayed) {
+                    localStorage.gamesPlayed = Number(localStorage.gamesPlayed) + 1;
+                } else {
+                    localStorage.gamesPlayed = 1;
+                }
+
+                if(localStorage.gamesWon) {
+                    // 
+                } else {
+                    localStorage.gamesWon = 0;
+                }
+
+                if(localStorage.totalGuesses) {
+                    localStorage.totalGuesses = Number(localStorage.totalGuesses) + count - 1;
+                } else {
+                    localStorage.totalGuesses = count;
+                }
+
+                $('#defeat-image').fadeIn(1000)
+                setTimeout(function(){
+                    $('#defeat-image').fadeOut(1000)
+                    gameDefeat();
+                }, 2500);
+            }
+            else {incrementGuess();}
         })
         // Prevent form submitting data twice
         event.preventDefault();
+        $("#input-form")[0].reset();
     })
 })
+
+function createFeedbackCards(data) {
+    var $container = $("<div>", {"class": "grid-container"});
+
+    var name = $("<h4></h4>").text(data.name).hide().fadeIn("slow");
+    name.css("font-size", "18px");
+    name.css("text-transform", "uppercase")
+    
+    var rolediv = $("<div></div>")
+    var yeardiv = $("<div></div>")
+    var skindiv = $("<div></div>")
+
+    // Assigning role, year and skin values to a var
+    var rolevalue = $("<span></span>").text(data.rolevalue);
+    var yearvalue = $("<span></span>").text(data.yearvalue);
+    var skinvalue = $("<span></span>").text(data.skinvalue);
+    
+    rolediv.append(iconFeedback(data.role), rolevalue);
+    yeardiv.append(iconFeedback(data.year), yearvalue);
+    skindiv.append(iconFeedback(data.skins), skinvalue);
+
+    if(data.role == "correct") {rolediv.css("background-color", "#BB8E42");}
+    if(data.year == "correct") {yeardiv.css("background-color", "#BB8E42");}
+    if(data.skins == "correct") {skindiv.css("background-color", "#BB8E42");}
+
+    $("#feedback-table").prepend($container);
+    $("#feedback-table").prepend(name);
+    $container.append(rolediv, yeardiv, skindiv).fadeIn("slow");
+}
+
+function createFeedbackHeaders() {
+    var $headercontainer = $("<div>", {"class": "grid-container"});
+    var roleheader = $("<p></p>").text("Role");
+    var yearheader = $("<p></p>").text("Year");
+    var skinheader = $("<p></p>").text("Skins");
+    $headercontainer.append(roleheader, yearheader, skinheader);
+    $headercontainer.css("border-bottom", "2px solid #BB8E42");
+    $("#feedback-header").append($headercontainer).hide().fadeIn("slow");
+}
 
 function iconFeedback(feedback) {
     var $icon
@@ -46,72 +130,13 @@ function iconFeedback(feedback) {
     else if(feedback === "lower") {
         $icon = $("<i>", {"class": "fa fa-arrow-down"});
     }
-    else if(feedback == "correct") {
+    else if(feedback === "correct") {
         $icon = $("<i>", {"class": "fa fa-check"});
     }
-    else if(feedback == "incorrect") {
+    else if(feedback === "incorrect") {
         $icon = $("<i>", {"class": "fa fa-close"});
     }
     return $icon
-}
-
-
-// Class is used for player guesses
-class Guess {
-    constructor(name) {
-        this.name = name;
-    }
-}
-
-// Called when user clicks submit button
-function guess() {
-    if ($('#userinput').val() === '') {
-        // skip
-    } else {
-        let name = $('#userinput').val();
-        let newGuess = new Guess(name);
-        displayGuess(newGuess)
-    }
-}
-
-// This function makes a card with feedback
-function displayGuess(guess) {
-    // The results card
-    let card = document.createElement('div');
-    card.classList.add("card");
-
-    // Add div with champ name
-    let champ = document.createElement('div');
-    champ.classList.add("champ-header")
-    let championName = document.createTextNode(guess.name);
-    champ.appendChild(championName);
-    card.appendChild(champ);
-
-    // Add a div containing visual feedback
-
-    // Add div containing feedback about class, year, skins
-    let feedback = document.createElement('div');
-    feedback.classList.add('feedback');
-
-    let role = document.createElement('div');
-    let roleText = document.createTextNode('Role');
-    role.appendChild(roleText);
-    feedback.appendChild(role);
-
-    let year = document.createElement('div');
-    let yearText = document.createTextNode('Year');
-    year.appendChild(yearText);
-    feedback.appendChild(year);
-
-    let skins = document.createElement('div');
-    let skinsText = document.createTextNode('Skins');
-    skins.appendChild(skinsText);
-    feedback.appendChild(skins);
-    
-    card.appendChild(feedback);
-
-    // Add the card to results list
-    $('#results').append(card);
 }
 
 function openModal(type,id) {
@@ -195,10 +220,105 @@ function lightMode() {
     }
 }
 
-// $(document).ready(function(){
-//     $("#submit").click(function(){
-//       $(".grid-container").css("display", "grid");
-//     //   $("#helper2").fadeIn("slow");
-//     //   $("#helper3").fadeIn(3000);
-//     });
-//   });
+function incrementGuess() {
+    count += 1;
+    document.getElementById("input").placeholder = "GUESS " + count + " OUT OF 8";
+}
+
+function gameVictory(guesses) {
+    var guessesMadeDiv = $("<div></div>");
+    let totalguesses = guesses + 1;
+    var guessesMade = $("<span></span>").text('You won in ' + totalguesses + ' guesses.');
+    guessesMadeDiv.append(guessesMade);
+    $("#victoryScreen").append(guessesMadeDiv);
+
+    var gamesWonDiv = $("<div></div>");
+    var gamesWon = $("<span></span>").text('Total games won: ' + localStorage.gamesWon);
+    gamesWonDiv.append(gamesWon);
+    $("#victoryScreen").append(gamesWonDiv);
+
+    var gamesPlayedDiv = $("<div></div>");
+    var gamesPlayed = $("<span></span>").text('Total games played: ' + localStorage.gamesPlayed);
+    gamesPlayedDiv.append(gamesPlayed);
+    $("#victoryScreen").append(gamesPlayedDiv);
+
+    var gamesWRDiv = $("<div></div>");
+    var gamesWR = $("<span></span>").text('Win rate: ' + (localStorage.gamesWon/localStorage.gamesPlayed).toFixed(2));
+    gamesWRDiv.append(gamesWR);
+    $("#victoryScreen").append(gamesWRDiv);
+
+    var averageGuessesDiv = $("<div></div>");
+    var averageGuesses = $("<span></span>").text('Average guesses: ' + (localStorage.totalGuesses/localStorage.gamesPlayed).toFixed(2));
+    averageGuessesDiv.append(averageGuesses);
+    $("#victoryScreen").append(averageGuessesDiv);
+    openModal('victory-modal', 'victory-close');
+}
+
+function gameDefeat() {
+    var guessesMadeDiv = $("<div></div>");
+    var guessesMade = $("<span></span>").text('You failed to guess the champion.');
+    guessesMadeDiv.append(guessesMade);
+    $("#defeatScreen").append(guessesMadeDiv);
+
+    var gamesWonDiv = $("<div></div>");
+    var gamesWon = $("<span></span>").text('Total games won: ' + localStorage.gamesWon);
+    gamesWonDiv.append(gamesWon);
+    $("#defeatScreen").append(gamesWonDiv);
+
+    var gamesPlayedDiv = $("<div></div>");
+    var gamesPlayed = $("<span></span>").text('Total games played: ' + localStorage.gamesPlayed);
+    gamesPlayedDiv.append(gamesPlayed);
+    $("#defeatScreen").append(gamesPlayedDiv);
+
+    var gamesWRDiv = $("<div></div>");
+    var gamesWR = $("<span></span>").text('Win rate: ' + (localStorage.gamesWon/localStorage.gamesPlayed).toFixed(2));
+    gamesWRDiv.append(gamesWR);
+    $("#defeatScreen").append(gamesWRDiv);
+
+    var averageGuessesDiv = $("<div></div>");
+    var averageGuesses = $("<span></span>").text('Average guesses: ' + (localStorage.totalGuesses/localStorage.gamesPlayed).toFixed(2));
+    averageGuessesDiv.append(averageGuesses);
+    $("#defeatScreen").append(averageGuessesDiv);
+
+    openModal('defeat-modal', 'defeat-close');
+}
+
+function clearStorage() {
+    // Clear localStorage items 
+    if (confirm("WARNING: confirm statistics reset")) {
+        localStorage.clear();
+      } else {
+        //
+      }
+  }
+
+  function populate_analytics() {
+    let winpercentage = (localStorage.gamesWon / localStorage.gamesPlayed).toFixed(2);
+    let averageguesses = (localStorage.totalGuesses/localStorage.gamesPlayed).toFixed(2);
+    $('#gamesplayed').text('Games Played: ' + localStorage.gamesPlayed);
+    $('#gameswon').text('Games Won: ' + (localStorage.gamesWon));
+    $('#winpercentage').text('Win Percentage: ' + winpercentage);
+    $('#averageguesses').text('Average Guesses: ' + averageguesses);
+  }
+
+  function share() {
+    let winpercentage = (localStorage.gamesWon / localStorage.gamesPlayed).toFixed(2);
+    let averageguesses = (localStorage.totalGuesses/localStorage.gamesPlayed).toFixed(2);
+    let gamesplayed = localStorage.gamesPlayed;
+    let gameswon = localStorage.gamesWon;
+    let guesses = count + 1;
+    
+    let result = `\n`;
+    if(victory) {
+        result += `Victory!\n`;
+    } else {
+        result += `Defeat!\n`;
+    }
+    result += `Game ended with ${guesses} guesses\n`;
+    result += `Average number of guesses: ${averageguesses}%\n`;
+    result += `Total games won: ${gameswon}\n`;
+    result += `Total games played: ${gamesplayed}\n`;
+    result += `Win percentage: ${winpercentage}%\n`;
+
+    navigator.clipboard.writeText(result);
+  }
