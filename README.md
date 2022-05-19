@@ -13,6 +13,9 @@ UWA Web Dev Project showcasing a daily playable game
 -> pip install flask
 -> pip install flask_sqlalchemy
 -> pip install flask_migrate
+-> pip install flask_login
+-> pip install flask_wtf
+-> pip install email_validator
 -> pip install python-dotenv
 
 5) [Optional] For debugging: export FLASK_DEBUG=1
