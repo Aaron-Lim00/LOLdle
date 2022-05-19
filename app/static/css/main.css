@@ -72,6 +72,7 @@ input:focus{
     color: #021519;
     text-align: center;
     margin-bottom: 20px;
+    transition: 0.3s;
 }
 
 .results {
@@ -123,13 +124,16 @@ input:focus{
     top: 50%;
     left:50%;
     transform: translate(-50%, -50%);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
 
   .flex-container {
       display: flex;
       justify-content: space-between;
       border-bottom: #BB8E42 1px solid;
+      line-height:0px;
   }
+  
   
   /* The Close Button */
   .close {
@@ -143,6 +147,7 @@ input:focus{
   .switch {
     position: relative;
     display: inline-block;
+    vertical-align: middle;
     width: 60px;
     height: 34px;
   }
@@ -220,3 +225,62 @@ input:focus{
     /* font-size: 30px; */
     border-radius: 10px;
   }
+
+
+  .grid-container > p {
+    text-align: center;
+  }
+
+
+  #submit:hover {
+    background-color: #BB8E42;
+    border-color: #BB8E42;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  
+.clearBtn {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  background: #BB8E42;
+  border-radius: 34px;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  opacity: 1;
+  outline: 0 solid transparent;
+  width: 60px;
+  height: 34px;
+  border: 0;
+  margin-top: 3px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.clearBtn:hover {
+  transform: scale(1.1);
+}
+
+#feedback-header {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 17px;
+}
+
+.finish-screen {
+  margin: auto;
+  border: none;
+  width: 60%;
+  position: fixed;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+}
+
+#share {
+  margin-top: 10px;
+}
