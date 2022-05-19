@@ -10,13 +10,14 @@ UWA Web Dev Project showcasing a daily playable game
 4) Type into terminal: source venv/bin/activate
 
 5) Ensure installation of python and various dependencies before launching app:
--> pip install flask
--> pip install flask_sqlalchemy
--> pip install flask_migrate
--> pip install flask_login
--> pip install flask_wtf
--> pip install email_validator
--> pip install python-dotenv
+<--Install via terminal-->
+pip install flask
+pip install flask_sqlalchemy
+pip install flask_migrate
+pip install flask_login
+pip install flask_wtf
+pip install email_validator
+pip install python-dotenv
 
 5) [Optional] For debugging: export FLASK_DEBUG=1
 
