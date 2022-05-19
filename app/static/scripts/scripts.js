@@ -90,9 +90,9 @@ function createFeedbackCards(data) {
     yeardiv.append(iconFeedback(data.year), yearvalue);
     skindiv.append(iconFeedback(data.skins), skinvalue);
 
-    $("#feedback-table").append(name);
+    $("#feedback-table").prepend($container);
+    $("#feedback-table").prepend(name);
     $container.append(rolediv, yeardiv, skindiv).fadeIn("slow");
-    $("#feedback-table").append($container);
 }
 
 function createFeedbackHeaders() {
@@ -100,7 +100,8 @@ function createFeedbackHeaders() {
     var roleheader = $("<p></p>").text("Role");
     var yearheader = $("<p></p>").text("Year");
     var skinheader = $("<p></p>").text("Skins");
-    $headercontainer.append(roleheader, yearheader, skinheader)
+    $headercontainer.append(roleheader, yearheader, skinheader);
+    $headercontainer.css("border-bottom", "2px solid #BB8E42");
     $("#feedback-header").append($headercontainer).hide().fadeIn("slow");
 }
 
