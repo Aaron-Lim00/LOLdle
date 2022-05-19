@@ -42,7 +42,7 @@
             <h1>LoLdle</h1>
         </div>
         <div class="navright">
-            <span onclick="openModal('analytics-modal', 'analytics-close')">
+            <span onclick="openModal('analytics-modal', 'analytics-close'); populate_analytics()">
                 <i class="fa fa-bar-chart" id="analytics"></i>
             </span>
             <span onclick="openModal('settings-modal', 'settings-close')">
@@ -88,7 +88,11 @@
             <span class="close" id='analytics-close'>
                 <i class="fa fa-times-circle"></i>
             </span>
-        <p>Insert analytics info here</p>
+            <h2 style = "text-align: center;">Personal Statistics</h2>
+            <div id="gamesplayed"></div>
+            <div id="gameswon"></div>
+            <div id="winpercentage"></div>
+            <div id="averageguesses"></div>
         </div>
     </div>
 
@@ -121,11 +125,13 @@
     <!-- The Victory Modal -->
     <div id="victory-modal" class="modal">
         <!-- Analytics Content -->
-        <div class="modal-content victory-content" id="victoryScreen">
+        <div class="modal-content victory-content">
             <span class="close" id='victory-close'>
                 <i class="fa fa-times-circle"></i>
             </span>
             <h2 style = "text-align: center;">Victory!</h2>
+            <div id="victoryScreen"></div>
+            <button class="share" id="share" onclick="share()">Copy Your Results!</button>
         </div>
     </div>
 
@@ -148,11 +154,13 @@
     <!-- The Analytics Modal -->
     <div id="defeat-modal" class="modal">
         <!-- Analytics Content -->
-        <div class="modal-content defeat-content" id="defeatScreen">
+        <div class="modal-content defeat-content">
             <span class="close" id='defeat-close'>
                 <i class="fa fa-times-circle"></i>
             </span>
             <h2 style = "text-align: center;">Defeat!</h2>
+            <div id="defeatScreen"></div>
+            <button class="share" id="share" onclick="share()">Copy Your Results!</button>
         </div>
     </div>
 
