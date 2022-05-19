@@ -2,6 +2,7 @@
 const results = document.getElementById('results');
 
 var count = 1;
+let victory = false;
 
 // Submits AJAX form with jquery
 $(document).ready(function() {
@@ -17,6 +18,7 @@ $(document).ready(function() {
             if(count === 1){createFeedbackHeaders();}
             createFeedbackCards(data)
             if(data.champion === "correct") {
+                victory = true;
                 document.getElementById('submit').disabled = true;
                 document.getElementById('submit').style.backgroundColor = 'red';
 
@@ -292,6 +294,11 @@ function clearStorage() {
     let guesses = count + 1;
     
     let result = `\n`;
+    if(victory) {
+        result += `Victory!\n`;
+    } else {
+        result += `Defeat!\n`;
+    }
     result += `Game ended with ${guesses} guesses\n`;
     result += `Average number of guesses: ${averageguesses}%\n`;
     result += `Total games won: ${gameswon}\n`;
@@ -299,5 +306,4 @@ function clearStorage() {
     result += `Win percentage: ${winpercentage}%\n`;
 
     navigator.clipboard.writeText(result);
-    alert("Results copied!")
   }
