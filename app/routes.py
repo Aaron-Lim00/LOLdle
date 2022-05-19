@@ -30,6 +30,10 @@ def process():
 
     # Find champion data in champion database
     champ = Champion.query.filter_by(name=champ2).first()
+    
+    # If champion does not exist in database or input is incorrect
+    if champ == None:
+        raise Exception("Invalid champion name")
 
     # Retrieve a seeded answer based on days since epoch in db
     seed = (datetime.datetime.utcnow() - datetime.datetime(1970,1,1)).days
