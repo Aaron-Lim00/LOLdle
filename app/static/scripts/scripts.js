@@ -290,8 +290,14 @@ function clearStorage() {
     let gamesplayed = localStorage.gamesPlayed;
     let gameswon = localStorage.gamesWon;
     let guesses = count + 1;
-    let message = "Won in: " + guesses + "/n" + "Average guesses: " + averageguesses;
     
+    let result = `\n`;
+    result += `Game ended with ${guesses} guesses\n`;
+    result += `Average number of guesses: ${averageguesses}%\n`;
+    result += `Total games won: ${gameswon}\n`;
+    result += `Total games played: ${gamesplayed}\n`;
+    result += `Win percentage: ${winpercentage}%\n`;
 
-    navigator.clipboard.writeText(message);
+    navigator.clipboard.writeText(result);
+    alert("Results copied!")
   }
