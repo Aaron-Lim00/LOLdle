@@ -11,8 +11,4 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
 
-
-
-# routes defines application structure
-# models defines the structure of the database
 from app import routes, models
