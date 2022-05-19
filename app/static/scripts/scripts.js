@@ -300,10 +300,10 @@ function clearStorage() {
         result += `Defeat!\n`;
     }
     result += `Game ended with ${guesses} guesses\n`;
-    result += `Average number of guesses: ${averageguesses}%\n`;
+    result += `Average number of guesses: ${averageguesses}\n`;
     result += `Total games won: ${gameswon}\n`;
     result += `Total games played: ${gamesplayed}\n`;
-    result += `Win percentage: ${winpercentage}%\n`;
+    result += `Win percentage: ${winpercentage*100}%\n`;
 
     navigator.clipboard.writeText(result);
   }
