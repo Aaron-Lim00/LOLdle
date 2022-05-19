@@ -265,3 +265,7 @@ input:focus{
 .clearBtn:hover {
   transform: scale(1.1);
 }
+
+#share {
+  margin-top: 10px;
+}
