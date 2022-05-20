@@ -29,8 +29,8 @@ body {
     font-size:28px;
 }
 
-i:hover,
-i:focus {
+.clickable-icon:hover,
+.clickable-icon:focus {
     transform: scale(1.2);
     cursor: pointer;
 }
@@ -65,6 +65,7 @@ input:focus{
 }
 
 #submit {
+    cursor: pointer;
     padding: 7px;
     background-color: #F4F4F3;
     border: 2px solid #F4F4F3;

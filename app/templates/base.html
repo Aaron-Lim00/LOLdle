@@ -33,9 +33,9 @@
     <!-- Template Navbar goes here -->
     <div class="navbar">
         <div class="navleft">
-                <i class="fa fa-navicon" id="menu"></i>
+                <i class="clickable-icon fa fa-navicon" id="menu"></i>
             <span onclick="openModal('info-modal', 'info-close')">
-                <i class="fa fa-info-circle" id="info"></i>
+                <i class="clickable-icon fa fa-info-circle" id="info"></i>
             </span>
         </div>
         <div class="navmiddle">
@@ -43,10 +43,10 @@
         </div>
         <div class="navright">
             <span onclick="openModal('analytics-modal', 'analytics-close'); populate_analytics()">
-                <i class="fa fa-bar-chart" id="analytics"></i>
+                <i class="clickable-icon fa fa-bar-chart" id="analytics"></i>
             </span>
             <span onclick="openModal('settings-modal', 'settings-close')">
-                <i class="fa fa-cog" id="settings"></i>
+                <i class="clickable-icon fa fa-cog" id="settings"></i>
             </span>
         </div>
     </div>
@@ -56,7 +56,7 @@
         <!-- Info Content -->
         <div class="modal-content info-content">
             <span class="close" id='info-close'>
-                <i class="fa fa-times-circle"></i>
+                <i class="clickable-icon fa fa-times-circle"></i>
             </span>
         <div style="text-align:center;">
         <h2> HOW TO PLAY</h2>
@@ -86,7 +86,7 @@
         <!-- Analytics Content -->
         <div class="modal-content analytics-content">
             <span class="close" id='analytics-close'>
-                <i class="fa fa-times-circle"></i>
+                <i class="clickable-icon fa fa-times-circle"></i>
             </span>
             <h2 style = "text-align: center;">Personal Statistics</h2>
             <div id="gamesplayed"></div>
@@ -101,7 +101,7 @@
         <!-- Settings Content -->
         <div class="modal-content settings-content">
         <span class="close" id='settings-close'>
-            <i class="fa fa-times-circle"></i>
+            <i class="clickable-icon fa fa-times-circle"></i>
         </span>
             <h2> Settings </h2>
 
@@ -127,7 +127,7 @@
         <!-- Analytics Content -->
         <div class="modal-content victory-content">
             <span class="close" id='victory-close'>
-                <i class="fa fa-times-circle"></i>
+                <i class="clickable-icon fa fa-times-circle"></i>
             </span>
             <h2 style = "text-align: center;">Victory!</h2>
             <div id="victoryScreen"></div>
@@ -156,7 +156,7 @@
         <!-- Analytics Content -->
         <div class="modal-content defeat-content">
             <span class="close" id='defeat-close'>
-                <i class="fa fa-times-circle"></i>
+                <i class="clickable-icon fa fa-times-circle"></i>
             </span>
             <h2 style = "text-align: center;">Defeat!</h2>
             <div id="defeatScreen"></div>
