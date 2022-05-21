@@ -119,9 +119,6 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
-
-
-
 @app.route('/result', methods=['GET','POST'])
 def result():
     # Get data from request object - champion name
