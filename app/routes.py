@@ -20,7 +20,6 @@ def home():
     return render_template("index.html", champions=champions)
 
 # Route for the home page. The majority of the page will be displayed here. 
-@app.route('/')
 @app.route('/index')
 def index():
     return render_template('index.html')
@@ -29,6 +28,7 @@ def index():
 @app.route('/process', methods=['POST'])
 def process():
     # Get data from request object - champion name
+    
     champion = request.form
     champ2 = champion.to_dict()['champion']
 
@@ -66,6 +66,7 @@ def process():
     # Check whether guess is correct
     if (champ.name == answer_champ.name):
         champ_feedback = "correct"
+        
     else:
         champ_feedback = "incorrect"
         
@@ -79,7 +80,8 @@ def process():
         'yearvalue' : champ.year,
         'skins' : skins_feedback,
         'skinvalue' : champ.skins
-        }) 
+        })
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -116,3 +118,32 @@ def register():
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
+
+
+
+
+@app.route('/result', methods=['GET','POST'])
+def result():
+    # Get data from request object - champion name
+    num_guesses = 0
+    champion = request.form
+    champ2 = champion.to_dict()['champion']
+
+    # Find champion data in champion database
+    champ = Champion.query.filter_by(name=champ2).first()
+
+    # Retrieve a seeded answer based on days since epoch in db
+    seed = (datetime.datetime.utcnow() - datetime.datetime(1970,1,1)).days
+    random.seed(seed)
+    answer_index = random.randint(1,159)
+    answer_champ = Champion.query.get(answer_index)
+
+    # Check whether guess is correct
+    if (champ.name == answer_champ.name):
+        num_guesses +=1
+        
+    else:
+        num_guesses +=1
+        
+    # Currently returns a JSON object with champion data
+    return render_template("result.html", guesses = num_guesses)

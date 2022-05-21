@@ -50,9 +50,13 @@
             <a href={{ url_for('home') }}><h1>LoLdle</h1> </a>
         </div>
         <div class="navright">
+            {% if current_user.is_anonymous %}
             <span onclick="openModal('analytics-modal', 'analytics-close'); populate_analytics()">
                 <i class="fa fa-bar-chart" id="analytics"></i>
             </span>
+            {% else %}
+            <!-- Display personal statistics via stats db -->
+            {% endif %}
             <span onclick="openModal('settings-modal', 'settings-close')">
                 <i class="fa fa-cog" id="settings"></i>
             </span>
