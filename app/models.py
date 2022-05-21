@@ -37,8 +37,13 @@ class User(UserMixin,db.Model):
 class Score(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     score = db.Column(db.Integer)
+    onlineGamesPlayed = db.Column(db.integer)
+    onlineGamesWon = db.Column(db.integer)
+    onlineAverageGuesses = db.Column(db.integer)
+    onlineWinPercentage = db.Column(db.integer)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id')) #Links databases together
     
+
     def __repr__(self):
         return '{}'.format(self.score)
 
