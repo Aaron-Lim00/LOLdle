@@ -306,7 +306,8 @@ function clearStorage() {
     let averageguesses = (localStorage.totalGuesses/localStorage.gamesPlayed).toFixed(2);
     let gamesplayed = localStorage.gamesPlayed;
     let gameswon = localStorage.gamesWon;
-    let guesses = count + 1;
+    let guesses = count + 1; 
+    
     
     let result = `\n`;
     if(victory) {
