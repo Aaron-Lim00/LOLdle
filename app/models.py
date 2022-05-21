@@ -1,3 +1,4 @@
+# from typing_extensions import Self
 from app import db, login
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
@@ -22,6 +23,7 @@ class User(UserMixin,db.Model):
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
+    scores = db.relationship('Score', backref='taker', lazy='dynamic') #Link User and Score Database
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -31,6 +33,15 @@ class User(UserMixin,db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+
+class Score(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    score = db.Column(db.Integer)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id')) #Links databases together
+    
+    def __repr__(self):
+        return '{}'.format(self.score)
+
 
 @login.user_loader
 def load_user(id):
