@@ -5,6 +5,13 @@ var count = 1;
 let victory = false;
 var darkMode = true;
 
+// Colour variables
+var gold = "#BB8E42";
+var lMode_bg = "#F4F4F3";
+var lMode_col = "#214249";
+var dMode_bg = "#052329";
+var dMode_col = "#F4F4F3";
+
 // Submits AJAX form with jquery
 $(document).ready(function() {
     $('#input-form').on('submit', function(event) {
@@ -112,12 +119,6 @@ function createFeedbackCards(data) {
 }
 
 function styleCard(rolediv, yeardiv, skindiv, data){
-    let gold = "#BB8E42";
-    let lMode_bg = "#F4F4F3";
-    let lMode_col = "#214249";
-    let dMode_bg = "#052329";
-    let dMode_col = "#F4F4F3";
-
     if(darkMode == false) {
         rolediv.add(yeardiv).add(skindiv).css({"background-color": lMode_bg, "color": lMode_col});
     }
@@ -182,76 +183,76 @@ function openModal(type,id) {
 }
 
 function lightMode() {
-    var element = document.body;
-    var lightSwitch = document.getElementById("light-switch");
+    let element = document.body;
+    let lightSwitch = document.getElementById("light-switch");
 
-    var inputBox = document.getElementsByClassName("inputbox")[0];
-    var userInput = document.getElementById("input");
-    var submitButton = document.getElementById("submit");
+    let inputBox = document.getElementsByClassName("inputbox")[0];
+    let userInput = document.getElementById("input");
+    let submitButton = document.getElementById("submit");
 
     element.classList.toggle("light-mode");
 
     if(lightSwitch.checked) {
         darkMode = false;
         // Input Box Styling
-        inputBox.style.backgroundColor="#F4F4F3";
+        inputBox.style.backgroundColor=lMode_bg;
         inputBox.style.color ="#033039";
 
         // User Input Box Styling
-        userInput.style.backgroundColor="#F4F4F3";
-        userInput.style.color="#214249";
-        userInput.style.borderColor="#214249";
+        userInput.style.backgroundColor=lMode_bg;
+        userInput.style.color=lMode_col;
+        userInput.style.borderColor=lMode_col;
 
         // Submit Button Styling
-        submitButton.style.color="#F4F4F3";
-        submitButton.style.borderColor="#214249";
-        submitButton.style.backgroundColor="#214249";
+        submitButton.style.color=lMode_bg;
+        submitButton.style.borderColor=lMode_col;
+        submitButton.style.backgroundColor=lMode_col;
 
         // Settings
-        var modalContent = document.querySelectorAll(".modal-content");
-        var modal = document.querySelectorAll(".modal");
-        for (var i = 0; i < modalContent.length; i++){
-            modalContent[i].style.backgroundColor="#F4F4F3";
-            modal[i].style.color="#214249";
+        let modalContent = document.querySelectorAll(".modal-content");
+        let modal = document.querySelectorAll(".modal");
+        for (let i = 0; i < modalContent.length; i++){
+            modalContent[i].style.backgroundColor=lMode_bg;
+            modal[i].style.color=lMode_col;
         }
 
         // Feedback Cards
-        var feedbackCards = document.querySelectorAll(".grid-container > div");
-        for (var i = 0; i < feedbackCards.length; i++){
-            feedbackCards[i].style.backgroundColor="#F4F4F3";
-            feedbackCards[i].style.color="#214249";
+        let feedbackCards = document.querySelectorAll(".grid-container > div");
+        for (let i = 0; i < feedbackCards.length; i++){
+            feedbackCards[i].style.backgroundColor=lMode_bg;
+            feedbackCards[i].style.color=lMode_col;
         }
     }
 
     else {
         darkMode = true;
         // Input Box Styling
-        inputBox.style.backgroundColor="#052329";
-        inputBox.style.color="#F4F4F3";
+        inputBox.style.backgroundColor=dMode_bg;
+        inputBox.style.color=dMode_col;
 
         // User Input Box Styling
-        userInput.style.backgroundColor="#052329";
-        userInput.style.color="#F4F4F3";
-        userInput.style.borderColor="#F4F4F3";
+        userInput.style.backgroundColor=dMode_bg;
+        userInput.style.color=dMode_col;
+        userInput.style.borderColor=dMode_col;
         
         // Submit Button Styling
-        submitButton.style.color="#052329";
-        submitButton.style.borderColor="#F4F4F3";
-        submitButton.style.backgroundColor="#F4F4F3";
+        submitButton.style.color=dMode_bg;
+        submitButton.style.borderColor=dMode_col;
+        submitButton.style.backgroundColor=dMode_col;
 
         // Settings
-        var modalContent = document.querySelectorAll(".modal-content");
-        var modal = document.querySelectorAll(".modal");
-        for (var i = 0; i < modalContent.length; i++){
+        let modalContent = document.querySelectorAll(".modal-content");
+        let modal = document.querySelectorAll(".modal");
+        for (let i = 0; i < modalContent.length; i++){
             modalContent[i].style.backgroundColor="#021119";
-            modal[i].style.color="#F4F4F3";
+            modal[i].style.color=dMode_col;
         }
 
         // Feedback Cards
-        var feedbackCards = document.querySelectorAll(".grid-container > div");
-        for (var i = 0; i < feedbackCards.length; i++){
-            feedbackCards[i].style.backgroundColor="#052329";
-            feedbackCards[i].style.color="#F4F4F3";
+        let feedbackCards = document.querySelectorAll(".grid-container > div");
+        for (let i = 0; i < feedbackCards.length; i++){
+            feedbackCards[i].style.backgroundColor=dMode_bg;
+            feedbackCards[i].style.color=dMode_col;
         }
     }
 }
