@@ -1,6 +1,6 @@
 from app import app, db
 from app.models import Champion
-from flask import render_template, url_for, request, jsonify
+from flask import render_template, url_for, request, jsonify, abort
 import datetime
 import random
 
@@ -33,7 +33,7 @@ def process():
     
     # If champion does not exist in database or input is incorrect
     if champ == None:
-        raise Exception("Invalid champion name")
+        abort(403, "Forbidden: Invalid champion name")
 
     # Retrieve a seeded answer based on days since epoch in db
     seed = (datetime.datetime.utcnow() - datetime.datetime(1970,1,1)).days
