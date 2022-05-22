@@ -3,6 +3,14 @@ const results = document.getElementById('results');
 
 var count = 1;
 let victory = false;
+var darkMode = true;
+
+// Colour variables
+var gold = "#BB8E42";
+var lMode_bg = "#F4F4F3";
+var lMode_col = "#214249";
+var dMode_bg = "#052329";
+var dMode_col = "#F4F4F3";
 
 // Submits AJAX form with jquery
 $(document).ready(function() {
@@ -20,7 +28,8 @@ $(document).ready(function() {
             if(data.champion === "correct") {
                 victory = true;
                 document.getElementById('submit').disabled = true;
-                document.getElementById('submit').style.backgroundColor = 'red';
+                document.getElementById('submit').style.backgroundColor = "rgba(64,64,64, 0.8)";
+                document.getElementById('submit').style.cursor = "not-allowed";
 
                 if(localStorage.gamesWon) {
                     localStorage.gamesWon = Number(localStorage.gamesWon) + 1;
@@ -49,7 +58,8 @@ $(document).ready(function() {
             }
             else if(data.champion === "incorrect" && count === 8) {
                 document.getElementById('submit').disabled = true;
-                document.getElementById('submit').style.backgroundColor = 'red';
+                document.getElementById('submit').style.backgroundColor = "rgba(64,64,64, 0.8)";
+                document.getElementById('submit').style.cursor = "not-allowed";
 
                 if(localStorage.gamesPlayed) {
                     localStorage.gamesPlayed = Number(localStorage.gamesPlayed) + 1;
@@ -103,13 +113,27 @@ function createFeedbackCards(data) {
     yeardiv.append(iconFeedback(data.year), yearvalue);
     skindiv.append(iconFeedback(data.skins), skinvalue);
 
-    if(data.role == "correct") {rolediv.css("background-color", "#BB8E42");}
-    if(data.year == "correct") {yeardiv.css("background-color", "#BB8E42");}
-    if(data.skins == "correct") {skindiv.css("background-color", "#BB8E42");}
+    rolediv, yeardiv, skindiv = styleCard(rolediv, yeardiv, skindiv, data);
 
     $("#feedback-table").prepend($container);
     $("#feedback-table").prepend(name);
     $container.append(rolediv, yeardiv, skindiv).fadeIn("slow");
+}
+
+function styleCard(rolediv, yeardiv, skindiv, data){
+    if(darkMode == false) {
+        rolediv.add(yeardiv).add(skindiv).css({"background-color": lMode_bg, "color": lMode_col});
+    }
+
+    else if(darkMode == true) {
+        rolediv.add(yeardiv).add(skindiv).css({"background-color": dMode_bg, "color": dMode_col});
+    }
+
+    if(data.role == "correct") {rolediv.css("background-color", gold);}
+    if(data.year == "correct") {yeardiv.css("background-color", gold);}
+    if(data.skins == "correct") {skindiv.css("background-color", gold);}
+
+    return rolediv, yeardiv, skindiv
 }
 
 function createFeedbackHeaders() {
@@ -161,62 +185,90 @@ function openModal(type,id) {
 }
 
 function lightMode() {
-    var element = document.body;
-    var lightSwitch = document.getElementById("light-switch");
+    let element = document.body;
+    let lightSwitch = document.getElementById("light-switch");
 
-    var inputBox = document.getElementsByClassName("inputbox")[0];
-    var userInput = document.getElementById("input");
-    var submitButton = document.getElementById("submit");
+    let inputBox = document.getElementsByClassName("inputbox")[0];
+    let userInput = document.getElementById("input");
+    let submitButton = document.getElementById("submit");
 
     element.classList.toggle("light-mode");
 
     if(lightSwitch.checked) {
+        darkMode = false;
         // Input Box Styling
-        inputBox.style.backgroundColor="#F4F4F3";
+        inputBox.style.backgroundColor=lMode_bg;
         inputBox.style.color ="#033039";
 
         // User Input Box Styling
-        userInput.style.backgroundColor="#F4F4F3";
-        userInput.style.color="#214249";
-        userInput.style.borderColor="#214249";
+        userInput.style.backgroundColor=lMode_bg;
+        userInput.style.color=lMode_col;
+        userInput.style.borderColor=lMode_col;
 
         // Submit Button Styling
-        submitButton.style.color="#F4F4F3";
-        submitButton.style.borderColor="#214249";
-        submitButton.style.backgroundColor="#214249";
+        submitButton.style.color=lMode_bg;
+        submitButton.style.borderColor=lMode_col;
+        submitButton.style.backgroundColor=lMode_col;
 
         // Settings
-        var modalContent = document.querySelectorAll(".modal-content");
-        var modal = document.querySelectorAll(".modal");
-        for (var i = 0; i < modalContent.length; i++){
-            modalContent[i].style.backgroundColor="#F4F4F3";
-            modal[i].style.color="#214249";
+        let modalContent = document.querySelectorAll(".modal-content");
+        let modal = document.querySelectorAll(".modal");
+        for (let i = 0; i < modalContent.length; i++){
+            modalContent[i].style.backgroundColor=lMode_bg;
+            modal[i].style.color=lMode_col;
         }
+
+        // Feedback Cards
+        let feedbackCards = document.querySelectorAll(".grid-container > div");
+        for (let i = 0; i < feedbackCards.length; i++){
+            feedbackCards[i].style.backgroundColor=lMode_bg;
+            feedbackCards[i].style.color=lMode_col;
+        }
+
+        // Victory and Defeat
+        let victory_header = document.getElementById("victory-header");
+        let defeat_header = document.getElementById("defeat-header");
+        victory_header.style.color=lMode_col;
+        defeat_header.style.color=lMode_col;
 
     }
 
     else {
+        darkMode = true;
         // Input Box Styling
-        inputBox.style.backgroundColor="#052329";
-        inputBox.style.color="#F4F4F3";
+        inputBox.style.backgroundColor=dMode_bg;
+        inputBox.style.color=dMode_col;
 
         // User Input Box Styling
-        userInput.style.backgroundColor="#052329";
-        userInput.style.color="#F4F4F3";
-        userInput.style.borderColor="#F4F4F3";
+        userInput.style.backgroundColor=dMode_bg;
+        userInput.style.color=dMode_col;
+        userInput.style.borderColor=dMode_col;
         
         // Submit Button Styling
-        submitButton.style.color="#052329";
-        submitButton.style.borderColor="#F4F4F3";
-        submitButton.style.backgroundColor="#F4F4F3";
+        submitButton.style.color=dMode_bg;
+        submitButton.style.borderColor=dMode_col;
+        submitButton.style.backgroundColor=dMode_col;
 
         // Settings
-        var modalContent = document.querySelectorAll(".modal-content");
-        var modal = document.querySelectorAll(".modal");
-        for (var i = 0; i < modalContent.length; i++){
+        let modalContent = document.querySelectorAll(".modal-content");
+        let modal = document.querySelectorAll(".modal");
+        for (let i = 0; i < modalContent.length; i++){
             modalContent[i].style.backgroundColor="#021119";
-            modal[i].style.color="#F4F4F3";
+            modal[i].style.color=dMode_col;
         }
+
+        // Feedback Cards
+        let feedbackCards = document.querySelectorAll(".grid-container > div");
+        for (let i = 0; i < feedbackCards.length; i++){
+            feedbackCards[i].style.backgroundColor=dMode_bg;
+            feedbackCards[i].style.color=dMode_col;
+        }
+
+        // Victory and Defeat
+        let victory_header = document.getElementById("victory-header");
+        let defeat_header = document.getElementById("defeat-header");
+        victory_header.style.color=dMode_col;
+        defeat_header.style.color=dMode_col;
     }
 }
 
@@ -228,59 +280,67 @@ function incrementGuess() {
 function gameVictory(guesses) {
     var guessesMadeDiv = $("<div></div>");
     let totalguesses = guesses + 1;
-    var guessesMade = $("<span></span>").text('You won in ' + totalguesses + ' guesses.');
+    var guessesMade = fontColor($("<span></span>").text('You won in ' + totalguesses + ' guesses.'));
     guessesMadeDiv.append(guessesMade);
     $("#victoryScreen").append(guessesMadeDiv);
 
     var gamesWonDiv = $("<div></div>");
-    var gamesWon = $("<span></span>").text('Total games won: ' + localStorage.gamesWon);
+    var gamesWon = fontColor($("<span></span>").text('Total games won: ' + localStorage.gamesWon));
     gamesWonDiv.append(gamesWon);
     $("#victoryScreen").append(gamesWonDiv);
 
     var gamesPlayedDiv = $("<div></div>");
-    var gamesPlayed = $("<span></span>").text('Total games played: ' + localStorage.gamesPlayed);
+    var gamesPlayed = fontColor($("<span></span>").text('Total games played: ' + localStorage.gamesPlayed));
     gamesPlayedDiv.append(gamesPlayed);
     $("#victoryScreen").append(gamesPlayedDiv);
 
     var gamesWRDiv = $("<div></div>");
-    var gamesWR = $("<span></span>").text('Win rate: ' + (localStorage.gamesWon/localStorage.gamesPlayed).toFixed(2));
+    var gamesWR = fontColor($("<span></span>").text('Win rate: ' + (localStorage.gamesWon/localStorage.gamesPlayed).toFixed(2)));
     gamesWRDiv.append(gamesWR);
     $("#victoryScreen").append(gamesWRDiv);
 
     var averageGuessesDiv = $("<div></div>");
-    var averageGuesses = $("<span></span>").text('Average guesses: ' + (localStorage.totalGuesses/localStorage.gamesPlayed).toFixed(2));
+    var averageGuesses = fontColor($("<span></span>").text('Average guesses: ' + (localStorage.totalGuesses/localStorage.gamesPlayed).toFixed(2)));
     averageGuessesDiv.append(averageGuesses);
     $("#victoryScreen").append(averageGuessesDiv);
+
     openModal('victory-modal', 'victory-close');
 }
 
 function gameDefeat() {
     var guessesMadeDiv = $("<div></div>");
-    var guessesMade = $("<span></span>").text('You failed to guess the champion.');
+    var guessesMade = fontColor($("<span></span>").text('You failed to guess the champion.'));
     guessesMadeDiv.append(guessesMade);
     $("#defeatScreen").append(guessesMadeDiv);
 
     var gamesWonDiv = $("<div></div>");
-    var gamesWon = $("<span></span>").text('Total games won: ' + localStorage.gamesWon);
+    var gamesWon = fontColor($("<span></span>").text('Total games won: ' + localStorage.gamesWon));
     gamesWonDiv.append(gamesWon);
     $("#defeatScreen").append(gamesWonDiv);
 
     var gamesPlayedDiv = $("<div></div>");
-    var gamesPlayed = $("<span></span>").text('Total games played: ' + localStorage.gamesPlayed);
+    var gamesPlayed = fontColor($("<span></span>").text('Total games played: ' + localStorage.gamesPlayed));
     gamesPlayedDiv.append(gamesPlayed);
     $("#defeatScreen").append(gamesPlayedDiv);
 
     var gamesWRDiv = $("<div></div>");
-    var gamesWR = $("<span></span>").text('Win rate: ' + (localStorage.gamesWon/localStorage.gamesPlayed).toFixed(2));
+    var gamesWR = fontColor($("<span></span>").text('Win rate: ' + (localStorage.gamesWon/localStorage.gamesPlayed).toFixed(2)));
     gamesWRDiv.append(gamesWR);
     $("#defeatScreen").append(gamesWRDiv);
 
     var averageGuessesDiv = $("<div></div>");
-    var averageGuesses = $("<span></span>").text('Average guesses: ' + (localStorage.totalGuesses/localStorage.gamesPlayed).toFixed(2));
+    var averageGuesses = fontColor($("<span></span>").text('Average guesses: ' + (localStorage.totalGuesses/localStorage.gamesPlayed).toFixed(2)));
     averageGuessesDiv.append(averageGuesses);
     $("#defeatScreen").append(averageGuessesDiv);
 
     openModal('defeat-modal', 'defeat-close');
+}
+
+function fontColor(object) {
+    if (darkMode == false) {
+        object.css("color", lMode_col);
+    }
+    return object
 }
 
 function clearStorage() {
