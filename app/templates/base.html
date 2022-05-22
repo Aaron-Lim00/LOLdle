@@ -36,15 +36,7 @@
     <!-- Template Navbar goes here -->
     <div class="navbar">
         <div class="navleft">
-            {% if current_user.is_anonymous %}
-            <a href="/login">
-                <i class='fa fa-lock'></i>
-            </a>
-            {% else %}
-            <a href="/logout">
-                <i class='fa fa-unlock'></i>
-            </a>
-            {% endif %}
+                <i class="clickable-icon fa fa-navicon" id="menu"></i>
             <span onclick="openModal('info-modal', 'info-close')">
                 <i class="clickable-icon fa fa-info-circle" id="info"></i>
             </span>
@@ -55,45 +47,12 @@
             </div>
         </div>
         <div class="navright">
-            {% if current_user.is_anonymous %}
             <span onclick="openModal('analytics-modal', 'analytics-close'); populate_analytics()">
                 <i class="clickable-icon fa fa-bar-chart" id="analytics"></i>
             </span>
-            {% else %}
-            <!-- Display personal statistics via stats db -->
-            <span onclick="openModal('personalStats-modal', 'personalStats-close');">
-                <i class="fa fa-bar-chart" id="analytics"></i>
-            </span>
-            {% endif %}
             <span onclick="openModal('settings-modal', 'settings-close')">
                 <i class="clickable-icon fa fa-cog" id="settings"></i>
             </span>
-        </div>
-    </div>
-
-    <!-- The Login Modal-->
-    <div id="login-modal" class="modal">
-        <!-- Login Content -->
-        <div class="modal-content login-content">
-            <span class="close" id='login-close'>
-                <i class="fa fa-sign-in"></i>
-            </span>
-            <div>
-                <label for="uname"><b>Summoner Name</b></label>
-                 <input type="text" placeholder="Enter name" name="uname" required>
-            </div>
-            <div>
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
-            </div>
-            <div>
-                <button type="submit">Login</button>
-            </div>
-            <div>
-                <label>
-                    <input type="checkbox" checked="checked" name="remember"> Remember me
-                  </label>
-            </div>
         </div>
     </div>
 
@@ -146,20 +105,6 @@
             <div id="counterSix"></div><br>
             <div id="counterSeven"></div><br>
             <div id="counterEight"></div><br>
-        </div>
-    </div>
-
-    <!-- Personal Statistics Modal (retrieve from db) -->
-    <div id="personalStats-modal" class="modal">
-        <!-- Personal Statistics Content -->
-        <div class="modal-content personalStats-content">
-            <span class="close" id='personalStats-close'>
-                <i class="fa fa-times-circle"></i>
-            </span>
-             <h2 style = "text-align: center;">{{current_user.username}} Statistics</h2> 
-             <p> {{current_user.username}} has won {{onlineGamesWon}} games!! </p>
-            <p>Average guesses taken: {{onlineAverageGuesses}} </p>
-            <p>You've played a total of: {{onlineGamesPlayed}} games!</p>
         </div>
     </div>
 
