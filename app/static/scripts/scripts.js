@@ -18,9 +18,11 @@ var dMode_col = "#F4F4F3";
  */
 $(document).ready(function() {
     $('#input-form').on('submit', function(event) {
+        guess = $('#input').val();
+        guess = guess[0].toUpperCase() + guess.substring(1);
         $.ajax({
             data : {
-                champion : $('#input').val() 
+                champion : guess
             },
             type : 'POST',
             url : '/process'
@@ -30,6 +32,7 @@ $(document).ready(function() {
             createFeedbackCards(data)
             if(data.champion === "correct") {
                 victory = true;
+                saveGuessCounter(count);
                 document.getElementById('submit').disabled = true;
                 document.getElementById('submit').style.backgroundColor = "rgba(64,64,64, 0.8)";
                 document.getElementById('submit').style.cursor = "not-allowed";
@@ -60,6 +63,7 @@ $(document).ready(function() {
                 
             }
             else if(data.champion === "incorrect" && count === 8) {
+                saveGuessCounter(count);
                 document.getElementById('submit').disabled = true;
                 document.getElementById('submit').style.backgroundColor = "rgba(64,64,64, 0.8)";
                 document.getElementById('submit').style.cursor = "not-allowed";
@@ -397,36 +401,68 @@ function clearStorage() {
     // Clear localStorage items 
     if (confirm("WARNING: confirm statistics reset")) {
         localStorage.clear();
-      } else {
+    } else {
         //
-      }
-  }
+    }
+}
 
-  /**
-   * Dynamically update and display local storage statistics 
-   * Called when statistics modal is opened
-   */
-  function populate_analytics() {
+/**
+* Dynamically update and display local storage statistics 
+* Called when statistics modal is opened
+*/
+function populate_analytics() {
+    if(localStorage.counterOne === undefined) {
+        localStorage.counterOne = 0;
+    }
+    if(localStorage.counterTwo === undefined) {
+        localStorage.counterTwo = 0;
+    }
+    if(localStorage.counterThree === undefined) {
+        localStorage.counterThree = 0;
+    }
+    if(localStorage.counterFour === undefined) {
+        localStorage.counterFour = 0;
+    }
+    if(localStorage.counterFive === undefined) {
+        localStorage.counterFive = 0;
+    }
+    if(localStorage.counterSix === undefined) {
+        localStorage.counterSix = 0;
+    }
+    if(localStorage.counterSeven === undefined) {
+        localStorage.counterSeven = 0;
+    }
+    if(localStorage.counterEight === undefined) {
+        localStorage.counterEight = 0;
+    }
     let winpercentage = (localStorage.gamesWon / localStorage.gamesPlayed).toFixed(2);
     let averageguesses = (localStorage.totalGuesses/localStorage.gamesPlayed).toFixed(2);
     $('#gamesplayed').text('Games Played: ' + localStorage.gamesPlayed);
     $('#gameswon').text('Games Won: ' + (localStorage.gamesWon));
     $('#winpercentage').text('Win Percentage: ' + winpercentage);
     $('#averageguesses').text('Average Guesses: ' + averageguesses);
-  }
+    $('#counterOne').text('Games ended with 1 guess: ' + localStorage.counterOne);
+    $('#counterTwo').text('Games ended with 2 guesses: ' + localStorage.counterTwo);
+    $('#counterThree').text('Games ended with 3 guesses: ' + localStorage.counterThree);
+    $('#counterFour').text('Games ended with 4 guesses: ' + localStorage.counterFour);
+    $('#counterFive').text('Games ended with 5 guesses: ' + localStorage.counterFive);
+    $('#counterSix').text('Games ended with 6 guesses: ' + localStorage.counterSix);
+    $('#counterSeven').text('Games ended with 7 guesses: ' + localStorage.counterSeven);
+    $('#counterEight').text('Games ended with 8 guesses: ' + localStorage.counterEight);
+}
 
-  /**
-   * Share button functionality
-   * Uses local storage to create a formatted string
-   * Adds formatted string to user clipboard
-   */
-  function share() {
+/**
+ * Share button functionality
+ * Uses local storage to create a formatted string
+ * Adds formatted string to user clipboard
+ */
+function share() {
     let winpercentage = (localStorage.gamesWon / localStorage.gamesPlayed).toFixed(2);
     let averageguesses = (localStorage.totalGuesses/localStorage.gamesPlayed).toFixed(2);
     let gamesplayed = localStorage.gamesPlayed;
     let gameswon = localStorage.gamesWon;
     let guesses = count;
-    
+
     let result = ``;
     if(victory) {
         result += `Victory!\n`;
@@ -440,4 +476,60 @@ function clearStorage() {
     result += `Win percentage: ${winpercentage*100}%\n`;
 
     navigator.clipboard.writeText(result);
-  }
+}
+
+/**
+ * A function to update localstorage statistics for a particular number of guesses
+ * @param {*} count the number of guesses the user made
+ */
+function saveGuessCounter(count) {
+    if (count === 1) {
+        if (localStorage.counterOne) {
+            localStorage.counterOne = Number(localStorage.counterOne) + 1;
+        } else {
+            localStorage.counterOne = 1;
+        }
+    } else if (count === 2) {
+        if (localStorage.counterTwo) {
+            localStorage.counterTwo = Number(localStorage.counterTwo) + 1;
+        } else {
+            localStorage.counterTwo = 1;
+        }
+    } else if (count === 3) {
+        if (localStorage.counterThree) {
+            localStorage.counterThree = Number(localStorage.counterThree) + 1;
+        } else {
+            localStorage.counterThree = 1;
+        }
+    } else if (count === 4) {
+        if (localStorage.counterFour) {
+            localStorage.counterFour = Number(localStorage.counterFour) + 1;
+        } else {
+            localStorage.counterFour = 1;
+        }
+    } else if (count === 5) {
+        if (localStorage.counterFive) {
+            localStorage.counterFive = Number(localStorage.counterFive) + 1;
+        } else {
+            localStorage.counterFive = 1;
+        }
+    } else if (count === 6) {
+        if (localStorage.counterSix) {
+            localStorage.counterSix = Number(localStorage.counterSix) + 1;
+        } else {
+            localStorage.counterSix = 1;
+        }
+    } else if (count === 7) {
+        if (localStorage.counterSeven) {
+            localStorage.counterSeven = Number(localStorage.counterSeven) + 1;
+        } else {
+            localStorage.counterSeven = 1;
+        }
+    } else if (count === 8) {
+        if (localStorage.counterEight) {
+            localStorage.counterEight = Number(localStorage.counterEight) + 1;
+        } else {
+            localStorage.counterEight = 1;
+        }
+    }
+}
