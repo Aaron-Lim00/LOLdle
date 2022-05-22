@@ -1,26 +1,61 @@
 # LOLdle
-UWA Web Dev Project showcasing a daily playable game
+This project was developed and built for the UWA CITS3403 unit in semester 1 of 2022.
 
-1) Locate the directory you want to store the folder
+The web application, LoLdle is built with the Flask micro web framework for the backend along with Python for dependencies, sqlite databases and jQuery.
+Basic HTML, CSS and JavaScript are also used for the frontend. It is designed to be responsive to most screen sizes. 
 
-2) For example, it's on the Desktop, change directory of your terminal via " cd Desktop/LOLdle "
+LoLdle is inspired by daily puzzle games such as Wordle and involves users guessing a daily 'champion' from the popular online game League of Legends. 
 
-3) Type into terminal:  python3 -m venv venv
+Each guess will return dynamic feedback with statistics relating to the champion's role, year of release, and skins available. 
+The user has a total of 8 guesses and statistics are saved to local storage which can be shared to the user's social network 
+for bragging rights. 
 
-4) Type into terminal: source venv/bin/activate
+The game is intentionally built to be challenging, aiming to be easy to pickup and play but hard to master. 
+As the answer changes each day, users are encouraged to return daily to flex their knowledge above their friends. 
 
-5) Ensure installation of python and various dependencies before launching app:
-<--Install via terminal-->
-pip install flask
-pip install flask_sqlalchemy
-pip install flask_migrate
-pip install flask_login
-pip install flask_wtf
-pip install email_validator
-pip install python-dotenv
+## Getting Started
+Note: This application was developed and tested primarily on contemporary Macintosh systems. 
+Although it will work on other platforms, instructions provided are targeted at Mac users.
 
-5) [Optional] For debugging: export FLASK_DEBUG=1
+Follow these steps to have a version of the game up and running on a localmachine. 
+Navigate to the directory in which you have cloned the repository and then continue. 
 
-6) Launch app using: flask run
+### Installation
+To install Python3 on mac:
 
-7) Open any internet browser and go to: http://localhost:5000/
+```
+$ brew install python3
+```
+
+We recommend setting up a virtual environment to install dependencies:
+```
+$ python3 -m venv flask
+$ source flask/bin/activate
+$ pip install -r requirements.txt
+```
+
+### Deployment
+As the flask environments have been set, enter the command to begin:
+```
+$ flask run
+```
+Your terminal will give you a local address to navigate to for access.
+
+### Dependencies
+alembic==1.7.7 
+click==8.1.2 
+Flask==2.1.1 
+Flask-Migrate==3.1.0 
+Flask-SQLAlchemy==2.5.1 
+Flask-WTF==1.0.1 
+greenlet==1.1.2 
+importlib-metadata==4.11.3 
+itsdangerous==2.1.2 
+Jinja2==3.1.1 
+Mako==1.2.0 
+MarkupSafe==2.1.1 
+python-dotenv==0.20.0 
+SQLAlchemy==1.4.36 
+Werkzeug==2.1.1 
+WTForms==3.0.1 
+zipp==3.8.0 
