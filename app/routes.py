@@ -1,10 +1,15 @@
+# import winsound
 from app import app, db
-from app.models import Champion
-from flask import render_template, request, jsonify, abort
+from flask_login import current_user, login_required, login_user, logout_user
+from app.models import Champion, User, Score
+from flask import render_template, url_for, request, jsonify, flash, redirect, request, abort
+from app.forms import LoginForm, RegistrationForm
+from werkzeug.urls import url_parse
 import datetime
 import random
 
 # Retrieves champion list from database for autocomplete form
+
 @app.route("/", methods=["POST", "GET"])
 def home():
     if request.method == "GET":
@@ -14,12 +19,20 @@ def home():
         # Structuring of queries data into a usable list
         champions = [str(r)[2:-3] for r in res]
     
-    return render_template("index.html", champions=champions)
+    if current_user.is_authenticated:
+        user_id=current_user.id
+        onlineGamesPlayed = Score.query.filter_by(user_id=user_id).all()
+        onlineGamesWon = Score.query.filter_by(user_id=user_id).all()
+        onlineAverageGuesses= Score.query.filter_by(user_id=user_id).all()
+    
+    return render_template("index.html", champions=champions, onlineGamesPlayed=onlineGamesPlayed, onlineGamesWon=onlineGamesWon, onlineAverageGuesses=onlineAverageGuesses )
+
+
 
 # Route for the home page. The majority of the page will be displayed here. 
-@app.route('/index')
-def index():
-    return render_template('index.html')
+# @app.route('/index')
+# def index():
+#     return render_template('index.html')
 
 # Process form 
 @app.route('/process', methods=['POST'])
@@ -66,8 +79,12 @@ def process():
     # Check whether guess is correct
     if (champ.name == answer_champ.name):
         champ_feedback = "correct"
+        # count +=1
+        # wins +=1
+        
     else:
         champ_feedback = "incorrect"
+        # count +=1
         
     # Currently returns a JSON object with champion data
     return jsonify({
@@ -79,4 +96,53 @@ def process():
         'yearvalue' : champ.year,
         'skins' : skins_feedback,
         'skinvalue' : champ.skins
-        }) 
+        })
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=form.username.data).first()
+        if user is None or not user.check_password(form.password.data):
+            flash('Invalid username or password')
+            return redirect(url_for('login'))
+        login_user(user, remember=form.remember_me.data)
+        next_page = request.args.get('next')
+        if not next_page or url_parse(next_page).netloc != '':
+            next_page = url_for('home')
+        return redirect(next_page)
+    return render_template('login.html', title='Sign In', form=form)
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    # return redirect(url_for('index'))
+    return redirect(url_for('login'))
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        user = User(username=form.username.data, email=form.email.data)
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash('Congratulations, you are now a registered user!')
+        return redirect(url_for('login'))
+    return render_template('register.html', title='Register', form=form)
+
+@app.route("/result", methods=['GET', 'POST'])
+def quiz():
+    if current_user.is_authenticated:
+        # score = Score(user_id=user_id, onlineGamesWon = wins, onlineGamesPlayed=count, onlineAverageGuesses=count)
+        current_user.score.onlineGamesWon = wins
+        # db.session.add(score)
+        db.session.commit()
+    # return render_template('result.html', onlineGamesWon = count)
+    
+
