@@ -1,7 +1,7 @@
 # LOLdle
 This project was developed and built for the UWA CITS3403 unit in semester 1 of 2022.
 
-The web application, LoLdle is built with the Flask micro web framework for the backend along with Python for dependencies, sqlite databases and jQuery.
+The web application, LoLdle, is built with the Flask micro web framework for the backend along with Python for dependencies, sqlite databases and jQuery.
 Basic HTML, CSS and JavaScript are also used for the frontend. It is designed to be responsive to most screen sizes. 
 
 LoLdle is inspired by daily puzzle games such as Wordle and involves users guessing a daily 'champion' from the popular online game League of Legends. 
