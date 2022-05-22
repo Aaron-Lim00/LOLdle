@@ -23,7 +23,7 @@ class User(UserMixin,db.Model):
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
-    scores = db.relationship('Score', backref='summoner', lazy='dynamic') #Link User and Score Database
+    scores = db.relationship('Score', backref='summoner', lazy='select', uselist=False) #Link User and Score Database
     # Unsure what backref=taker means
 
     def __repr__(self):
@@ -35,13 +35,12 @@ class User(UserMixin,db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
-class Score( db.Model):
+class Score(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     # Datbase fields to be updated
-    # score = db.Column(db.Integer)
-    # onlineGamesPlayed = db.Column(db.Integer)
+    onlineGamesPlayed = db.Column(db.Integer)
     onlineGamesWon = db.Column(db.Integer)
-    # onlineAverageGuesses = db.Column(db.Integer)
+    onlineAverageGuesses = db.Column(db.Integer)
     # Links score database to user db 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     
