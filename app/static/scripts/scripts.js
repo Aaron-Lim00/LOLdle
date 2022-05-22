@@ -3,7 +3,7 @@ const results = document.getElementById('results');
 
 var count = 1;
 let victory = false;
-var dark_mode = true;
+var darkMode = true;
 
 // Submits AJAX form with jquery
 $(document).ready(function() {
@@ -104,25 +104,33 @@ function createFeedbackCards(data) {
     yeardiv.append(iconFeedback(data.year), yearvalue);
     skindiv.append(iconFeedback(data.skins), skinvalue);
 
-    if(dark_mode == false) {
-        rolediv.css({"background-color": "#F4F4F3", "color": "#214249"});
-        yeardiv.css({"background-color": "#F4F4F3", "color": "#214249"});
-        skindiv.css({"background-color": "#F4F4F3", "color": "#214249"});
-    }
-
-    else if(dark_mode == true) {
-        rolediv.css({"background-color": "#052329", "color": "#F4F4F3"});
-        yeardiv.css({"background-color": "#052329", "color": "#F4F4F3"});
-        skindiv.css({"background-color": "#052329", "color": "#F4F4F3"});
-    }
-
-    if(data.role == "correct") {rolediv.css("background-color", "#BB8E42");}
-    if(data.year == "correct") {yeardiv.css("background-color", "#BB8E42");}
-    if(data.skins == "correct") {skindiv.css("background-color", "#BB8E42");}
+    rolediv, yeardiv, skindiv = styleCard(rolediv, yeardiv, skindiv, data);
 
     $("#feedback-table").prepend($container);
     $("#feedback-table").prepend(name);
     $container.append(rolediv, yeardiv, skindiv).fadeIn("slow");
+}
+
+function styleCard(rolediv, yeardiv, skindiv, data){
+    let gold = "#BB8E42";
+    let lMode_bg = "#F4F4F3";
+    let lMode_col = "#214249";
+    let dMode_bg = "#052329";
+    let dMode_col = "#F4F4F3";
+
+    if(darkMode == false) {
+        rolediv.add(yeardiv).add(skindiv).css({"background-color": lMode_bg, "color": lMode_col});
+    }
+
+    else if(darkMode == true) {
+        rolediv.add(yeardiv).add(skindiv).css({"background-color": dMode_bg, "color": dMode_col});
+    }
+
+    if(data.role == "correct") {rolediv.css("background-color", gold);}
+    if(data.year == "correct") {yeardiv.css("background-color", gold);}
+    if(data.skins == "correct") {skindiv.css("background-color", gold);}
+
+    return rolediv, yeardiv, skindiv
 }
 
 function createFeedbackHeaders() {
@@ -184,7 +192,7 @@ function lightMode() {
     element.classList.toggle("light-mode");
 
     if(lightSwitch.checked) {
-        dark_mode = false;
+        darkMode = false;
         // Input Box Styling
         inputBox.style.backgroundColor="#F4F4F3";
         inputBox.style.color ="#033039";
@@ -216,7 +224,7 @@ function lightMode() {
     }
 
     else {
-        dark_mode = true;
+        darkMode = true;
         // Input Box Styling
         inputBox.style.backgroundColor="#052329";
         inputBox.style.color="#F4F4F3";
@@ -239,6 +247,7 @@ function lightMode() {
             modal[i].style.color="#F4F4F3";
         }
 
+        // Feedback Cards
         var feedbackCards = document.querySelectorAll(".grid-container > div");
         for (var i = 0; i < feedbackCards.length; i++){
             feedbackCards[i].style.backgroundColor="#052329";
