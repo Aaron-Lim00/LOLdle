@@ -44,7 +44,7 @@ $(document).ready(function() {
                 }
 
                 if(localStorage.totalGuesses) {
-                    localStorage.totalGuesses = Number(localStorage.totalGuesses) + count - 1;
+                    localStorage.totalGuesses = Number(localStorage.totalGuesses) + count;
                 } else {
                     localStorage.totalGuesses = count;
                 }
@@ -366,9 +366,9 @@ function clearStorage() {
     let averageguesses = (localStorage.totalGuesses/localStorage.gamesPlayed).toFixed(2);
     let gamesplayed = localStorage.gamesPlayed;
     let gameswon = localStorage.gamesWon;
-    let guesses = count + 1;
+    let guesses = count;
     
-    let result = `\n`;
+    let result = ``;
     if(victory) {
         result += `Victory!\n`;
     } else {
