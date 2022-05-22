@@ -41,12 +41,18 @@ $ flask run
 ```
 Your terminal will give you a local address to navigate to for access.
 
-### Testing
-To execute the test commands, use: 
-```
-python -m tests.unittest
-```
+### Automated Testing
+In this project, we used Unit Testing on User Model
 
+To execute the test command, change directory to /LOLdle/ and run: 
+```
+$ python -m tests.unittest
+```
+If everything is successful, it should return
+```
+Ran 1 test in 0.xxx s
+OK
+```
 ### Dependencies
 alembic==1.7.7    
 click==8.1.2  
