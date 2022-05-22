@@ -1,3 +1,4 @@
+# import winsound
 from app import app, db
 from flask_login import current_user, login_required, login_user, logout_user
 from app.models import Champion, User, Score
@@ -8,6 +9,7 @@ import datetime
 import random
 
 # Retrieves champion list from database for autocomplete form
+
 @app.route("/", methods=["POST", "GET"])
 def home():
     if request.method == "GET":
@@ -20,8 +22,10 @@ def home():
     if current_user.is_authenticated:
         user_id=current_user.id
         onlineGamesPlayed = Score.query.filter_by(user_id=user_id).all()
+        onlineGamesWon = Score.query.filter_by(user_id=user_id).all()
+        onlineAverageGuesses= Score.query.filter_by(user_id=user_id).all()
     
-    return render_template("index.html", champions=champions, onlineGamesPlayed=onlineGamesPlayed)
+    return render_template("index.html", champions=champions, onlineGamesPlayed=onlineGamesPlayed, onlineGamesWon=onlineGamesWon, onlineAverageGuesses=onlineAverageGuesses )
 
 
 
@@ -34,7 +38,6 @@ def home():
 @app.route('/process', methods=['POST'])
 def process():
     # Get data from request object - champion name
-    
     champion = request.form
     champ2 = champion.to_dict()['champion']
 
@@ -72,9 +75,12 @@ def process():
     # Check whether guess is correct
     if (champ.name == answer_champ.name):
         champ_feedback = "correct"
+        # count +=1
+        # wins +=1
         
     else:
         champ_feedback = "incorrect"
+        # count +=1
         
     # Currently returns a JSON object with champion data
     return jsonify({
@@ -126,10 +132,13 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
-# @app.route('/', methods=['GET', 'POST'])
-# @login_required
-# # def loadStats():
-# #     if current_user.is_authenticated:
-# #         user_id=current_user.id
-# #         onlineGamesPlayed = Score.query.filter_by(user_id=user_id).all()
-# #     return render_template(url_for('home'), onlineGamesPlayed=onlineGamesPlayed)
+@app.route("/result", methods=['GET', 'POST'])
+def quiz():
+    if current_user.is_authenticated:
+        # score = Score(user_id=user_id, onlineGamesWon = wins, onlineGamesPlayed=count, onlineAverageGuesses=count)
+        current_user.score.onlineGamesWon = wins
+        # db.session.add(score)
+        db.session.commit()
+    # return render_template('result.html', onlineGamesWon = count)
+    
+
