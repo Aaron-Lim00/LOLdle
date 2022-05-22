@@ -18,9 +18,6 @@
 
     <!-- Linking Javascript -->
     <script src="{{ url_for('static', filename='scripts/scripts.js') }}"></script>
-    <script src="{{ url_for('static', filename='scripts/feedback.js') }}"></script>
-    <script src="{{ url_for('static', filename='scripts/modals.js') }}"></script>
-    <script src="{{ url_for('static', filename='scripts/lightdark.js') }}"></script>
 
     <!-- Autocomplete function -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>  
@@ -36,23 +33,62 @@
     <!-- Template Navbar goes here -->
     <div class="navbar">
         <div class="navleft">
-                <i class="clickable-icon fa fa-navicon" id="menu"></i>
+            {% if current_user.is_anonymous %}
+            <a href="/login">
+                <i class='fa fa-lock'></i>
+            </a>
+            {% else %}
+            <a href="/logout">
+                <i class='fa fa-unlock'></i>
+            </a>
+            {% endif %}
             <span onclick="openModal('info-modal', 'info-close')">
-                <i class="clickable-icon fa fa-info-circle" id="info"></i>
+                <i class="fa fa-info-circle" id="info"></i>
             </span>
         </div>
         <div class="navmiddle">
-            <div id="logo-box">
-                <a href={{ url_for('home') }}><img id="logo" src="./static/png/loldle_logo.png" alt="LoLdle"> </a>
-            </div>
+            <a href={{ url_for('home') }}><h1>LoLdle</h1> </a>
         </div>
         <div class="navright">
+            {% if current_user.is_anonymous %}
             <span onclick="openModal('analytics-modal', 'analytics-close'); populate_analytics()">
-                <i class="clickable-icon fa fa-bar-chart" id="analytics"></i>
+                <i class="fa fa-bar-chart" id="analytics"></i>
             </span>
+            {% else %}
+            <!-- Display personal statistics via stats db -->
+            <span onclick="openModal('personalStats-modal', 'personalStats-close');">
+                <i class="fa fa-bar-chart" id="analytics"></i>
+            </span>
+            {% endif %}
             <span onclick="openModal('settings-modal', 'settings-close')">
-                <i class="clickable-icon fa fa-cog" id="settings"></i>
+                <i class="fa fa-cog" id="settings"></i>
             </span>
+        </div>
+    </div>
+
+    <!-- The Login Modal-->
+    <div id="login-modal" class="modal">
+        <!-- Login Content -->
+        <div class="modal-content login-content">
+            <span class="close" id='login-close'>
+                <i class="fa fa-sign-in"></i>
+            </span>
+            <div>
+                <label for="uname"><b>Summoner Name</b></label>
+                 <input type="text" placeholder="Enter name" name="uname" required>
+            </div>
+            <div>
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+            </div>
+            <div>
+                <button type="submit">Login</button>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                  </label>
+            </div>
         </div>
     </div>
 
@@ -61,7 +97,7 @@
         <!-- Info Content -->
         <div class="modal-content info-content">
             <span class="close" id='info-close'>
-                <i class="clickable-icon fa fa-times-circle"></i>
+                <i class="fa fa-times-circle"></i>
             </span>
         <div style="text-align:center;">
         <h2> HOW TO PLAY</h2>
@@ -91,20 +127,26 @@
         <!-- Analytics Content -->
         <div class="modal-content analytics-content">
             <span class="close" id='analytics-close'>
-                <i class="clickable-icon fa fa-times-circle"></i>
+                <i class="fa fa-times-circle"></i>
             </span>
             <h2 style = "text-align: center;">Personal Statistics</h2>
-            <div id="gamesplayed"></div><br>
-            <div id="gameswon"></div><br>
-            <div id="winpercentage"></div><br>
-            <div id="counterOne"></div><br>
-            <div id="counterTwo"></div><br>
-            <div id="counterThree"></div><br>
-            <div id="counterFour"></div><br>
-            <div id="counterFive"></div><br>
-            <div id="counterSix"></div><br>
-            <div id="counterSeven"></div><br>
-            <div id="counterEight"></div><br>
+            <div id="gamesplayed"></div>
+            <div id="gameswon"></div>
+            <div id="winpercentage"></div>
+            <div id="averageguesses"></div>
+        </div>
+    </div>
+
+    <!-- Person Statistics Modal (retrieve from db) -->
+    <div id="personalStats-modal" class="modal">
+        <!-- Personal Statistics Content -->
+        <div class="modal-content personalStats-content">
+            <span class="close" id='personalStats-close'>
+                <i class="fa fa-times-circle"></i>
+            </span>
+            <h2 style = "text-align: center;">{{current_user.username}} Statistics</h2>
+            <p> {{current_user.score}} </p>
+            <!-- The above does not work -->
         </div>
     </div>
 
@@ -113,7 +155,7 @@
         <!-- Settings Content -->
         <div class="modal-content settings-content">
         <span class="close" id='settings-close'>
-            <i class="clickable-icon fa fa-times-circle"></i>
+            <i class="fa fa-times-circle"></i>
         </span>
             <h2> Settings </h2>
 
@@ -139,19 +181,19 @@
         <!-- Analytics Content -->
         <div class="modal-content victory-content">
             <span class="close" id='victory-close'>
-                <i class="clickable-icon fa fa-times-circle"></i>
+                <i class="fa fa-times-circle"></i>
             </span>
-            <h2 style = "text-align: center;" id="victory-header">Victory!</h2>
+            <h2 style = "text-align: center;">Victory!</h2>
             <div id="victoryScreen"></div>
-            <button class="share" onclick="share()">Copy Your Results!</button>
+            <button class="share" id="share" onclick="share()">Copy Your Results!</button>
         </div>
     </div>
 
     <!-- The Victory Image -->
     <div id="victory-image" class="modal">
-        <!-- Victory Content -->
+        <!-- Analytics Content -->
         <div class="finish-screen">
-            <img src="./static/png/victory.png" alt="Victory Screen" class="finish-screen" style="width: 80%;">
+            <img src="./static/png/victory.png" alt="Victory Screen">
         </div>
     </div>
 
@@ -163,16 +205,16 @@
         </div>
     </div>
 
-    <!-- The Defeat Modal -->
+    <!-- The Analytics Modal -->
     <div id="defeat-modal" class="modal">
-        <!-- Defeat Content -->
+        <!-- Analytics Content -->
         <div class="modal-content defeat-content">
             <span class="close" id='defeat-close'>
-                <i class="clickable-icon fa fa-times-circle"></i>
+                <i class="fa fa-times-circle"></i>
             </span>
-            <h2 style = "text-align: center;" id ="defeat-header">Defeat!</h2>
+            <h2 style = "text-align: center;">Defeat!</h2>
             <div id="defeatScreen"></div>
-            <button class="share" onclick="share()">Copy Your Results!</button>
+            <button class="share" id="share" onclick="share()">Copy Your Results!</button>
         </div>
     </div>
 
