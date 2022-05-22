@@ -36,22 +36,38 @@
     <!-- Template Navbar goes here -->
     <div class="navbar">
         <div class="navleft">
-                <i class="clickable-icon fa fa-navicon" id="menu"></i>
+            {% if current_user.is_anonymous %}
+            <a href="/login">
+                <i class='fa fa-lock'></i>
+            </a>
+            {% else %}
+            <a href="/logout">
+                <i class='fa fa-unlock'></i>
+            </a>
+            {% endif %}
             <span onclick="openModal('info-modal', 'info-close')">
-                <i class="clickable-icon fa fa-info-circle" id="info"></i>
+                <i class="fa fa-info-circle" id="info"></i>
             </span>
         </div>
+
         <div class="navmiddle">
             <div id="logo-box">
                 <a href={{ url_for('home') }}><img id="logo" src="./static/png/loldle_logo.png" alt="LoLdle"> </a>
             </div>
         </div>
         <div class="navright">
+            {% if current_user.is_anonymous %}
             <span onclick="openModal('analytics-modal', 'analytics-close'); populate_analytics()">
-                <i class="clickable-icon fa fa-bar-chart" id="analytics"></i>
+                <i class="fa fa-bar-chart" id="analytics"></i>
             </span>
+            {% else %}
+            <!-- Display personal statistics via stats db -->
+            <span onclick="openModal('personalStats-modal', 'personalStats-close');">
+                <i class="fa fa-bar-chart" id="analytics"></i>
+            </span>
+            {% endif %}
             <span onclick="openModal('settings-modal', 'settings-close')">
-                <i class="clickable-icon fa fa-cog" id="settings"></i>
+                <i class="fa fa-cog" id="settings"></i>
             </span>
         </div>
     </div>
@@ -105,6 +121,19 @@
             <div id="counterSix"></div><br>
             <div id="counterSeven"></div><br>
             <div id="counterEight"></div><br>
+        </div>
+    </div>
+
+    <!-- Personal Statistics Modal (retrieve from db) -->
+    <div id="personalStats-modal" class="modal">
+        <!-- Personal Statistics Content -->
+        <div class="modal-content personalStats-content">
+            <span class="close" id='personalStats-close'>
+                <i class="fa fa-times-circle"></i>
+            </span>
+            <h2 style = "text-align: center;">{{current_user.username}} Statistics</h2>
+            <p> {{current_user.score}} </p>
+            <!-- The above does not work -->
         </div>
     </div>
 
