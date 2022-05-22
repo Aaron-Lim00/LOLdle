@@ -42,7 +42,10 @@ $ flask run
 Your terminal will give you a local address to navigate to for access.
 
 ### Testing
-To execute the test commands, use: python -m tests.unittest
+To execute the test commands, use: 
+```
+python -m tests.unittest
+```
 
 ### Dependencies
 alembic==1.7.7    
