@@ -282,6 +282,6 @@ input:focus{
   transform: translate(-50%, -50%);
 }
 
-#share {
+.share {
   margin-top: 10px;
 }
