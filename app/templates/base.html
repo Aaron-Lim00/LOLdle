@@ -137,17 +137,14 @@
         </div>
     </div>
 
-    <!-- Person Statistics Modal (retrieve from db) -->
+    <!-- Personal Statistics Modal (retrieve from db) -->
     <div id="personalStats-modal" class="modal">
         <!-- Personal Statistics Content -->
         <div class="modal-content personalStats-content">
             <span class="close" id='personalStats-close'>
                 <i class="fa fa-times-circle"></i>
             </span>
-            <h2 style = "text-align: center;">{{current_user.username}} Statistics</h2>
-            <p> {{current_user.username}} has won {{current_user.scores.onlineGamesWon}} games!! </p>
-            <p>Average guesses taken: {{current_user.scores.onlineAverageGuesses}} </p>
-            <p>You've played a total of: {{current_user.scores.onlineGamesPlayed}} games!</p>
+             <h2 style = "text-align: center;">{{current_user.username}} Statistics</h2> 
         </div>
     </div>
 
