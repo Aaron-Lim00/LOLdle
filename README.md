@@ -2,7 +2,7 @@
 This project was developed and built for the UWA CITS3403 unit in semester 1 of 2022.
 
 The web application, LoLdle, is built with the Flask micro web framework for the backend along with Python for dependencies, sqlite databases and jQuery.
-Basic HTML, CSS and JavaScript are also used for the frontend. It is designed to be responsive to most screen sizes. 
+HTML (with Jinja), CSS and JavaScript are also used for the frontend. It is designed to be responsive to most screen sizes. 
 
 LoLdle is inspired by daily puzzle games such as Wordle and involves users guessing a daily 'champion' from the popular online game League of Legends. 
 
@@ -42,20 +42,20 @@ $ flask run
 Your terminal will give you a local address to navigate to for access.
 
 ### Dependencies
-alembic==1.7.7 
-click==8.1.2 
-Flask==2.1.1 
-Flask-Migrate==3.1.0 
-Flask-SQLAlchemy==2.5.1 
-Flask-WTF==1.0.1 
-greenlet==1.1.2 
-importlib-metadata==4.11.3 
-itsdangerous==2.1.2 
-Jinja2==3.1.1 
-Mako==1.2.0 
-MarkupSafe==2.1.1 
-python-dotenv==0.20.0 
-SQLAlchemy==1.4.36 
-Werkzeug==2.1.1 
-WTForms==3.0.1 
-zipp==3.8.0 
+alembic==1.7.7    
+click==8.1.2  
+Flask==2.1.1  
+Flask-Migrate==3.1.0  
+Flask-SQLAlchemy==2.5.1  
+Flask-WTF==1.0.1   
+greenlet==1.1.2   
+importlib-metadata==4.11.3   
+itsdangerous==2.1.2   
+Jinja2==3.1.1   
+Mako==1.2.0   
+MarkupSafe==2.1.1   
+python-dotenv==0.20.0   
+SQLAlchemy==1.4.36   
+Werkzeug==2.1.1   
+WTForms==3.0.1   
+zipp==3.8.0   
