@@ -304,7 +304,7 @@ function clearStorage() {
   function share() {
     let winpercentage = (localStorage.gamesWon / localStorage.gamesPlayed).toFixed(2);
     let averageguesses = (localStorage.totalGuesses/localStorage.gamesPlayed).toFixed(2);
-    let gamesplayed = localStorage.gamesPlayed;
+    let gamesplayed = localStorage.gamesPlayed; 
     let gameswon = localStorage.gamesWon;
     let guesses = count + 1; 
     

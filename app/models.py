@@ -24,7 +24,8 @@ class User(UserMixin,db.Model):
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
     scores = db.relationship('Score', backref='taker', lazy='dynamic') #Link User and Score Database
-
+    # Unsure what backref=taker means
+    
     def __repr__(self):
         return '<User {}>'.format(self.username)
 
@@ -36,16 +37,18 @@ class User(UserMixin,db.Model):
 
 class Score(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    # Datbase fields to be updated
     score = db.Column(db.Integer)
-    onlineGamesPlayed = db.Column(db.integer)
-    onlineGamesWon = db.Column(db.integer)
-    onlineAverageGuesses = db.Column(db.integer)
-    onlineWinPercentage = db.Column(db.integer)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id')) #Links databases together
+    onlineGamesPlayed = db.Column(db.Integer)
+    onlineGamesWon = db.Column(db.Integer)
+    onlineAverageGuesses = db.Column(db.Integer)
+    onlineWinPercentage = db.Column(db.Integer)
+    # Links score database to user db 
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     
-
     def __repr__(self):
-        return '{}'.format(self.score)
+        return '<Score{}>'.format(self.score) 
+        # The above line may need to be changed 
 
 
 @login.user_loader
