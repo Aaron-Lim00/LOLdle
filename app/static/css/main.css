@@ -4,11 +4,11 @@ body {
   font-family: Didot, Roboto;
 }
 
- h2 {
+h2 {
   text-align: center;
 }
 
- h4 {
+h4 {
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   text-align: center;
 }
@@ -66,7 +66,7 @@ body {
 }
   
   /* Modal Content */
-  .modal-content {
+.modal-content {
   background-color: #021119;
   margin: auto;
   padding: 10px 40px 40px 40px;
@@ -165,7 +165,6 @@ input:checked + .slider:before {
 .light-mode {
   background-color: #214249;
 }
-
 
 /* Game */
 
