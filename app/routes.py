@@ -1,5 +1,5 @@
 from app import app, db
-from flask_login import current_user, login_user, logout_user
+from flask_login import current_user, login_required, login_user, logout_user
 from app.models import Champion, User
 from flask import render_template, url_for, request, jsonify, flash, redirect
 from app.forms import LoginForm, RegistrationForm
@@ -144,3 +144,12 @@ def result():
         
     # Currently returns a JSON object with champion data
     return render_template("result.html", guesses = num_guesses)
+
+# @app.route('/user/<username>')
+# @login_required
+# def user(username):
+#     user = User.query.filter_by(username=username).first_or_404()
+#     scores = [
+#         {'summoner':user, 'onlineGamesWon':'2'}
+#     ]
+#     return render_template('user.html', scores=scores)
