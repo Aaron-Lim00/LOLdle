@@ -3,6 +3,7 @@ const results = document.getElementById('results');
 
 var count = 1;
 let victory = false;
+var dark_mode = true;
 
 // Submits AJAX form with jquery
 $(document).ready(function() {
@@ -103,6 +104,18 @@ function createFeedbackCards(data) {
     yeardiv.append(iconFeedback(data.year), yearvalue);
     skindiv.append(iconFeedback(data.skins), skinvalue);
 
+    if(dark_mode == false) {
+        rolediv.css({"background-color": "#F4F4F3", "color": "#214249"});
+        yeardiv.css({"background-color": "#F4F4F3", "color": "#214249"});
+        skindiv.css({"background-color": "#F4F4F3", "color": "#214249"});
+    }
+
+    else if(dark_mode == true) {
+        rolediv.css({"background-color": "#052329", "color": "#F4F4F3"});
+        yeardiv.css({"background-color": "#052329", "color": "#F4F4F3"});
+        skindiv.css({"background-color": "#052329", "color": "#F4F4F3"});
+    }
+
     if(data.role == "correct") {rolediv.css("background-color", "#BB8E42");}
     if(data.year == "correct") {yeardiv.css("background-color", "#BB8E42");}
     if(data.skins == "correct") {skindiv.css("background-color", "#BB8E42");}
@@ -171,6 +184,7 @@ function lightMode() {
     element.classList.toggle("light-mode");
 
     if(lightSwitch.checked) {
+        dark_mode = false;
         // Input Box Styling
         inputBox.style.backgroundColor="#F4F4F3";
         inputBox.style.color ="#033039";
@@ -193,9 +207,16 @@ function lightMode() {
             modal[i].style.color="#214249";
         }
 
+        // Feedback Cards
+        var feedbackCards = document.querySelectorAll(".grid-container > div");
+        for (var i = 0; i < feedbackCards.length; i++){
+            feedbackCards[i].style.backgroundColor="#F4F4F3";
+            feedbackCards[i].style.color="#214249";
+        }
     }
 
     else {
+        dark_mode = true;
         // Input Box Styling
         inputBox.style.backgroundColor="#052329";
         inputBox.style.color="#F4F4F3";
@@ -216,6 +237,12 @@ function lightMode() {
         for (var i = 0; i < modalContent.length; i++){
             modalContent[i].style.backgroundColor="#021119";
             modal[i].style.color="#F4F4F3";
+        }
+
+        var feedbackCards = document.querySelectorAll(".grid-container > div");
+        for (var i = 0; i < feedbackCards.length; i++){
+            feedbackCards[i].style.backgroundColor="#052329";
+            feedbackCards[i].style.color="#F4F4F3";
         }
     }
 }
