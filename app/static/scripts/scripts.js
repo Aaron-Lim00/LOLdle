@@ -28,7 +28,8 @@ $(document).ready(function() {
             if(data.champion === "correct") {
                 victory = true;
                 document.getElementById('submit').disabled = true;
-                document.getElementById('submit').style.backgroundColor = 'red';
+                document.getElementById('submit').style.backgroundColor = "rgba(64,64,64, 0.8)";
+                document.getElementById('submit').style.cursor = "not-allowed";
 
                 if(localStorage.gamesWon) {
                     localStorage.gamesWon = Number(localStorage.gamesWon) + 1;
@@ -57,7 +58,8 @@ $(document).ready(function() {
             }
             else if(data.champion === "incorrect" && count === 8) {
                 document.getElementById('submit').disabled = true;
-                document.getElementById('submit').style.backgroundColor = 'red';
+                document.getElementById('submit').style.backgroundColor = "rgba(64,64,64, 0.8)";
+                document.getElementById('submit').style.cursor = "not-allowed";
 
                 if(localStorage.gamesPlayed) {
                     localStorage.gamesPlayed = Number(localStorage.gamesPlayed) + 1;
@@ -222,6 +224,13 @@ function lightMode() {
             feedbackCards[i].style.backgroundColor=lMode_bg;
             feedbackCards[i].style.color=lMode_col;
         }
+
+        // Victory and Defeat
+        let victory_header = document.getElementById("victory-header");
+        let defeat_header = document.getElementById("defeat-header");
+        victory_header.style.color=lMode_col;
+        defeat_header.style.color=lMode_col;
+
     }
 
     else {
@@ -254,6 +263,12 @@ function lightMode() {
             feedbackCards[i].style.backgroundColor=dMode_bg;
             feedbackCards[i].style.color=dMode_col;
         }
+
+        // Victory and Defeat
+        let victory_header = document.getElementById("victory-header");
+        let defeat_header = document.getElementById("defeat-header");
+        victory_header.style.color=dMode_col;
+        defeat_header.style.color=dMode_col;
     }
 }
 
@@ -265,59 +280,67 @@ function incrementGuess() {
 function gameVictory(guesses) {
     var guessesMadeDiv = $("<div></div>");
     let totalguesses = guesses + 1;
-    var guessesMade = $("<span></span>").text('You won in ' + totalguesses + ' guesses.');
+    var guessesMade = fontColor($("<span></span>").text('You won in ' + totalguesses + ' guesses.'));
     guessesMadeDiv.append(guessesMade);
     $("#victoryScreen").append(guessesMadeDiv);
 
     var gamesWonDiv = $("<div></div>");
-    var gamesWon = $("<span></span>").text('Total games won: ' + localStorage.gamesWon);
+    var gamesWon = fontColor($("<span></span>").text('Total games won: ' + localStorage.gamesWon));
     gamesWonDiv.append(gamesWon);
     $("#victoryScreen").append(gamesWonDiv);
 
     var gamesPlayedDiv = $("<div></div>");
-    var gamesPlayed = $("<span></span>").text('Total games played: ' + localStorage.gamesPlayed);
+    var gamesPlayed = fontColor($("<span></span>").text('Total games played: ' + localStorage.gamesPlayed));
     gamesPlayedDiv.append(gamesPlayed);
     $("#victoryScreen").append(gamesPlayedDiv);
 
     var gamesWRDiv = $("<div></div>");
-    var gamesWR = $("<span></span>").text('Win rate: ' + (localStorage.gamesWon/localStorage.gamesPlayed).toFixed(2));
+    var gamesWR = fontColor($("<span></span>").text('Win rate: ' + (localStorage.gamesWon/localStorage.gamesPlayed).toFixed(2)));
     gamesWRDiv.append(gamesWR);
     $("#victoryScreen").append(gamesWRDiv);
 
     var averageGuessesDiv = $("<div></div>");
-    var averageGuesses = $("<span></span>").text('Average guesses: ' + (localStorage.totalGuesses/localStorage.gamesPlayed).toFixed(2));
+    var averageGuesses = fontColor($("<span></span>").text('Average guesses: ' + (localStorage.totalGuesses/localStorage.gamesPlayed).toFixed(2)));
     averageGuessesDiv.append(averageGuesses);
     $("#victoryScreen").append(averageGuessesDiv);
+
     openModal('victory-modal', 'victory-close');
 }
 
 function gameDefeat() {
     var guessesMadeDiv = $("<div></div>");
-    var guessesMade = $("<span></span>").text('You failed to guess the champion.');
+    var guessesMade = fontColor($("<span></span>").text('You failed to guess the champion.'));
     guessesMadeDiv.append(guessesMade);
     $("#defeatScreen").append(guessesMadeDiv);
 
     var gamesWonDiv = $("<div></div>");
-    var gamesWon = $("<span></span>").text('Total games won: ' + localStorage.gamesWon);
+    var gamesWon = fontColor($("<span></span>").text('Total games won: ' + localStorage.gamesWon));
     gamesWonDiv.append(gamesWon);
     $("#defeatScreen").append(gamesWonDiv);
 
     var gamesPlayedDiv = $("<div></div>");
-    var gamesPlayed = $("<span></span>").text('Total games played: ' + localStorage.gamesPlayed);
+    var gamesPlayed = fontColor($("<span></span>").text('Total games played: ' + localStorage.gamesPlayed));
     gamesPlayedDiv.append(gamesPlayed);
     $("#defeatScreen").append(gamesPlayedDiv);
 
     var gamesWRDiv = $("<div></div>");
-    var gamesWR = $("<span></span>").text('Win rate: ' + (localStorage.gamesWon/localStorage.gamesPlayed).toFixed(2));
+    var gamesWR = fontColor($("<span></span>").text('Win rate: ' + (localStorage.gamesWon/localStorage.gamesPlayed).toFixed(2)));
     gamesWRDiv.append(gamesWR);
     $("#defeatScreen").append(gamesWRDiv);
 
     var averageGuessesDiv = $("<div></div>");
-    var averageGuesses = $("<span></span>").text('Average guesses: ' + (localStorage.totalGuesses/localStorage.gamesPlayed).toFixed(2));
+    var averageGuesses = fontColor($("<span></span>").text('Average guesses: ' + (localStorage.totalGuesses/localStorage.gamesPlayed).toFixed(2)));
     averageGuessesDiv.append(averageGuesses);
     $("#defeatScreen").append(averageGuessesDiv);
 
     openModal('defeat-modal', 'defeat-close');
+}
+
+function fontColor(object) {
+    if (darkMode == false) {
+        object.css("color", lMode_col);
+    }
+    return object
 }
 
 function clearStorage() {
