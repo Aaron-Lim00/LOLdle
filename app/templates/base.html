@@ -62,9 +62,7 @@
             </span>
             {% else %}
             <!-- Display personal statistics via stats db -->
-            <span onclick="openModal('personalStats-modal', 'personalStats-close');">
-                <i class="fa fa-bar-chart" id="analytics"></i>
-            </span>
+            <a href="{{ url_for('stats.html') }}"><i class="fa fa-bar-chart"></i></a>
             {% endif %}
             <span onclick="openModal('settings-modal', 'settings-close')">
                 <i class="fa fa-cog" id="settings"></i>
