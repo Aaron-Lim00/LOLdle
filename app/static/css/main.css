@@ -27,7 +27,7 @@ h4 {
 }
 
 #logo-box {
-  width:210px; 
+  width:180px; 
   margin:0 auto;
 }
 
@@ -65,7 +65,7 @@ h4 {
   background-color: rgba(40,44,46,0.8);
 }
   
-  /* Modal Content */
+/* Modal Content */
 .modal-content {
   background-color: #021119;
   margin: auto;
