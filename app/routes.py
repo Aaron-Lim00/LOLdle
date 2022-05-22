@@ -1,6 +1,6 @@
 from app import app, db
 from flask_login import current_user, login_required, login_user, logout_user
-from app.models import Champion, User
+from app.models import Champion, User, Score
 from flask import render_template, url_for, request, jsonify, flash, redirect
 from app.forms import LoginForm, RegistrationForm
 from werkzeug.urls import url_parse
@@ -17,12 +17,18 @@ def home():
         # Structuring of queries data into a usable list
         champions = [str(r)[2:-3] for r in res]
     
-    return render_template("index.html", champions=champions)
+    if current_user.is_authenticated:
+        user_id=current_user.id
+        onlineGamesPlayed = Score.query.filter_by(user_id=user_id).all()
+    
+    return render_template("index.html", champions=champions, onlineGamesPlayed=onlineGamesPlayed)
+
+
 
 # Route for the home page. The majority of the page will be displayed here. 
-@app.route('/index')
-def index():
-    return render_template('index.html')
+# @app.route('/index')
+# def index():
+#     return render_template('index.html')
 
 # Process form 
 @app.route('/process', methods=['POST'])
@@ -103,7 +109,8 @@ def login():
 @app.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('index'))
+    # return redirect(url_for('index'))
+    return redirect(url_for('login'))
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -119,37 +126,10 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
-@app.route('/result', methods=['GET','POST'])
-def result():
-    # Get data from request object - champion name
-    num_guesses = 0
-    champion = request.form
-    champ2 = champion.to_dict()['champion']
-
-    # Find champion data in champion database
-    champ = Champion.query.filter_by(name=champ2).first()
-
-    # Retrieve a seeded answer based on days since epoch in db
-    seed = (datetime.datetime.utcnow() - datetime.datetime(1970,1,1)).days
-    random.seed(seed)
-    answer_index = random.randint(1,159)
-    answer_champ = Champion.query.get(answer_index)
-
-    # Check whether guess is correct
-    if (champ.name == answer_champ.name):
-        num_guesses +=1
-        
-    else:
-        num_guesses +=1
-        
-    # Currently returns a JSON object with champion data
-    return render_template("result.html", guesses = num_guesses)
-
-# @app.route('/user/<username>')
+# @app.route('/', methods=['GET', 'POST'])
 # @login_required
-# def user(username):
-#     user = User.query.filter_by(username=username).first_or_404()
-#     scores = [
-#         {'summoner':user, 'onlineGamesWon':'2'}
-#     ]
-#     return render_template('user.html', scores=scores)
+# # def loadStats():
+# #     if current_user.is_authenticated:
+# #         user_id=current_user.id
+# #         onlineGamesPlayed = Score.query.filter_by(user_id=user_id).all()
+# #     return render_template(url_for('home'), onlineGamesPlayed=onlineGamesPlayed)
