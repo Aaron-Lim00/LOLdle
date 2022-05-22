@@ -12,7 +12,10 @@ var lMode_col = "#214249";
 var dMode_bg = "#052329";
 var dMode_col = "#F4F4F3";
 
-// Submits AJAX form with jquery
+/**
+ * Submits AJAX form request with jquery
+ * Return function is used to do client-side game logic and DOM manipulation
+ */
 $(document).ready(function() {
     $('#input-form').on('submit', function(event) {
         $.ajax({
@@ -93,6 +96,10 @@ $(document).ready(function() {
     })
 })
 
+/**
+ * Create feedback cards with information from server-side game logic return values
+ * @param {*} data The JSON object returned by the server
+ */
 function createFeedbackCards(data) {
     var $container = $("<div>", {"class": "grid-container"});
 
@@ -120,6 +127,14 @@ function createFeedbackCards(data) {
     $container.append(rolediv, yeardiv, skindiv).fadeIn("slow");
 }
 
+/**
+ * Styling of feedback cards for correct guesses
+ * @param {*} rolediv 
+ * @param {*} yeardiv 
+ * @param {*} skindiv 
+ * @param {*} data 
+ * @returns 
+ */
 function styleCard(rolediv, yeardiv, skindiv, data){
     if(darkMode == false) {
         rolediv.add(yeardiv).add(skindiv).css({"background-color": lMode_bg, "color": lMode_col});
@@ -136,6 +151,9 @@ function styleCard(rolediv, yeardiv, skindiv, data){
     return rolediv, yeardiv, skindiv
 }
 
+/**
+ * Create initial header to append feedback cards
+ */
 function createFeedbackHeaders() {
     var $headercontainer = $("<div>", {"class": "grid-container"});
     var roleheader = $("<p></p>").text("Role");
@@ -146,6 +164,11 @@ function createFeedbackHeaders() {
     $("#feedback-header").append($headercontainer).hide().fadeIn("slow");
 }
 
+/**
+ * Dynamic icon based on user guess 
+ * @param {*} feedback 
+ * @returns icon for feedback card
+ */
 function iconFeedback(feedback) {
     var $icon
     if(feedback === "higher") {
@@ -163,6 +186,11 @@ function iconFeedback(feedback) {
     return $icon
 }
 
+/**
+ * Used for opening various modals on the main site page
+ * @param {*} type 
+ * @param {*} id 
+ */
 function openModal(type,id) {
     // Get the modal
     var modal = document.getElementById(type);
@@ -184,6 +212,9 @@ function openModal(type,id) {
     }
 }
 
+/**
+ * Variables for CSS changes when site is in light mode
+ */
 function lightMode() {
     let element = document.body;
     let lightSwitch = document.getElementById("light-switch");
@@ -272,11 +303,19 @@ function lightMode() {
     }
 }
 
+/**
+ * Increment guess after each user guess
+ * Updates placeholder text in game text input
+ */
 function incrementGuess() {
     count += 1;
     document.getElementById("input").placeholder = "GUESS " + count + " OUT OF 8";
 }
 
+/**
+ * Victory modal functionality
+ * @param {*} guesses number of guesses player made
+ */
 function gameVictory(guesses) {
     var guessesMadeDiv = $("<div></div>");
     let totalguesses = guesses + 1;
@@ -307,6 +346,9 @@ function gameVictory(guesses) {
     openModal('victory-modal', 'victory-close');
 }
 
+/**
+ * Defeat modal functionality
+ */
 function gameDefeat() {
     var guessesMadeDiv = $("<div></div>");
     var guessesMade = fontColor($("<span></span>").text('You failed to guess the champion.'));
@@ -336,6 +378,11 @@ function gameDefeat() {
     openModal('defeat-modal', 'defeat-close');
 }
 
+/**
+ * Change font colour when switching between light and dark mode
+ * @param {*} object 
+ * @returns 
+ */
 function fontColor(object) {
     if (darkMode == false) {
         object.css("color", lMode_col);
@@ -343,6 +390,9 @@ function fontColor(object) {
     return object
 }
 
+/**
+ * Clear the local storage on user machine
+ */
 function clearStorage() {
     // Clear localStorage items 
     if (confirm("WARNING: confirm statistics reset")) {
@@ -352,6 +402,10 @@ function clearStorage() {
       }
   }
 
+  /**
+   * Dynamically update and display local storage statistics 
+   * Called when statistics modal is opened
+   */
   function populate_analytics() {
     let winpercentage = (localStorage.gamesWon / localStorage.gamesPlayed).toFixed(2);
     let averageguesses = (localStorage.totalGuesses/localStorage.gamesPlayed).toFixed(2);
@@ -361,6 +415,11 @@ function clearStorage() {
     $('#averageguesses').text('Average Guesses: ' + averageguesses);
   }
 
+  /**
+   * Share button functionality
+   * Uses local storage to create a formatted string
+   * Adds formatted string to user clipboard
+   */
   function share() {
     let winpercentage = (localStorage.gamesWon / localStorage.gamesPlayed).toFixed(2);
     let averageguesses = (localStorage.totalGuesses/localStorage.gamesPlayed).toFixed(2);
