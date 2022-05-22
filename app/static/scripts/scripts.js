@@ -18,9 +18,11 @@ var dMode_col = "#F4F4F3";
  */
 $(document).ready(function() {
     $('#input-form').on('submit', function(event) {
+        guess = $('#input').val();
+        guess = guess[0].toUpperCase() + guess.substring(1);
         $.ajax({
             data : {
-                champion : $('#input').val() 
+                champion : guess
             },
             type : 'POST',
             url : '/process'
@@ -409,12 +411,44 @@ function clearStorage() {
 * Called when statistics modal is opened
 */
 function populate_analytics() {
+    if(localStorage.counterOne === undefined) {
+        localStorage.counterOne = 0;
+    }
+    if(localStorage.counterTwo === undefined) {
+        localStorage.counterTwo = 0;
+    }
+    if(localStorage.counterThree === undefined) {
+        localStorage.counterThree = 0;
+    }
+    if(localStorage.counterFour === undefined) {
+        localStorage.counterFour = 0;
+    }
+    if(localStorage.counterFive === undefined) {
+        localStorage.counterFive = 0;
+    }
+    if(localStorage.counterSix === undefined) {
+        localStorage.counterSix = 0;
+    }
+    if(localStorage.counterSeven === undefined) {
+        localStorage.counterSeven = 0;
+    }
+    if(localStorage.counterEight === undefined) {
+        localStorage.counterEight = 0;
+    }
     let winpercentage = (localStorage.gamesWon / localStorage.gamesPlayed).toFixed(2);
     let averageguesses = (localStorage.totalGuesses/localStorage.gamesPlayed).toFixed(2);
     $('#gamesplayed').text('Games Played: ' + localStorage.gamesPlayed);
     $('#gameswon').text('Games Won: ' + (localStorage.gamesWon));
     $('#winpercentage').text('Win Percentage: ' + winpercentage);
     $('#averageguesses').text('Average Guesses: ' + averageguesses);
+    $('#counterOne').text('Games ended with 1 guess: ' + localStorage.counterOne);
+    $('#counterTwo').text('Games ended with 2 guesses: ' + localStorage.counterTwo);
+    $('#counterThree').text('Games ended with 3 guesses: ' + localStorage.counterThree);
+    $('#counterFour').text('Games ended with 4 guesses: ' + localStorage.counterFour);
+    $('#counterFive').text('Games ended with 5 guesses: ' + localStorage.counterFive);
+    $('#counterSix').text('Games ended with 6 guesses: ' + localStorage.counterSix);
+    $('#counterSeven').text('Games ended with 7 guesses: ' + localStorage.counterSeven);
+    $('#counterEight').text('Games ended with 8 guesses: ' + localStorage.counterEight);
 }
 
 /**
