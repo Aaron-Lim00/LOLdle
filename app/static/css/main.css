@@ -21,6 +21,20 @@ body {
     border-bottom: 2px solid #BB8E42;
 }
 
+.navmiddle {
+  text-align: center;
+}
+
+#logo-box {
+  width:210px; 
+  margin:0 auto;
+}
+
+.navbar img {
+  width: 100%;
+  height: auto;
+}
+
 .navbar i {
     width: 20%;
     text-align: center;
