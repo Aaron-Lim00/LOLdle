@@ -83,9 +83,9 @@ def process():
         'year' : year_feedback, 
         'yearvalue' : champ.year,
         'skins' : skins_feedback,
-        'skinvalue' : champ.skins
-        })
-
+        'skinvalue' : champ.skins,
+        'answer' : answer_champ.name
+        }) 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -164,7 +164,3 @@ def getStats():
         onlineGamesWon=onlineGamesWon, 
         onlineGamesPlayed=onlineGamesPlayed,
         onlineAvgGuesses=onlineAvgGuesses)
-
-
-
-

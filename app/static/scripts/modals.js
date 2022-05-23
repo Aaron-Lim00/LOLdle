@@ -66,11 +66,16 @@
 /**
  * Defeat modal functionality
  */
-function gameDefeat() {
+function gameDefeat(answer) {
     var guessesMadeDiv = $("<div></div>");
     var guessesMade = fontColor($("<span></span>").text('You failed to guess the champion.'));
     guessesMadeDiv.append(guessesMade);
     $("#defeatScreen").append(guessesMadeDiv);
+
+    var answerDiv = $("<div></div>");
+    var answer = fontColor($("<span></span>").text('The answer was: ' + answer));
+   answerDiv.append(answer);
+    $("#defeatScreen").append(answerDiv);
 
     var gamesWonDiv = $("<div></div>");
     var gamesWon = fontColor($("<span></span>").text('Total games won: ' + localStorage.gamesWon));
@@ -124,18 +129,63 @@ function populate_analytics() {
     if(localStorage.counterEight === undefined) {
         localStorage.counterEight = 0;
     }
-    let winpercentage = (localStorage.gamesWon / localStorage.gamesPlayed).toFixed(2);
-    let averageguesses = (localStorage.totalGuesses/localStorage.gamesPlayed).toFixed(2);
-    $('#gamesplayed').text('Games Played: ' + localStorage.gamesPlayed);
-    $('#gameswon').text('Games Won: ' + (localStorage.gamesWon));
-    $('#winpercentage').text('Win Percentage: ' + winpercentage);
-    $('#averageguesses').text('Average Guesses: ' + averageguesses);
-    $('#counterOne').text('Games ended with 1 guess: ' + localStorage.counterOne);
-    $('#counterTwo').text('Games ended with 2 guesses: ' + localStorage.counterTwo);
-    $('#counterThree').text('Games ended with 3 guesses: ' + localStorage.counterThree);
-    $('#counterFour').text('Games ended with 4 guesses: ' + localStorage.counterFour);
-    $('#counterFive').text('Games ended with 5 guesses: ' + localStorage.counterFive);
-    $('#counterSix').text('Games ended with 6 guesses: ' + localStorage.counterSix);
-    $('#counterSeven').text('Games ended with 7 guesses: ' + localStorage.counterSeven);
-    $('#counterEight').text('Games ended with 8 guesses: ' + localStorage.counterEight);
+    let winpercentage;
+    let averageguesses;
+    let gamesplayed;
+    let gameswon;
+
+    if(localStorage.gamesPlayed === undefined) {
+        winpercentage = '0.00';
+        averageguesses = '0.00';
+        gamesplayed = 0;
+        gameswon = 0;
+    } else {
+        winpercentage = (localStorage.gamesWon / localStorage.gamesPlayed).toFixed(2);
+        averageguesses = (localStorage.totalGuesses/localStorage.gamesPlayed).toFixed(2);
+        gamesplayed = localStorage.gamesPlayed;
+        gameswon = localStorage.gamesWon;
+    }
+
+    $('#gamesplayed').text('Games Played: ' + gamesplayed);
+    $('#gameswon').text('Games Won: ' + gameswon);
+    $('#winpercentage').text('Win Percentage: ' + winpercentage + '%');
+    $('#averageguesses').text('Avg. Guesses: ' + averageguesses);
+
+    createGraph();
+}
+
+function createGraph(){
+    const analytics = document.getElementById('myChart');
+    const myChart = new Chart(analytics, {
+        type: 'bar',
+        data: {
+            labels: ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight'],
+            datasets: [{
+                label: '# of Wins in relation to guesses',
+                data: [ 
+                    localStorage.counterOne, 
+                    localStorage.counterTwo, 
+                    localStorage.counterThree, 
+                    localStorage.counterFour, 
+                    localStorage.counterFive, 
+                    localStorage.counterSix, 
+                    localStorage.counterSeven, 
+                    localStorage.counterEight
+                ],
+                backgroundColor: [
+                    gold
+                ],
+                borderColor: [
+                    gold
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            legend: {
+                display: false
+            }
+        }
+    });
 }

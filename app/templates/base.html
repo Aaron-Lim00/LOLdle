@@ -16,11 +16,15 @@
     <!-- Linking jQuery CDN-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+    <!-- Linking Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <!-- Linking Javascript -->
     <script src="{{ url_for('static', filename='scripts/scripts.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/feedback.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/modals.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/lightdark.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/routing.js') }}"></script>
 
     <!-- Autocomplete function -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>  
@@ -37,16 +41,16 @@
     <div class="navbar">
         <div class="navleft">
             {% if current_user.is_anonymous %}
-            <a href="/login">
-                <i class='fa fa-lock'></i>
-            </a>
+            <span onclick="login_page()">
+                <i class='clickable-icon fa fa-sign-in'></i>
+            </span>
             {% else %}
-            <a href="/logout">
-                <i class='fa fa-unlock'></i>
-            </a>
+            <span onclick="logout_page()">
+                <i class='clickable-icon fa fa-sign-out'></i>
+            </span>
             {% endif %}
             <span onclick="openModal('info-modal', 'info-close')">
-                <i class="fa fa-info-circle" id="info"></i>
+                <i class="clickable-icon fa fa-info-circle" id="info"></i>
             </span>
         </div>
 
@@ -58,13 +62,14 @@
         <div class="navright">
             {% if current_user.is_anonymous %}
             <span onclick="openModal('analytics-modal', 'analytics-close'); populate_analytics()">
-                <i class="fa fa-bar-chart" id="analytics"></i>
+                <i class="clickable-icon fa fa-bar-chart" id="analytics"></i>
             </span>
             {% else %}
-            <a href="/stats"><i class="fa fa-bar-chart"></i></a>
+            <!-- Display personal statistics via stats db -->
+            <span onclick="stats_page()"><i class="clickable-icon fa fa-bar-chart"></i></span>
             {% endif %}
             <span onclick="openModal('settings-modal', 'settings-close')">
-                <i class="fa fa-cog" id="settings"></i>
+                <i class="clickable-icon fa fa-cog" id="settings"></i>
             </span>
         </div>
     </div>
@@ -107,17 +112,15 @@
                 <i class="clickable-icon fa fa-times-circle"></i>
             </span>
             <h2 style = "text-align: center;">Personal Statistics</h2>
-            <div id="gamesplayed"></div><br>
-            <div id="gameswon"></div><br>
-            <div id="winpercentage"></div><br>
-            <div id="counterOne"></div><br>
-            <div id="counterTwo"></div><br>
-            <div id="counterThree"></div><br>
-            <div id="counterFour"></div><br>
-            <div id="counterFive"></div><br>
-            <div id="counterSix"></div><br>
-            <div id="counterSeven"></div><br>
-            <div id="counterEight"></div><br>
+            <div id="analytics-container">
+                <div id="gamesplayed"></div>
+                <div id="gameswon"></div>
+                <div id="winpercentage"></div>
+                <div id="averageguesses"></div>
+            </div>
+            <div id="chart-container">
+                <canvas id="myChart"></canvas>
+            </div>
         </div>
     </div>
 
@@ -129,7 +132,6 @@
             <i class="clickable-icon fa fa-times-circle"></i>
         </span>
             <h2> Settings </h2>
-
             <div class="flex-container">
                 <h4>Light Mode</h4>
                 <label class="switch">
