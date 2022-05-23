@@ -140,7 +140,7 @@ function populate_analytics() {
         gamesplayed = 0;
         gameswon = 0;
     } else {
-        winpercentage = (localStorage.gamesWon / localStorage.gamesPlayed).toFixed(2);
+        winpercentage = ((localStorage.gamesWon / localStorage.gamesPlayed)*100).toFixed(2);
         averageguesses = (localStorage.totalGuesses/localStorage.gamesPlayed).toFixed(2);
         gamesplayed = localStorage.gamesPlayed;
         gameswon = localStorage.gamesWon;
