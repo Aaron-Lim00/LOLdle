@@ -154,11 +154,7 @@ def getStats():
         user_id=current_user.id
         onlineGamesWon= Score.query.filter_by(user_id=user_id).all()
 
-        return render_template("stats.html")
+        return render_template("stats.html", onlineGamesWon=onlineGamesWon)
 
-@app.route('/results', methods=['GET', 'POST'])
-@login_required
-def results():
-    user_id=current_user.id
-    rank = Score.query.filter_by(user_id=user_id).order_by(Score.score.desc())
+
 

@@ -1,4 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<h1> Hi</h1>
+<h1 style="text-align: center;"> Welcome to {{current_user.username}} statistics</h1>
+
+<p>You have won {{current_user.onlineGamesWon}} games</p>
 {% endblock %}
