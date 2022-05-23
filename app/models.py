@@ -23,7 +23,7 @@ class User(UserMixin,db.Model):
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
-    scores = db.relationship('Score', backref='user', uselist=False) #Link User and Score Database
+    scores = db.relationship('Score', backref='user', uselist=False) 
 
     def repr(self):
         return '<User {}>'.format(self.username)
@@ -55,7 +55,7 @@ class Score(db.Model):
     onlineGamesWon = db.Column(db.Integer)
     onlineGamesPlayed = db.Column(db.Integer)
     onlineAvgGuesses = db.Column(db.Integer)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id')) #Links databases together
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id')) 
 
     def repr(self):
         return '{}'.format(self.score)
