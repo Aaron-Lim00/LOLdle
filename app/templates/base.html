@@ -67,7 +67,6 @@
             {% else %}
             <!-- Display personal statistics via stats db -->
             <span onclick="stats_page()"><i class="clickable-icon fa fa-bar-chart"></i></span>
-            <!-- The above is just a placeholder url to ensure that website runs -->
             {% endif %}
             <span onclick="openModal('settings-modal', 'settings-close')">
                 <i class="clickable-icon fa fa-cog" id="settings"></i>
@@ -122,19 +121,6 @@
             <div id="chart-container">
                 <canvas id="myChart"></canvas>
             </div>
-        </div>
-    </div>
-
-    <!-- Personal Statistics Modal (retrieve from db) -->
-    <div id="personalStats-modal" class="modal">
-        <!-- Personal Statistics Content -->
-        <div class="modal-content personalStats-content">
-            <span class="close" id='personalStats-close'>
-                <i class="fa fa-times-circle"></i>
-            </span>
-            <h2 style = "text-align: center;">{{current_user.username}} Statistics</h2>
-            <p> {{current_user.score}} </p>
-            <!-- The above does not work -->
         </div>
     </div>
 
