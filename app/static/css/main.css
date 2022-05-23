@@ -87,8 +87,7 @@ h4 {
     line-height:0px;
 }
   
-  
-  /* The Close Button */
+/* The Close Button */
 .close {
   color: #aaaaaa;
   float: right;
@@ -231,8 +230,7 @@ input:focus{
   justify-content: space-between;
 }
 
-
-  /* Feedback Cards */
+/* Feedback Cards */
 
 .grid-container {
   display: grid;
@@ -252,7 +250,6 @@ input:focus{
 .grid-container > p {
   text-align: center;
 }
-
 
 #submit:hover {
   background-color: #BB8E42;
@@ -304,4 +301,28 @@ img {
 
 .share {
   margin-top: 10px;
+}
+
+#analytics-container {
+  width: 60%;
+  display: grid;
+  justify-content: space-evenly;
+  grid-template-columns: repeat( auto-fit, minmax(50px, 1fr) );
+  gap: 10px;
+  margin:0 auto;
+  padding-bottom: 20px
+}
+
+#analytics-container > div {
+  background-color: #052329;
+  text-align: center;
+  padding: 10px 0;
+  border-radius: 10px;
+}
+
+#chart-container {
+  padding-top: 20px;
+  text-align: center;
+  width: 60%;
+  margin:0 auto;
 }
