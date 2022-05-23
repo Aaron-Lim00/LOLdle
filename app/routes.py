@@ -1,7 +1,7 @@
 from app import app, db
 from flask_login import current_user, login_required, login_user, logout_user
 from app.models import Champion, User, Score
-from flask import render_template, url_for, request, jsonify, flash, redirect
+from flask import render_template, url_for, request, jsonify, flash, redirect, abort
 from app.forms import LoginForm, RegistrationForm
 from werkzeug.urls import url_parse
 import datetime
@@ -34,6 +34,10 @@ def process():
 
     # Find champion data in champion database
     champ = Champion.query.filter_by(name=champ2).first()
+    
+    # If champion isnt found, abort post request
+    if champ == None:
+        abort(403, "Forbidden: Champion not found")
 
     # Retrieve a seeded answer based on days since epoch in db
     seed = (datetime.datetime.utcnow() - datetime.datetime(1970,1,1)).days
