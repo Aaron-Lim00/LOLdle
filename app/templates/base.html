@@ -62,7 +62,8 @@
             </span>
             {% else %}
             <!-- Display personal statistics via stats db -->
-            <a href="{{ url_for('stats.html') }}"><i class="fa fa-bar-chart"></i></a>
+            <a href="/stats"><i class="fa fa-bar-chart"></i></a>
+            <!-- The above is just a placeholder url to ensure that website runs -->
             {% endif %}
             <span onclick="openModal('settings-modal', 'settings-close')">
                 <i class="fa fa-cog" id="settings"></i>

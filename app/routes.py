@@ -1,6 +1,6 @@
 from app import app, db
-from flask_login import current_user, login_user, logout_user
-from app.models import Champion, User
+from flask_login import current_user, login_required, login_user, logout_user
+from app.models import Champion, User, Score
 from flask import render_template, url_for, request, jsonify, flash, redirect
 from app.forms import LoginForm, RegistrationForm
 from werkzeug.urls import url_parse
@@ -147,3 +147,18 @@ def result():
         
     # Currently returns a JSON object with champion data
     return render_template("result.html", guesses = num_guesses)
+
+@app.route('/stats', methods=['GET','POST'])
+def getStats():
+    if current_user.is_authenticated:
+        user_id=current_user.id
+        onlineGamesWon= Score.query.filter_by(user_id=user_id).all()
+
+        return render_template("stats.html")
+
+@app.route('/results', methods=['GET', 'POST'])
+@login_required
+def results():
+    user_id=current_user.id
+    rank = Score.query.filter_by(user_id=user_id).order_by(Score.score.desc())
+
