@@ -16,6 +16,9 @@
     <!-- Linking jQuery CDN-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+    <!-- Linking Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <!-- Linking Javascript -->
     <script src="{{ url_for('static', filename='scripts/scripts.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/feedback.js') }}"></script>
@@ -97,14 +100,10 @@
             <div id="gamesplayed"></div><br>
             <div id="gameswon"></div><br>
             <div id="winpercentage"></div><br>
-            <div id="counterOne"></div><br>
-            <div id="counterTwo"></div><br>
-            <div id="counterThree"></div><br>
-            <div id="counterFour"></div><br>
-            <div id="counterFive"></div><br>
-            <div id="counterSix"></div><br>
-            <div id="counterSeven"></div><br>
-            <div id="counterEight"></div><br>
+            <div id="averageguesses"></div><br>
+            <div id="chart-container">
+                <canvas id="myChart"></canvas>
+            </div>
         </div>
     </div>
 

@@ -124,18 +124,91 @@ function populate_analytics() {
     if(localStorage.counterEight === undefined) {
         localStorage.counterEight = 0;
     }
-    let winpercentage = (localStorage.gamesWon / localStorage.gamesPlayed).toFixed(2);
-    let averageguesses = (localStorage.totalGuesses/localStorage.gamesPlayed).toFixed(2);
-    $('#gamesplayed').text('Games Played: ' + localStorage.gamesPlayed);
-    $('#gameswon').text('Games Won: ' + (localStorage.gamesWon));
-    $('#winpercentage').text('Win Percentage: ' + winpercentage);
+    let winpercentage;
+    let averageguesses;
+    let gamesplayed;
+    let gameswon;
+
+    if(localStorage.gamesPlayed === undefined) {
+        winpercentage = '0.00';
+        averageguesses = '0.00';
+        gamesplayed = 0;
+        gameswon = 0;
+    } else {
+        winpercentage = (localStorage.gamesWon / localStorage.gamesPlayed).toFixed(2);
+        averageguesses = (localStorage.totalGuesses/localStorage.gamesPlayed).toFixed(2);
+        gamesplayed = localStorage.gamesPlayed;
+        gameswon = localStorage.gamesWon;
+    }
+
+    $('#gamesplayed').text('Games Played: ' + gamesplayed);
+    $('#gameswon').text('Games Won: ' + gameswon);
+    $('#winpercentage').text('Win Percentage: ' + winpercentage + '%');
     $('#averageguesses').text('Average Guesses: ' + averageguesses);
-    $('#counterOne').text('Games ended with 1 guess: ' + localStorage.counterOne);
-    $('#counterTwo').text('Games ended with 2 guesses: ' + localStorage.counterTwo);
-    $('#counterThree').text('Games ended with 3 guesses: ' + localStorage.counterThree);
-    $('#counterFour').text('Games ended with 4 guesses: ' + localStorage.counterFour);
-    $('#counterFive').text('Games ended with 5 guesses: ' + localStorage.counterFive);
-    $('#counterSix').text('Games ended with 6 guesses: ' + localStorage.counterSix);
-    $('#counterSeven').text('Games ended with 7 guesses: ' + localStorage.counterSeven);
-    $('#counterEight').text('Games ended with 8 guesses: ' + localStorage.counterEight);
+
+    const analytics = document.getElementById('myChart');
+    const myChart = new Chart(analytics, {
+        type: 'bar',
+        data: {
+            labels: ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight'],
+            datasets: [{
+                label: '# of Guesses',
+                data: [ 
+                    localStorage.counterOne, 
+                    localStorage.counterTwo, 
+                    localStorage.counterThree, 
+                    localStorage.counterFour, 
+                    localStorage.counterFive, 
+                    localStorage.counterSix, 
+                    localStorage.counterSeven, 
+                    localStorage.counterEight
+                ],
+                backgroundColor: [
+                    gold
+                ],
+                borderColor: [
+                    gold
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            legend: {
+                display: false
+            },
+            scales: {
+              x: {
+                display: true,
+                title: {
+                  display: true,
+                  text: 'Number of Guesses',
+                  color: 'white',
+                  font: {
+                    family: "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans'",
+                    size: 15,
+                    weight: 'normal',
+                    lineHeight: 1.2,
+                  },
+                  padding: {top: 20, left: 0, right: 0, bottom: 20}
+                }
+              },
+              y: {
+                display: true,
+                title: {
+                  display: true,
+                  text: 'Number of Wins',
+                  color: 'white',
+                  font: {
+                    family: "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans'",
+                    size: 15,
+                    style: 'normal',
+                    lineHeight: 1.2
+                  },
+                  padding: {top: 30, left: 0, right: 0, bottom: 20}
+                }
+              }
+            }
+        }
+    });
 }

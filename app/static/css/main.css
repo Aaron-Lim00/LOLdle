@@ -305,3 +305,10 @@ img {
 .share {
   margin-top: 10px;
 }
+
+#chart-container {
+  text-align: center;
+  width: 60%;
+  top: 50%;
+  left:50%;
+}
