@@ -144,7 +144,7 @@ function populate_analytics() {
     $('#gamesplayed').text('Games Played: ' + gamesplayed);
     $('#gameswon').text('Games Won: ' + gameswon);
     $('#winpercentage').text('Win Percentage: ' + winpercentage + '%');
-    $('#averageguesses').text('Average Guesses: ' + averageguesses);
+    $('#averageguesses').text('Avg. Guesses: ' + averageguesses);
 
     createGraph();
 }
@@ -156,7 +156,7 @@ function createGraph(){
         data: {
             labels: ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight'],
             datasets: [{
-                label: '# of Guesses',
+                label: '# of Wins in relation to guesses',
                 data: [ 
                     localStorage.counterOne, 
                     localStorage.counterTwo, 
@@ -180,38 +180,6 @@ function createGraph(){
             responsive: true,
             legend: {
                 display: false
-            },
-            scales: {
-              x: {
-                display: true,
-                title: {
-                  display: true,
-                  text: 'Number of Guesses',
-                  color: 'white',
-                  font: {
-                    family: "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans'",
-                    size: 15,
-                    weight: 'normal',
-                    lineHeight: 1.2,
-                  },
-                  padding: {top: 20, left: 0, right: 0, bottom: 20}
-                }
-              },
-              y: {
-                display: true,
-                title: {
-                  display: true,
-                  text: 'Number of Wins',
-                  color: 'white',
-                  font: {
-                    family: "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans'",
-                    size: 15,
-                    style: 'normal',
-                    lineHeight: 1.2
-                  },
-                  padding: {top: 30, left: 0, right: 0, bottom: 20}
-                }
-              }
             }
         }
     });
