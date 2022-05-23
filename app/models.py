@@ -34,6 +34,22 @@ class User(UserMixin,db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+    def add_gamesWon(self, onlineGamesWon):
+        w = Score(onlineGamesWon=onlineGamesWon, user_id=self.id)
+        db.session.add(w)
+        db.session.commit()
+    
+    def add_gamesPlayed(self, onlineGamesPlayed):
+        w = Score(onlineGamesPlayed=onlineGamesPlayed, user_id=self.id)
+        db.session.add(w)
+        db.session.commit()
+
+    def add_avgGuesses(self, onlineAvgGuesses):
+        w = Score(onlineAvgGuesses=onlineAvgGuesses, user_id=self.id)
+        db.session.add(w)
+        db.session.commit()
+
+
 class Score(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     onlineGamesWon = db.Column(db.Integer)

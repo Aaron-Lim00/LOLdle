@@ -153,8 +153,14 @@ def getStats():
     if current_user.is_authenticated:
         user_id=current_user.id
         onlineGamesWon= Score.query.filter_by(user_id=user_id).all()
+        onlineGamesPlayed= Score.query.filter_by(user_id=user_id).all()
+        onlineAvgGuesses= Score.query.filter_by(user_id=user_id).all()
 
-        return render_template("stats.html", onlineGamesWon=onlineGamesWon)
+        return render_template("stats.html", 
+        onlineGamesWon=onlineGamesWon, 
+        onlineGamesPlayed=onlineGamesPlayed,
+        onlineAvgGuesses=onlineAvgGuesses)
+
 
 
 
