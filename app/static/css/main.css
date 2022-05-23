@@ -326,3 +326,12 @@ img {
   width: 60%;
   margin:0 auto;
 }
+
+a:visited {
+  text-decoration: none;
+  color: white;
+}
+
+a { 
+  text-decoration: none; 
+}
