@@ -55,6 +55,7 @@ $(document).ready(function() {
                 
             }
             else if(data.champion === "incorrect" && count === 8) {
+                let answer = data.answer;
                 saveGuessCounter(count);
                 document.getElementById('submit').disabled = true;
                 document.getElementById('submit').style.backgroundColor = "rgba(64,64,64, 0.8)";
@@ -81,7 +82,7 @@ $(document).ready(function() {
                 $('#defeat-image').fadeIn(1000)
                 setTimeout(function(){
                     $('#defeat-image').fadeOut(1000)
-                    gameDefeat();
+                    gameDefeat(answer);
                 }, 2500);
             }
             else {incrementGuess();}

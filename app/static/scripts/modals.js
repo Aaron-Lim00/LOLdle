@@ -66,11 +66,16 @@
 /**
  * Defeat modal functionality
  */
-function gameDefeat() {
+function gameDefeat(answer) {
     var guessesMadeDiv = $("<div></div>");
     var guessesMade = fontColor($("<span></span>").text('You failed to guess the champion.'));
     guessesMadeDiv.append(guessesMade);
     $("#defeatScreen").append(guessesMadeDiv);
+
+    var answerDiv = $("<div></div>");
+    var answer = fontColor($("<span></span>").text('The answer was: ' + answer));
+   answerDiv.append(answer);
+    $("#defeatScreen").append(answerDiv);
 
     var gamesWonDiv = $("<div></div>");
     var gamesWon = fontColor($("<span></span>").text('Total games won: ' + localStorage.gamesWon));
