@@ -61,9 +61,7 @@
                 <i class="fa fa-bar-chart" id="analytics"></i>
             </span>
             {% else %}
-            <!-- Display personal statistics via stats db -->
             <a href="/stats"><i class="fa fa-bar-chart"></i></a>
-            <!-- The above is just a placeholder url to ensure that website runs -->
             {% endif %}
             <span onclick="openModal('settings-modal', 'settings-close')">
                 <i class="fa fa-cog" id="settings"></i>
@@ -120,19 +118,6 @@
             <div id="counterSix"></div><br>
             <div id="counterSeven"></div><br>
             <div id="counterEight"></div><br>
-        </div>
-    </div>
-
-    <!-- Personal Statistics Modal (retrieve from db) -->
-    <div id="personalStats-modal" class="modal">
-        <!-- Personal Statistics Content -->
-        <div class="modal-content personalStats-content">
-            <span class="close" id='personalStats-close'>
-                <i class="fa fa-times-circle"></i>
-            </span>
-            <h2 style = "text-align: center;">{{current_user.username}} Statistics</h2>
-            <p> {{current_user.score}} </p>
-            <!-- The above does not work -->
         </div>
     </div>
 
