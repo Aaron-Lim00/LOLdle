@@ -24,6 +24,7 @@
     <script src="{{ url_for('static', filename='scripts/feedback.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/modals.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/lightdark.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/routing.js') }}"></script>
 
     <!-- Autocomplete function -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>  
@@ -40,16 +41,16 @@
     <div class="navbar">
         <div class="navleft">
             {% if current_user.is_anonymous %}
-            <a href="/login">
-                <i class='fa fa-lock'></i>
-            </a>
+            <span onclick="login_page()">
+                <i class='clickable-icon fa fa-sign-in'></i>
+            </span>
             {% else %}
-            <a href="/logout">
-                <i class='fa fa-unlock'></i>
-            </a>
+            <span onclick="logout_page()">
+                <i class='clickable-icon fa fa-sign-out'></i>
+            </span>
             {% endif %}
             <span onclick="openModal('info-modal', 'info-close')">
-                <i class="fa fa-info-circle" id="info"></i>
+                <i class="clickable-icon fa fa-info-circle" id="info"></i>
             </span>
         </div>
 
@@ -61,15 +62,14 @@
         <div class="navright">
             {% if current_user.is_anonymous %}
             <span onclick="openModal('analytics-modal', 'analytics-close'); populate_analytics()">
-                <i class="fa fa-bar-chart" id="analytics"></i>
+                <i class="clickable-icon fa fa-bar-chart" id="analytics"></i>
             </span>
             {% else %}
             <!-- Display personal statistics via stats db -->
-            <a href="/stats"><i class="fa fa-bar-chart"></i></a>
-            <!-- The above is just a placeholder url to ensure that website runs -->
+            <span onclick="stats_page()"><i class="clickable-icon fa fa-bar-chart"></i></span>
             {% endif %}
             <span onclick="openModal('settings-modal', 'settings-close')">
-                <i class="fa fa-cog" id="settings"></i>
+                <i class="clickable-icon fa fa-cog" id="settings"></i>
             </span>
         </div>
     </div>
@@ -125,19 +125,6 @@
             <div id="chart-container">
                 <canvas id="myChart"></canvas>
             </div>
-        </div>
-    </div>
-
-    <!-- Personal Statistics Modal (retrieve from db) -->
-    <div id="personalStats-modal" class="modal">
-        <!-- Personal Statistics Content -->
-        <div class="modal-content personalStats-content">
-            <span class="close" id='personalStats-close'>
-                <i class="fa fa-times-circle"></i>
-            </span>
-            <h2 style = "text-align: center;">{{current_user.username}} Statistics</h2>
-            <p> {{current_user.score}} </p>
-            <!-- The above does not work -->
         </div>
     </div>
 
