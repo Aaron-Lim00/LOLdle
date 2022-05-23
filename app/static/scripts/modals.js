@@ -146,6 +146,10 @@ function populate_analytics() {
     $('#winpercentage').text('Win Percentage: ' + winpercentage + '%');
     $('#averageguesses').text('Average Guesses: ' + averageguesses);
 
+    createGraph();
+}
+
+function createGraph(){
     const analytics = document.getElementById('myChart');
     const myChart = new Chart(analytics, {
         type: 'bar',
