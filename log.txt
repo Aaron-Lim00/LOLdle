@@ -1,0 +1,460 @@
+*   	4989bb3	Alucaro	Sun May 22 20:51:37 2022 -0700	Merge pull request #58 from Aaron-Lim00/update-info
+|\  
+| *   	833f3ab	Alucaro	Sun May 22 20:49:49 2022 -0700	Merge branch 'main' into update-info
+| |\  
+| |/  
+|/|   
+* |   	c602a53	cathy-ngo	Mon May 23 11:49:18 2022 +0800	Merge pull request #56 from Aaron-Lim00/small-css-change
+|\ \  
+| * | 	241a8ed	Glen Nguyen	Mon May 23 11:45:40 2022 +0800	Update main.css
+|/ /  
+| *   	7834536	Alucaro	Sun May 22 20:49:22 2022 -0700	Merge branch 'main' into update-info
+| |\  
+| |/  
+|/|   
+* |   	191506d	Aaron Lim	Mon May 23 11:41:25 2022 +0800	Merge pull request #54 from Aaron-Lim00/stats/login-db
+|\ \  
+| * \   	d6db5ed	Aaron Lim	Mon May 23 11:41:16 2022 +0800	Merge branch 'main' into stats/login-db
+| |\ \  
+| |/ /  
+|/| |   
+* | |   	a0445c6	Aaron Lim	Mon May 23 11:39:35 2022 +0800	Merge pull request #55 from Aaron-Lim00/icon-update
+|\ \ \  
+| * | | 	a200120	cathy-ngo	Mon May 23 11:38:34 2022 +0800	Icon animation fixed
+| * | | 	24d339a	cathy-ngo	Mon May 23 11:36:40 2022 +0800	Icon fixes to login and stats button
+|/ / /  
+| * | 	2d43a12	Aaron Lim	Mon May 23 11:31:46 2022 +0800	Removed some comments and unused stats modal
+| | * 	f25eb42	Alucaro	Sun May 22 20:45:44 2022 -0700	Delete example2.png
+| | * 	83c6a23	Alucaro	Sun May 22 20:45:30 2022 -0700	updated info
+| |/  
+|/|   
+* |   	1a309a8	Aaron Lim	Mon May 23 11:17:08 2022 +0800	Merge pull request #52 from Aaron-Lim00/analytics-graph
+|\ \  
+| * \   	8a78a7f	cathy-ngo	Mon May 23 11:14:11 2022 +0800	Merge branch 'main' into analytics-graph
+| |\ \  
+| * | | 	3a9808a	cathy-ngo	Mon May 23 11:13:11 2022 +0800	Styled analytics button
+| * | | 	a542570	cathy-ngo	Mon May 23 10:55:06 2022 +0800	Centered graph
+| * | | 	6867d48	cathy-ngo	Mon May 23 10:49:28 2022 +0800	Separated into new function
+| * | | 	9970c02	cathy-ngo	Mon May 23 10:46:57 2022 +0800	Bar graph to display results
+* | | |   	9826066	cathy-ngo	Mon May 23 11:16:56 2022 +0800	Merge pull request #53 from Aaron-Lim00/updated-requirements.txt-
+|\ \ \ \  
+| * | | | 	482b585	Alucaro	Sun May 22 20:14:57 2022 -0700	import email and login validation
+| | |/ /  
+| |/| |   
+* | | |   	a90e109	cathy-ngo	Mon May 23 11:16:31 2022 +0800	Merge pull request #51 from Aaron-Lim00/champ-feedback
+|\ \ \ \  
+| |/ / /  
+|/| | |   
+| * | |   	0a4c3d3	Glen Nguyen	Mon May 23 11:04:51 2022 +0800	Merge branch 'main' into champ-feedback
+| |\ \ \  
+| |/ / /  
+|/| | |   
+* | | |   	5334811	Alucaro	Sun May 22 20:00:50 2022 -0700	Merge pull request #50 from Aaron-Lim00/stats/login-db
+|\ \ \ \  
+| |_|/ /  
+|/| | /   
+| | |/    
+| |/|     
+| * | 	1dce8a3	Aaron Lim	Mon May 23 10:59:30 2022 +0800	Update models.py
+| * | 	bd8ed13	Alucaro	Sun May 22 19:57:38 2022 -0700	updated routes.py
+| * | 	7709578	Aaron Lim	Mon May 23 10:51:52 2022 +0800	Working stats db
+| * | 	158ce0b	Aaron Lim	Mon May 23 10:08:29 2022 +0800	Working
+| * | 	740654a	Aaron Lim	Mon May 23 09:59:03 2022 +0800	Successfully routes to user stats page
+| * | 	2ff46e8	Aaron Lim	Mon May 23 01:42:49 2022 +0800	Updated stats
+| * | 	6692aca	Aaron Lim	Mon May 23 01:12:38 2022 +0800	Login db integrated with main functionality
+|/ /  
+| * 	a7f66dd	Glen Nguyen	Mon May 23 11:03:47 2022 +0800	defeat feedback
+|/  
+*   	d8833a4	Alucaro	Sun May 22 09:40:31 2022 -0700	Merge pull request #48 from Aaron-Lim00/revert-47-testing-branch
+|\  
+| * 	abc802d	Alucaro	Mon May 23 00:38:49 2022 +0800	Revert "Testing branch"
+* |   	564cb1e	Alucaro	Sun May 22 09:40:20 2022 -0700	Merge pull request #49 from Aaron-Lim00/revert-46-conditional-stats
+|\ \  
+| |/  
+|/|   
+| * 	db1f438	Alucaro	Mon May 23 00:39:07 2022 +0800	Revert "Update app.db"
+|/  
+*   	0f853e7	Aaron Lim	Mon May 23 00:29:52 2022 +0800	Merge pull request #47 from Aaron-Lim00/testing-branch
+|\  
+| *   	a6427e3	Aaron Lim	Mon May 23 00:14:00 2022 +0800	Merge branch 'main' into conditional-stats
+| |\  
+| |/  
+|/|   
+| * 	3a196d1	Aaron Lim	Mon May 23 00:13:10 2022 +0800	Revert "Merge branch 'main' of https://github.com/Aaron-Lim00/LOLdle into conditional-stats"
+| | * 	ca5af4a	Aaron Lim	Mon May 23 00:11:38 2022 +0800	Revert "Merge branch 'main' of https://github.com/Aaron-Lim00/LOLdle into conditional-stats"
+| | * 	63d61d1	Aaron Lim	Mon May 23 00:10:55 2022 +0800	Revert "Merge pull request #46 from Aaron-Lim00/conditional-stats"
+| |/  
+|/|   
+* | 	add50b8	Aaron Lim	Mon May 23 00:05:28 2022 +0800	Merge pull request #46 from Aaron-Lim00/conditional-stats
+|\| 
+| *   	55e7aa5	Aaron Lim	Mon May 23 00:05:13 2022 +0800	Merge branch 'main' of https://github.com/Aaron-Lim00/LOLdle into conditional-stats
+| |\  
+| |/  
+|/|   
+* | 	df8a626	Alucaro	Sun May 22 23:35:51 2022 +0800	Update README.md
+* |   	8620366	Glen Nguyen	Sun May 22 23:30:30 2022 +0800	Merge pull request #45 from Aaron-Lim00/Unit-testing
+|\ \  
+| * \   	3c291a0	Alucaro	Sun May 22 07:53:01 2022 -0700	Merge branch 'main' into Unit-testing
+| |\ \  
+| * | | 	9b164e7	Alucaro	Sun May 22 22:15:48 2022 +0800	Update README.md
+| * | | 	6aaa922	Alucaro	Sun May 22 22:15:04 2022 +0800	Update README.md
+| * | |   	6f85d56	Alucaro	Sun May 22 07:12:51 2022 -0700	Merge branch 'main' into Unit-testing
+| |\ \ \  
+| * | | | 	e6cd047	Alucaro	Sun May 22 07:04:01 2022 -0700	basic unit test
+| * | | |   	d217254	Alucaro	Sun May 22 04:20:22 2022 -0700	Merge branch 'main' into Unit-testing
+| |\ \ \ \  
+| * | | | | 	acb968c	Alucaro	Sun May 22 04:20:15 2022 -0700	tests
+| * | | | | 	382891b	Alucaro	Sun May 22 01:03:27 2022 -0700	created unittest.py
+* | | | | |   	d53b619	cathy-ngo	Sun May 22 23:08:02 2022 +0800	Merge pull request #44 from Aaron-Lim00/revert-42-login-working2
+|\ \ \ \ \ \  
+| * | | | | | 	adbaddb	Glen Nguyen	Sun May 22 23:05:37 2022 +0800	Revert "Login working2"
+|/ / / / / /  
+| | | | | * 	613381a	Aaron Lim	Mon May 23 00:02:06 2022 +0800	Update app.db
+| | | | | | * 	9ccb7ba	Aaron Lim	Sun May 22 23:07:54 2022 +0800	Revert "Database updates"
+| |_|_|_|_|/  
+|/| | | | |   
+* | | | | |   	fc6585f	Aaron Lim	Sun May 22 22:56:48 2022 +0800	Merge pull request #43 from Aaron-Lim00/scripts-splitting
+|\ \ \ \ \ \  
+| |_|_|_|/ /  
+|/| | | | |   
+| * | | | | 	3417311	Glen Nguyen	Sun May 22 22:53:22 2022 +0800	divided up javascript functions
+* | | | | |   	a2bc2ff	Glen Nguyen	Sun May 22 22:49:38 2022 +0800	Merge pull request #42 from Aaron-Lim00/login-working2
+|\ \ \ \ \ \  
+| |/ / / / /  
+|/| | | | |   
+| * | | | |   	e54482b	Aaron Lim	Sun May 22 22:47:06 2022 +0800	Merge branch 'main' into login-working2
+| |\ \ \ \ \  
+| |/ / / / /  
+|/| | | | |   
+* | | | | |   	87ae876	Glen Nguyen	Sun May 22 22:11:21 2022 +0800	Merge pull request #41 from Aaron-Lim00/logo-sizing
+|\ \ \ \ \ \  
+| * \ \ \ \ \   	6f8e3b4	cathy-ngo	Sun May 22 22:08:31 2022 +0800	Merge branch 'main' into logo-sizing
+| |\ \ \ \ \ \  
+| |/ / / / / /  
+|/| | | | | |   
+* | | | | | |   	2314284	cathy-ngo	Sun May 22 22:07:14 2022 +0800	Merge pull request #40 from Aaron-Lim00/statistics-plus++Pro
+|\ \ \ \ \ \ \  
+| |_|_|_|_|/ /  
+|/| | | | | |   
+| * | | | | | 	904b77c	Glen Nguyen	Sun May 22 21:46:46 2022 +0800	Updated local stats and string matching
+| * | | | | | 	f787ce1	Glen Nguyen	Sun May 22 21:07:48 2022 +0800	localstorage guess counter
+| | * | | | | 	07e0da3	cathy-ngo	Sun May 22 22:08:21 2022 +0800	Updated logo size to fit better on mobile devices
+| |/ / / / /  
+|/| | | | |   
+* | | | | |   	ca34d56	Glen Nguyen	Sun May 22 20:23:23 2022 +0800	Merge pull request #39 from Aaron-Lim00/css-file
+|\ \ \ \ \ \  
+| |/ / / / /  
+|/| | | | |   
+| * | | | | 	819e70b	cathy-ngo	Sun May 22 19:27:31 2022 +0800	Minor indentation fixes
+| * | | | | 	d562518	cathy-ngo	Sun May 22 19:25:31 2022 +0800	Fixed indentation in CSS file
+| | |_|/ /  
+| |/| | |   
+* | | | | 	36955a9	Glen Nguyen	Sun May 22 19:21:20 2022 +0800	Update README.md
+* | | | | 	a49e77f	Glen Nguyen	Sun May 22 19:18:22 2022 +0800	Update README.md
+* | | | |   	21fa4bd	Alucaro	Sun May 22 04:17:04 2022 -0700	Merge pull request #38 from Aaron-Lim00/readme
+|\ \ \ \ \  
+| |/ / / /  
+|/| | | |   
+| * | | | 	cf0b760	Glen Nguyen	Sun May 22 19:16:43 2022 +0800	Update README.md
+| * | | | 	e670779	Glen Nguyen	Sun May 22 19:14:42 2022 +0800	Update README.md
+|/ / / /  
+* | | |   	d05ad77	cathy-ngo	Sun May 22 17:14:21 2022 +0800	Merge pull request #36 from Aaron-Lim00/URGENT-MAIN-BROKEN
+|\ \ \ \  
+| * | | | 	9e07c99	Glen Nguyen	Sun May 22 16:11:31 2022 +0800	URGENT FIX !!
+|/ / / /  
+* | | |   	7586e8e	Glen Nguyen	Sun May 22 16:06:53 2022 +0800	Merge pull request #35 from Aaron-Lim00/logo
+|\ \ \ \  
+| * \ \ \   	d8587e7	cathy-ngo	Sun May 22 16:02:49 2022 +0800	Merge branch 'main' into logo
+| |\ \ \ \  
+| |/ / / /  
+|/| | | |   
+* | | | |   	3edbe1c	cathy-ngo	Sun May 22 16:01:05 2022 +0800	Merge pull request #33 from Aaron-Lim00/scoring-bugfixes
+|\ \ \ \ \  
+| * | | | | 	d514c04	Glen Nguyen	Sun May 22 15:25:01 2022 +0800	small statistics and sharing fix
+| | * | | |   	ae59a39	cathy-ngo	Sun May 22 15:59:13 2022 +0800	Merge branch 'main' into logo
+| | |\ \ \ \  
+| |_|/ / / /  
+|/| | | | |   
+* | | | | |   	0a05385	cathy-ngo	Sun May 22 15:55:57 2022 +0800	Merge pull request #34 from Aaron-Lim00/readability
+|\ \ \ \ \ \  
+| |_|_|_|/ /  
+|/| | | | |   
+| * | | | | 	8c8f89d	Glen Nguyen	Sun May 22 15:46:40 2022 +0800	Updated commenting for readability and maintainability
+|/ / / / /  
+| | * / / 	3e1a10c	cathy-ngo	Sun May 22 15:52:56 2022 +0800	Logo update
+| |/ / /  
+|/| | |   
+* | | |   	e50a092	Glen Nguyen	Sun May 22 14:43:39 2022 +0800	Merge pull request #32 from Aaron-Lim00/fixed-throwing-error-+-minor-css-for-share-button
+|\ \ \ \  
+| |/ / /  
+|/| | |   
+| * | | 	c306cc8	Alucaro	Sat May 21 23:42:24 2022 -0700	done
+|/ / /  
+* | |   	d7c34fe	Glen Nguyen	Sun May 22 14:20:19 2022 +0800	Merge pull request #31 from Aaron-Lim00/light-mode-fix
+|\ \ \  
+| * | | 	c2d4981	cathy-ngo	Sun May 22 14:05:46 2022 +0800	Updated disabled lock in button; light mode applies to victory/defeat modal
+| * | | 	ed85ecc	cathy-ngo	Sun May 22 13:08:59 2022 +0800	Created variables for commonly used colours
+| * | | 	5cca87b	cathy-ngo	Sun May 22 12:56:23 2022 +0800	created separate function to style cards
+| * | | 	ac074f0	cathy-ngo	Sun May 22 12:37:25 2022 +0800	light mode changes feedback cards
+|/ / /  
+* | |   	4942ead	Glen Nguyen	Fri May 20 21:01:06 2022 +0800	Merge pull request #30 from Aaron-Lim00/icon-fix
+|\ \ \  
+| * | | 	7de1b1f	cathy-ngo	Thu May 19 23:59:48 2022 +0800	Fixed clickable icons
+|/ / /  
+* | |   	54dccb7	cathy-ngo	Thu May 19 23:02:53 2022 +0800	Merge pull request #29 from Aaron-Lim00/input-box-update
+|\ \ \  
+| * | | 	a75734e	cathy-ngo	Thu May 19 23:00:20 2022 +0800	Centred victory image
+| * | |   	f36d1bb	cathy-ngo	Thu May 19 22:56:28 2022 +0800	Merge branch 'main' into input-box-update
+| |\ \ \  
+| |/ / /  
+|/| | |   
+| * | | 	3a37189	Alucaro	Thu May 19 03:39:48 2022 -0700	Update README.md
+| * | | 	704e192	Alucaro	Thu May 19 03:36:29 2022 -0700	updated to support login func
+| * | | 	3b86bdd	Alucaro	Thu May 19 02:29:46 2022 -0700	Updated ReadMe
+| * | | 	e1acc1a	Alucaro	Thu May 19 02:20:29 2022 -0700	updated script.js
+| * | | 	0920b03	Alucaro	Thu May 19 02:20:02 2022 -0700	Text box cant be empty
+| | * | 	2f2d036	Aaron Lim	Sun May 22 22:22:18 2022 +0800	Database updates
+| | * | 	f999b06	Aaron Lim	Sun May 22 20:42:28 2022 +0800	Statistis displays in modal
+| | * | 	87959fb	Aaron Lim	Sun May 22 19:59:15 2022 +0800	temp working stats
+| | * | 	b954acb	Aaron Lim	Sun May 22 17:36:11 2022 +0800	Stats display
+| | * | 	a47099a	Aaron Lim	Sun May 22 16:32:39 2022 +0800	Stats db updated but not linking
+| | * | 	396c781	Aaron Lim	Sun May 22 11:50:26 2022 +0800	Score and User db linked
+| | * | 	0b640b1	Aaron Lim	Sun May 22 11:41:00 2022 +0800	Before db migration
+| | * | 	5b94b52	Aaron Lim	Sat May 21 23:39:58 2022 +0800	Update scripts.js
+| | | | * 	3782689	Glen Nguyen	Sat May 21 19:40:55 2022 +0800	On login-working2: !!GitHub_Desktop<login-working2>
+| | | |/| 
+| | |/| | 
+| | | | * 	54cf0ea	Glen Nguyen	Sat May 21 19:40:55 2022 +0800	index on login-working2: 978557e Update models.py
+| | | |/  
+| | |/|   
+| | * | 	978557e	Aaron Lim	Sat May 21 15:33:43 2022 +0800	Update models.py
+| | * | 	2651e62	Aaron Lim	Sat May 21 15:17:08 2022 +0800	Update routes.py
+| | |/  
+| | * 	d7b3f4f	Aaron Lim	Sat May 21 15:01:24 2022 +0800	Updated conditional stats display
+| | * 	641bb66	Aaron Lim	Sat May 21 12:54:02 2022 +0800	Update
+| | * 	bbb09f1	Aaron Lim	Sat May 21 11:29:28 2022 +0800	updated with stats db
+| | * 	65619cf	Aaron Lim	Thu May 19 20:26:28 2022 +0800	Fixed routing and removed comments
+| | *   	eaed2eb	Aaron Lim	Thu May 19 20:19:54 2022 +0800	Merge branch 'login-working2' of https://github.com/Aaron-Lim00/LOLdle into login-working2
+| | |\  
+| | | * 	c71fc86	cathy-ngo	Thu May 19 18:25:30 2022 +0800	Autocomplete function
+| | | *   	6d28ae3	Aaron Lim	Thu May 19 17:52:55 2022 +0800	Merge branch 'main' into login-working2
+| | | |\  
+| |_|_|/  
+|/| | |   
+* | | |   	b5d4af6	Glen Nguyen	Thu May 19 17:02:52 2022 +0800	Merge pull request #26 from Aaron-Lim00/game-visuals
+|\ \ \ \  
+| |/ / /  
+|/| | |   
+| * | |   	81517da	cathy-ngo	Thu May 19 16:53:36 2022 +0800	Merge branch 'main' into game-visuals
+| |\ \ \  
+| |/ / /  
+|/| | |   
+* | | |   	5bbce52	Alucaro	Thu May 19 01:47:55 2022 -0700	Merge pull request #25 from Aaron-Lim00/personal-stats
+|\ \ \ \  
+| * | | | 	bdb19c5	Glen Nguyen	Thu May 19 16:33:43 2022 +0800	copy results to clipboard
+| * | | | 	8cf306b	Glen Nguyen	Thu May 19 15:56:43 2022 +0800	share button complete
+| * | | | 	4d050ad	Glen Nguyen	Wed May 18 15:39:41 2022 +0800	broken share button
+| * | | | 	2fdac53	Glen Nguyen	Thu May 19 12:09:43 2022 +0800	base share button
+| * | | | 	4a04651	Glen Nguyen	Wed May 18 17:21:18 2022 +0800	populate stats
+|/ / / /  
+| * | | 	1bb9338	cathy-ngo	Thu May 19 16:52:02 2022 +0800	Victory and defeat images
+| * | | 	2f69281	cathy-ngo	Thu May 19 12:46:30 2022 +0800	Header stays at top, new guesses added to top
+|/ / /  
+* | |   	4ec364c	cathy-ngo	Wed May 18 12:06:41 2022 +0800	Merge pull request #24 from Aaron-Lim00/bug-fixes
+|\ \ \  
+| | * | 	103e4c5	Aaron Lim	Thu May 19 17:28:09 2022 +0800	Update models.py
+| | |/  
+| | * 	0c2276a	Aaron Lim	Thu May 19 17:19:50 2022 +0800	Login/logout routing working
+| | * 	77eb007	Aaron Lim	Thu May 19 16:35:01 2022 +0800	Working login
+| | * 	e4b9bc6	Aaron Lim	Thu May 19 15:43:33 2022 +0800	User login not done
+| | * 	5e1188c	Aaron Lim	Thu May 19 11:18:25 2022 +0800	db query working
+| | * 	c7678ce	Aaron Lim	Wed May 18 17:12:47 2022 +0800	Login html page working
+| | * 	496c5c9	Aaron Lim	Wed May 18 12:02:17 2022 +0800	Login db working
+| | * 	51fd03d	SleepyPanda00	Tue May 17 23:54:58 2022 +0800	Updated login db
+| | | * 	7578c91	Glen Nguyen	Wed May 18 12:29:03 2022 +0800	procfile
+| | |/  
+| |/|   
+| * | 	9c8b0d4	Glen Nguyen	Wed May 18 12:02:07 2022 +0800	update scripts.js
+| * | 	ab543c7	Glen Nguyen	Wed May 18 11:58:16 2022 +0800	clear button
+| * | 	6f09a11	Glen Nguyen	Wed May 18 11:49:27 2022 +0800	update script.js
+|/ /  
+* |   	7abd73e	Glen Nguyen	Wed May 18 11:35:27 2022 +0800	Merge pull request #23 from Aaron-Lim00/small-changes
+|\ \  
+| * \   	d145c24	Glen Nguyen	Wed May 18 11:34:52 2022 +0800	Merge branch 'main' into small-changes
+| |\ \  
+| |/ /  
+|/| |   
+* | |   	a28e5fb	Aaron Lim	Tue May 17 23:23:45 2022 +0800	Merge pull request #22 from Aaron-Lim00/local-stats-2.0
+|\ \ \  
+| * | | 	a0c407f	Glen Nguyen	Tue May 17 23:20:22 2022 +0800	appended to wrong div
+| * | | 	c63c0db	Glen Nguyen	Tue May 17 23:15:34 2022 +0800	really bad javascript
+|/ / /  
+| * / 	b5eb3bc	Aaron Lim	Wed May 18 01:03:43 2022 +0800	align settings, add clear storage
+|/ /  
+* |   	26c314c	Glen Nguyen	Tue May 17 21:43:19 2022 +0800	Merge pull request #21 from Aaron-Lim00/game
+|\ \  
+| * \   	a77980c	cathy-ngo	Tue May 17 21:10:54 2022 +0800	Merge branch 'main' into game
+| |\ \  
+| |/ /  
+|/| |   
+* | |   	c967f96	Glen Nguyen	Tue May 17 14:39:40 2022 +0800	Merge pull request #20 from Aaron-Lim00/info
+|\ \ \  
+| |_|/  
+|/| |   
+| * | 	64d3f35	Aaron Lim	Tue May 17 14:38:12 2022 +0800	info modal
+| * | 	380bce4	Aaron Lim	Tue May 17 13:37:04 2022 +0800	Update base.html
+|/ /  
+| * 	c34f2e2	cathy-ngo	Wed May 11 20:29:30 2022 +0800	Game victory and defeat conditions
+| * 	ecba19a	cathy-ngo	Wed May 11 20:18:14 2022 +0800	Added animation
+| * 	064671b	cathy-ngo	Wed May 11 19:58:51 2022 +0800	Include role, year and skins header
+| * 	c8aa7a5	cathy-ngo	Wed May 11 19:39:01 2022 +0800	Increment guess updated
+| * 	3c91337	cathy-ngo	Wed May 11 19:32:36 2022 +0800	Guess placeholder increments
+|/  
+*   	90f202d	cathy-ngo	Mon May 9 22:37:26 2022 +0800	Merge pull request #19 from Aaron-Lim00/feedback-cards
+|\  
+| * 	78d6f14	cathy-ngo	Mon May 9 22:36:02 2022 +0800	Feedback cards display icons (higher/lower)
+| * 	777eda2	cathy-ngo	Tue May 3 16:51:15 2022 +0800	First draft of feedback cards
+* |   	d8a195c	Glen Nguyen	Sun May 8 15:28:10 2022 +0800	Merge pull request #18 from Aaron-Lim00/autocomplete-function
+|\ \  
+| * | 	8c71805	Sean	Sun May 8 14:29:51 2022 +0800	Implemented Autocomplete function
+* | |   	5770e42	Glen Nguyen	Wed May 4 14:19:57 2022 +0800	Merge pull request #17 from Aaron-Lim00/revert-16-modal-v2
+|\ \ \  
+| * | | 	c75969c	Glen Nguyen	Wed May 4 14:19:44 2022 +0800	Revert "Modal v2"
+|/ / /  
+* | |   	ca495f2	Glen Nguyen	Wed May 4 14:09:20 2022 +0800	Merge pull request #16 from Aaron-Lim00/modal-v2
+|\ \ \  
+| |_|/  
+|/| |   
+| * |   	8b4d70a	Aaron Lim	Wed May 4 14:07:51 2022 +0800	Merge branch 'main' into modal-v2
+| |\ \  
+| |/ /  
+|/| |   
+* | |   	d030f1a	cathy-ngo	Tue May 3 15:09:09 2022 +0800	Merge pull request #15 from Aaron-Lim00/backend
+|\ \ \  
+| * | | 	b9ca450	Glen Nguyen	Tue May 3 14:49:24 2022 +0800	updated json in routes.py
+|/ / /  
+* | / 	7490d82	Glen Nguyen	Tue May 3 12:30:52 2022 +0800	Update routes.py
+| |/  
+|/|   
+* |   	9fd7669	Alucaro	Mon May 2 21:23:01 2022 -0700	Merge pull request #14 from Aaron-Lim00/ajax-flask-db
+|\ \  
+| * | 	a27a7e6	Glen Nguyen	Tue May 3 12:20:48 2022 +0800	bug fix
+| * | 	ee2daf7	Glen Nguyen	Tue May 3 12:07:22 2022 +0800	Update routes.py
+| * | 	8edad91	Glen Nguyen	Tue May 3 12:04:30 2022 +0800	Added a seeded answer and changed json answer returns
+* | | 	2c63566	cathy-ngo	Mon May 2 18:17:53 2022 +0800	Added requirements.txt
+* | | 	fd49bf3	cathy-ngo	Mon May 2 17:46:12 2022 +0800	Set environment to development mode
+* | |   	408717a	cathy-ngo	Sun May 1 22:33:48 2022 +0800	Merge pull request #13 from Aaron-Lim00/ajax-flask-db
+|\ \ \  
+| * \ \   	811a242	Glen Nguyen	Sun May 1 22:22:45 2022 +0800	Merge branch 'main' into ajax-flask-db
+| |\ \ \  
+| |/ / /  
+|/| / /   
+| |/ /    
+| * | 	7e0c49a	Glen Nguyen	Sun May 1 22:19:49 2022 +0800	testing db query
+| * | 	7999940	Glen Nguyen	Sun May 1 22:17:50 2022 +0800	nothing really
+| * | 	cf8b3d3	cathy-ngo	Sun May 1 21:28:38 2022 +0800	Fixed settings light mode error
+| * | 	da18640	cathy-ngo	Sun May 1 21:02:52 2022 +0800	Flask handles POST requests from index form
+| * | 	70ff4ff	Glen Nguyen	Sun May 1 10:24:38 2022 +0800	ajax routing works
+| * | 	098b3b5	Glen Nguyen	Sun May 1 10:11:26 2022 +0800	attempt ajax request
+| | * 	b3be4e1	SleepyPanda00	Sun May 1 17:28:33 2022 +0800	Update routes.py
+| | * 	b8ec5d7	SleepyPanda00	Sun May 1 17:27:10 2022 +0800	Updated login functionality
+| |/  
+|/|   
+* | 	1da84c3	SleepyPanda00	Sun May 1 00:26:55 2022 +0800	Merge branch 'main' of https://github.com/Aaron-Lim00/LOLdle
+|\| 
+| *   	5551de2	Glen Nguyen	Sun May 1 00:22:39 2022 +0800	Merge pull request #12 from Aaron-Lim00/styling
+| |\  
+| | *   	07dde82	cathy-ngo	Sun May 1 00:19:09 2022 +0800	Merge branch 'main' into styling
+| | |\  
+| | |/  
+| |/|   
+| * |   	abaae8f	Aaron Lim	Sat Apr 30 18:58:14 2022 +0800	Merge pull request #11 from Aaron-Lim00/champ-database
+| |\ \  
+| | * | 	d969fac	Glen Nguyen	Sat Apr 30 16:31:07 2022 +0800	Populated app.db with champion data
+| | | *   	f02adf0	cathy-ngo	Sun May 1 00:02:22 2022 +0800	Merge branch 'styling' of https://github.com/Aaron-Lim00/LOLdle into styling
+| | | |\  
+| | | | * 	1723164	SleepyPanda00	Sun May 1 00:01:53 2022 +0800	Revert "Updated modal for analytics and info sections"
+| | | | * 	d19de14	SleepyPanda00	Sun May 1 00:01:37 2022 +0800	Revert "Updated login modal"
+| | | | * 	f4a421a	SleepyPanda00	Sun May 1 00:01:14 2022 +0800	Revert "Update base.html"
+| | | | * 	c25e28a	SleepyPanda00	Sat Apr 30 16:38:57 2022 +0800	Update base.html
+| | | | * 	aace035	SleepyPanda00	Sat Apr 30 16:10:43 2022 +0800	Updated login modal
+| | | | * 	a913c3b	SleepyPanda00	Thu Apr 28 20:33:29 2022 +0800	Updated modal for analytics and info sections
+| | | * | 	6fc4dd1	cathy-ngo	Sat Apr 30 23:18:27 2022 +0800	Updated to new name
+| | | * | 	4ab965c	cathy-ngo	Sat Apr 30 23:10:05 2022 +0800	Apply light mode to all modals
+| | | * | 	c8df240	cathy-ngo	Sat Apr 30 22:44:33 2022 +0800	Fixed exit buttons and created modals for info and data
+| | | |/  
+| | | * 	9a5db6c	cathy-ngo	Wed Apr 27 17:48:39 2022 +0800	Create .gitignore
+| | | * 	e0c246a	cathy-ngo	Wed Apr 27 17:42:32 2022 +0800	Settings Button + Light Mode
+* | | | 	680a35b	SleepyPanda00	Sat Apr 30 22:33:38 2022 +0800	Added user db
+|/ / /  
+* | | 	7c43256	cathy-ngo	Fri Apr 29 14:05:17 2022 +0800	Merge pull request #10 from Aaron-Lim00/champ-database
+|\| | 
+| * |   	b651deb	Glen Nguyen	Fri Apr 29 13:57:09 2022 +0800	Merge branch 'main' into champ-database
+| |\ \  
+| |/ /  
+|/| |   
+* | |   	9a481f9	SleepyPanda00	Thu Apr 28 20:09:34 2022 +0800	Merge branch 'main' of https://github.com/Aaron-Lim00/LOLdle
+|\ \ \  
+| * \ \   	694aa70	cathy-ngo	Thu Apr 28 17:19:10 2022 +0800	Merge pull request #8 from Aaron-Lim00/gamescripts
+| |\ \ \  
+| | * | | 	86bc27c	Glen Nguyen	Thu Apr 28 13:09:55 2022 +0800	Update scripts.js
+* | | | | 	03b8029	SleepyPanda00	Wed Apr 27 17:10:34 2022 +0800	Update .gitignore
+* | | | | 	5cdfe2c	SleepyPanda00	Wed Apr 27 16:55:18 2022 +0800	Create .gitignore
+|/ / / /  
+| | * | 	46cb4eb	Glen Nguyen	Fri Apr 29 13:44:43 2022 +0800	Update .gitignore
+| | * | 	b2421d9	Glen Nguyen	Fri Apr 29 13:40:22 2022 +0800	defined database
+| | * | 	639f8aa	Glen Nguyen	Fri Apr 29 11:45:45 2022 +0800	refactoring code
+| |/ /  
+|/| |   
+* | | 	23776da	cathy-ngo	Tue Apr 26 12:26:22 2022 +0800	Revert "Test"
+* | | 	37b3d82	cathy-ngo	Tue Apr 26 12:26:04 2022 +0800	Revert "Test 2"
+* | | 	d62a69b	cathy-ngo	Tue Apr 26 12:26:01 2022 +0800	Revert "Test 3"
+* | | 	1258161	cathy-ngo	Tue Apr 26 12:25:54 2022 +0800	Revert "Ignore venv"
+* | | 	48f8f0e	cathy-ngo	Tue Apr 26 12:23:27 2022 +0800	Revert "Test"
+* | | 	ad09b8a	SleepyPanda00	Tue Apr 26 11:54:45 2022 +0800	Test
+* | | 	936c202	SleepyPanda00	Tue Apr 26 11:52:58 2022 +0800	Ignore venv
+* | | 	0c0eb6b	SleepyPanda00	Tue Apr 26 11:51:10 2022 +0800	Test 3
+* | | 	2fa95d5	SleepyPanda00	Tue Apr 26 11:42:27 2022 +0800	Test 2
+* | | 	35a2479	SleepyPanda00	Tue Apr 26 11:36:52 2022 +0800	Test
+|/ /  
+* | 	1da8411	Glen Nguyen	Mon Apr 25 23:56:27 2022 +0800	Merge pull request #7 from Aaron-Lim00/styling
+|\| 
+| * 	0f9de8a	cathy-ngo	Mon Apr 25 23:55:22 2022 +0800	Fixed styling errors
+* |   	8ff838f	cathy-ngo	Mon Apr 25 23:37:50 2022 +0800	Merge pull request #6 from Aaron-Lim00/duperemoval
+|\ \  
+| * | 	1b9d47b	Glen Nguyen	Mon Apr 25 23:36:38 2022 +0800	Update index.html
+|/ /  
+* | 	6f57099	Glen Nguyen	Mon Apr 25 23:32:52 2022 +0800	Merge pull request #5 from Aaron-Lim00/styling
+|\| 
+| *   	153e4d8	Glen Nguyen	Mon Apr 25 23:32:44 2022 +0800	Merge branch 'main' into styling
+| |\  
+| |/  
+|/|   
+* |   	9828262	cathy-ngo	Mon Apr 25 19:42:58 2022 +0800	Merge pull request #4 from Aaron-Lim00/game
+|\ \  
+| * | 	440d9f1	Glen Nguyen	Mon Apr 25 19:38:05 2022 +0800	Add basic scripts for game
+|/ /  
+| * 	daa2dba	cathy-ngo	Mon Apr 25 23:21:34 2022 +0800	Added styling
+|/  
+*   	fdeace1	Alucaro	Mon Apr 25 15:33:21 2022 +0800	Merge pull request #3 from Aaron-Lim00/base
+|\  
+| * 	87cc49a	Glen Nguyen	Mon Apr 25 15:32:22 2022 +0800	Update branch for project collab
+* | 	95c099f	Alucaro	Mon Apr 25 15:10:33 2022 +0800	Merge pull request #2 from Aaron-Lim00/base
+|\| 
+| *   	465e8b4	SleepyPanda00	Mon Apr 25 14:42:24 2022 +0800	Merge branch 'main' into base
+| |\  
+| | * 	90e14c9	SleepyPanda00	Sun Apr 24 16:49:16 2022 +0800	Create baseline files
+| * | 	920c92d	SleepyPanda00	Mon Apr 25 14:41:04 2022 +0800	Update
+| * | 	5cdd320	Glen Nguyen	Mon Apr 25 14:36:46 2022 +0800	Added template navbar
+| * | 	e7893b1	Glen Nguyen	Sat Apr 23 21:00:08 2022 +0800	Update main.css
+| * | 	7b64d9a	Glen Nguyen	Sat Apr 23 20:45:07 2022 +0800	Update main.css
+* | | 	5b6a6be	cathy-ngo	Mon Apr 25 13:17:26 2022 +0800	Updated README file
+| |/  
+|/|   
+* | 	79916d1	SleepyPanda00	Sun Apr 24 16:37:37 2022 +0800	Included a gitignore
+* | 	f6c7b8d	SleepyPanda00	Sun Apr 24 16:33:01 2022 +0800	Create .gitignore
+* | 	2246a9b	Glen Nguyen	Sat Apr 23 20:36:45 2022 +0800	Merge pull request #1 from Aaron-Lim00/base
+|\| 
+| * 	ff1e480	Glen Nguyen	Sat Apr 23 20:35:50 2022 +0800	Initial file upload
+|/  
+* 	b2a2cea	SleepyPanda00	Tue Mar 15 12:10:55 2022 +0800	Initial commit
