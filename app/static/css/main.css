@@ -309,6 +309,5 @@ img {
 #chart-container {
   text-align: center;
   width: 60%;
-  top: 50%;
-  left:50%;
+  margin:0 auto;
 }
